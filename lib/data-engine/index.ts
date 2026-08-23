@@ -70,7 +70,7 @@ export class VoidexDataPlatform {
   }
 
   public static getCompletenessDashboard() {
-    return ValidationEngine.generateCompletenessReport(
+    return ValidationEngine.generateCoverageMatrix(
       WARFRAMES_DATASET,
       MODS_DATASET,
       WEAPONS_DATASET,

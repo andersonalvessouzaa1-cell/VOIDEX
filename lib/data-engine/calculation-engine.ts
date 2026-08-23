@@ -29,7 +29,7 @@ export class CalculationEngine {
     for (const [dmgType, ev] of Object.entries(baseAttack.damage_profile)) {
       if (!ev) continue;
       
-      const isLow = ev.status === 'UNVERIFIED' || ev.confidence === 'LOW';
+      const isLow = ev.status === 'MISSING' || ev.confidence < 0.8;
       if (isLow) {
         limitations.push(`Base damage type ${dmgType} has incomplete evidence.`);
         hasUnknownDependencies = true;

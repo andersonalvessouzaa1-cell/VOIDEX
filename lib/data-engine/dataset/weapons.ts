@@ -52,7 +52,8 @@ export const WEAPONS_DATASET: WeaponEntity[] = [
       viral: { value: 0, status: 'VERIFIED', confidence: 1.0 },
       corrosive: { value: 0, status: 'VERIFIED', confidence: 1.0 },
       void: { value: 0, status: 'VERIFIED', confidence: 1.0 },
-      tau: { value: 0, status: 'VERIFIED', confidence: 1.0 }
+      tau: { value: 0, status: 'VERIFIED', confidence: 1.0 },
+      true_damage: { value: 0, status: 'VERIFIED', confidence: 1.0 }
     
       },
     fire_rate: { value: 1.5, status: 'VERIFIED', confidence: 1.0 },
@@ -138,7 +139,8 @@ export const WEAPONS_DATASET: WeaponEntity[] = [
       viral: { value: 0, status: 'VERIFIED', confidence: 1.0 },
       corrosive: { value: 0, status: 'VERIFIED', confidence: 1.0 },
       void: { value: 0, status: 'VERIFIED', confidence: 1.0 },
-      tau: { value: 0, status: 'VERIFIED', confidence: 1.0 }
+      tau: { value: 0, status: 'VERIFIED', confidence: 1.0 },
+      true_damage: { value: 0, status: 'VERIFIED', confidence: 1.0 }
     
       },
     fire_rate: { value: 1.5, status: 'VERIFIED', confidence: 1.0 },
@@ -195,7 +197,8 @@ export const WEAPONS_DATASET: WeaponEntity[] = [
       viral: { value: 0, status: 'VERIFIED', confidence: 1.0 },
       corrosive: { value: 0, status: 'VERIFIED', confidence: 1.0 },
       void: { value: 0, status: 'VERIFIED', confidence: 1.0 },
-      tau: { value: 0, status: 'VERIFIED', confidence: 1.0 }
+      tau: { value: 0, status: 'VERIFIED', confidence: 1.0 },
+      true_damage: { value: 0, status: 'VERIFIED', confidence: 1.0 }
     
       },
     fire_rate: { value: 1.0, status: 'VERIFIED', confidence: 1.0 },

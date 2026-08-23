@@ -1,5 +1,5 @@
 /**
- * VOIDEX DATA ENGINE — DATASET: HELMINTH (EXPANDED REGISTRY)
+ * VOIDEX DATA ENGINE - DATASET: HELMINTH (EXPANDED REGISTRY)
  * Catálogo de Habilidades Subsumíveis com Data Provenance
  */
 
@@ -32,14 +32,15 @@ export const HELMINTH_DATASET: HelminthSubsumedAbility[] = [
     build_supported: true,
     effects: [
       {
-        type: 'buff',
-        base_value: 30,
-        duration_seconds: 30,
-        range_meters: 25,
+        mechanic_type: 'buff',
+        parameter_name: 'damage_buff',
+        base_value: { value: 30, status: 'VERIFIED', confidence: 1.0 },
+        duration: { value: 30, status: 'VERIFIED', confidence: 1.0 },
+        range: { value: 25, status: 'VERIFIED', confidence: 1.0 },
         scalings: [
-          { attribute: 'strength', affects_parameter: 'damage_buff', scaling_factor: 1.0 },
-          { attribute: 'duration', affects_parameter: 'duration_seconds', scaling_factor: 1.0 },
-          { attribute: 'range', affects_parameter: 'range_meters', scaling_factor: 1.0 }
+          { affected_by: 'ability_strength', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0.5 }, coefficient: { value: 1.0, status: 'MISSING', confidence: 0.5 }, source_id: 'src_de_official_2026' },
+          { affected_by: 'ability_duration', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0.5 }, coefficient: { value: 1.0, status: 'MISSING', confidence: 0.5 }, source_id: 'src_de_official_2026' },
+          { affected_by: 'ability_range', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0.5 }, coefficient: { value: 1.0, status: 'MISSING', confidence: 0.5 }, source_id: 'src_de_official_2026' }
         ]
       }
     ],
@@ -59,12 +60,13 @@ export const HELMINTH_DATASET: HelminthSubsumedAbility[] = [
     build_supported: true,
     effects: [
       {
-        type: 'crowd_control',
-        base_value: 35,
-        radius_meters: 16,
+        mechanic_type: 'crowd_control',
+        parameter_name: 'slow_percentage',
+        base_value: { value: 35, status: 'VERIFIED', confidence: 1.0 },
+        radius: { value: 16, status: 'VERIFIED', confidence: 1.0 },
         scalings: [
-          { attribute: 'strength', affects_parameter: 'slow_percentage', scaling_factor: 1.0 },
-          { attribute: 'range', affects_parameter: 'radius_meters', scaling_factor: 1.0 }
+          { affected_by: 'ability_strength', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0.5 }, coefficient: { value: 1.0, status: 'MISSING', confidence: 0.5 }, source_id: 'src_de_official_2026' },
+          { affected_by: 'ability_range', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0.5 }, coefficient: { value: 1.0, status: 'MISSING', confidence: 0.5 }, source_id: 'src_de_official_2026' }
         ]
       }
     ],
@@ -84,13 +86,14 @@ export const HELMINTH_DATASET: HelminthSubsumedAbility[] = [
     build_supported: true,
     effects: [
       {
-        type: 'strip_armor',
-        base_value: 25,
-        radius_meters: 8,
-        duration_seconds: 2.5,
+        mechanic_type: 'strip_armor',
+        parameter_name: 'strip_percentage',
+        base_value: { value: 25, status: 'VERIFIED', confidence: 1.0 },
+        radius: { value: 8, status: 'VERIFIED', confidence: 1.0 },
+        duration: { value: 2.5, status: 'VERIFIED', confidence: 1.0 },
         scalings: [
-          { attribute: 'strength', affects_parameter: 'strip_percentage', scaling_factor: 1.0 },
-          { attribute: 'duration', affects_parameter: 'wave_expansion_duration', scaling_factor: 1.0 }
+          { affected_by: 'ability_strength', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0.5 }, coefficient: { value: 1.0, status: 'MISSING', confidence: 0.5 }, source_id: 'src_de_official_2026' },
+          { affected_by: 'ability_duration', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0.5 }, coefficient: { value: 1.0, status: 'MISSING', confidence: 0.5 }, source_id: 'src_de_official_2026' }
         ]
       }
     ],
@@ -110,13 +113,14 @@ export const HELMINTH_DATASET: HelminthSubsumedAbility[] = [
     build_supported: true,
     effects: [
       {
-        type: 'buff',
-        damage_type: 'viral',
-        base_value: 45,
-        duration_seconds: 25,
+        mechanic_type: 'buff',
+        parameter_name: 'viral_bonus',
+        damage_type: { value: 'viral', status: 'VERIFIED', confidence: 1.0 },
+        base_value: { value: 45, status: 'VERIFIED', confidence: 1.0 },
+        duration: { value: 25, status: 'VERIFIED', confidence: 1.0 },
         scalings: [
-          { attribute: 'strength', affects_parameter: 'viral_bonus', scaling_factor: 1.0 },
-          { attribute: 'duration', affects_parameter: 'duration_seconds', scaling_factor: 1.0 }
+          { affected_by: 'ability_strength', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0.5 }, coefficient: { value: 1.0, status: 'MISSING', confidence: 0.5 }, source_id: 'src_de_official_2026' },
+          { affected_by: 'ability_duration', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0.5 }, coefficient: { value: 1.0, status: 'MISSING', confidence: 0.5 }, source_id: 'src_de_official_2026' }
         ]
       }
     ],

@@ -398,7 +398,7 @@ export interface WeaponEntity {
   attacks: WeaponAttackInstance[];
   market_supported: boolean;
   build_supported: boolean;
-  verification_status: EntityVerificationStatus;
+  provenance: DataProvenance;
 }
 
 export type MathOperator = 'ADD_FLAT' | 'ADD_PERCENT' | 'MULTIPLY' | 'SET_FIXED' | 'SUBTRACT_FLAT' | 'SUBTRACT_PERCENT' | 'OVERRIDE' | 'SET' | 'UNKNOWN';
