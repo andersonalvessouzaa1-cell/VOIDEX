@@ -1,0 +1,8 @@
+Extraia este ZIP e copie cada arquivo para a MESMA pasta dentro de C:\Projetos\VOIDEX, substituindo o de mesmo nome:
+  app\layout.tsx
+  components\ItemImage.tsx            (NOVO)
+  components\LiveMarketAnalysis.tsx
+  components\MarketDemo.tsx
+  lib\live-market-data.ts
+  tests\live-market-data.test.ts      (NOVO)
+Depois: npm test   (esperado: 17 passaram)   e   npm run dev

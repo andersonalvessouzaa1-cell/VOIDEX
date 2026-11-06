@@ -1,6 +1,6 @@
 # VOIDEX: Market Intelligence — Landing Page
 
-> A plataforma de inteligência de mercado mais rápida e limpa para Warframe. Cotações em tempo real, 1-click whisper, zero sellers AFK e 100% segura contra bans.
+> Protótipo local de inteligência de mercado para Warframe. Preços, vendedores e perfis são demonstrativos; não há conexão com o jogo nem garantia contra bans.
 
 ---
 
@@ -9,16 +9,16 @@
 > **"Isso torna o trading de Warframe mais fácil? Se a resposta for não, não adicione."**
 
 - **Zero poluição visual**: Apenas as informações essenciais para tomar decisões em menos de 2 segundos.
-- **Filtro Anti-AFK**: Exibe apenas vendedores online com atividade confirmada no jogo.
+- **Filtro Anti-AFK (planejado)**: ainda não há verificação real de presença no jogo.
 - **1-Click Whisper**: Copia o comando exato formatado para o chat do jogo (`/w <nick> Olá! Gostaria de comprar...`).
-- **Calculadora Baro vs Mercado**: Descubra na hora se vale mais a pena transformar itens em Ducats ou vender por Platina.
-- **100% Anti-Ban (DE ToS Safe)**: Zero leitura de memória, zero bots in-game, zero taxas sobre trades manuais e sem RMT.
+- **Comparação Ducats/Platina**: Mostra a relação para o componente selecionado usando preços de exemplo. Não recomenda compra ou venda nem consulta preços reais.
+- **Interação manual**: Zero leitura de memória, zero bots in-game, zero taxas sobre trades manuais e sem RMT.
 
 ---
 
 ## 🛠️ Stack Tecnológica
 
-- **Framework**: [Next.js 14](https://nextjs.org/) (App Router, Server Components + Client Interactivity)
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router, Server Components + Client Interactivity)
 - **Linguagem**: TypeScript
 - **Estilização**: [Tailwind CSS](https://tailwindcss.com/) com paleta temática Void & Orokin
 - **Ícones**: [Lucide React](https://lucide.dev/)
@@ -30,7 +30,7 @@
 
 1. Navegue até a pasta do projeto:
 ```bash
-cd C:\Users\user\.gemini\antigravity\scratch\voidex-landing
+cd C:\Users\Sagitta\Projects\VOIDEX
 ```
 
 2. Instale as dependências:
@@ -83,3 +83,7 @@ vercel
 ## ⚖️ Aviso Legal (Disclaimer)
 
 O **VOIDEX** é uma ferramenta comunitária e independente desenvolvida por e para jogadores de Warframe. O VOIDEX não possui qualquer vínculo, patrocínio ou endosso da **Digital Extremes Ltd.** *Warframe* e todas as propriedades intelectuais associadas pertencem à Digital Extremes Ltd. O comércio de itens no jogo é conduzido exclusivamente de forma manual entre os próprios jogadores dentro dos servidores oficiais do jogo.
+
+## Verificação e estado atual
+
+Execute `npm run verify` para checar tipos, testes, lint e build. Consulte [o diagnóstico de execução](docs/EXECUTION_STATUS.md) para critérios de pronto e pendências. Os relatórios antigos de cobertura não substituem uma auditoria atual das fontes.

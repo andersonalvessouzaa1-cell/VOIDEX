@@ -8,6 +8,7 @@
 
 # next.js
 /.next/
+/.next-build/
 /out/
 
 # production
@@ -47,3 +48,6 @@ node.zip
 # Local backup artifacts
 *.bak
 *.bak2
+
+# build temporario dos testes
+.test-build/
