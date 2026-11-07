@@ -13,6 +13,9 @@ export function runCuratedLoadoutTests() {
   check(preset.status, 'NAO_TESTADO');
   const resolved = resolveLoadout(preset);
   check(Object.keys(resolved.equipment).length, 6);
+  for (const slot of ['primary', 'secondary', 'melee', 'companion_weapon']) check((resolved.equipment[slot].weaponComparison?.attacks.length ?? 0) > 0, true);
+  check(resolved.equipment.warframe.weaponComparison, undefined);
+  check(resolved.equipment.companion.weaponComparison, undefined);
   for (const part of Object.values(resolved.equipment)) {
     check(part.mods.every(mod => mod.rank === mod.maxRank && mod.name.length > 0), true);
     check(part.source.url.startsWith('https://overframe.gg/build/'), true);

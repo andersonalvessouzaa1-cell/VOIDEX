@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import ItemImage from './ItemImage';
+import WeaponStatComparison from './WeaponStatComparison';
 import type { ResolvedLoadout, compareCuratedWarframe } from '@/lib/data-engine/loadout-reader';
 
 type Comparison = ReturnType<typeof compareCuratedWarframe>;
@@ -66,6 +67,7 @@ export default function CompleteLoadoutLab() {
             {Object.entries(preset.equipment).map(([slot, part]) => <details key={slot} open className="border-b border-void-border py-4">
               <summary className="cursor-pointer font-display text-2xl text-white">{LABELS[slot] ?? slot}: {part.name}</summary>
               <div className="mt-3 flex items-center gap-3"><ItemImage src={art(part.imageName)} alt="" size={56} /><div className="text-sm"><a href={part.source.url} target="_blank" rel="noreferrer" className="text-energy-cyan underline">Fonte: {part.source.author ?? part.source.name}</a><p className="text-slate-400">Consultada em {part.source.retrievedAt.split('-').reverse().join('/')}</p></div></div>
+              {part.weaponComparison && <WeaponStatComparison key={`${slot}-${part.slug}`} id={`weapon-mode-${slot}-${part.slug}`} name={part.name} comparison={part.weaponComparison} />}
               <ul className="mt-4 divide-y divide-void-border">
                 {part.mods.map(mod => <li key={mod.slug} className="flex gap-3 py-3"><ItemImage src={art(mod.imageName)} alt="" size={40} /><div className="min-w-0"><p className="text-white">{mod.name} <span className="text-xs text-slate-400">{SLOT_LABELS[mod.slot] ?? 'Mod'} · nível {mod.rank}/{mod.maxRank}</span></p><p className="mt-1 whitespace-pre-line text-xs text-slate-400">{mod.effects.length ? mod.effects.join(' · ') : 'Efeito não descrito na base sincronizada; consulte a fonte.'}</p>{mod.publishedRank !== undefined && mod.publishedRank !== mod.rank && <p className="mt-1 text-xs text-amber-100">Ajuste VOIDEX: a fonte usa nível {mod.publishedRank}; aqui está no máximo.</p>}</div></li>)}
               </ul>
@@ -86,7 +88,7 @@ export default function CompleteLoadoutLab() {
               <p className="mt-3 text-xs text-slate-400">Ainda fora da conta: efeitos condicionais de mods e arcanos, sinergias do companheiro, dano das armas e regras de capacidade/polaridade. Esta tabela não certifica o encaixe nem o desempenho em combate.</p>
               <div className="mt-4 space-y-2">{comparison.sources.map(source => <a key={source.url} href={source.url} target="_blank" rel="noreferrer" className="block text-xs text-energy-cyan underline">{source.name}</a>)}</div>
             </> : <p className="mt-3 text-sm text-slate-400">Comparação numérica ainda indisponível para este preset.</p>}
-            <p className="mt-5 border-t border-void-border pt-4 text-xs text-slate-400">Armas e companheiro: configurações exibidas com seus mods e fontes; comparação numérica própria ainda em implementação.</p>
+            <p className="mt-5 border-t border-void-border pt-4 text-xs text-slate-400">As armas agora mostram comparações parciais dentro de cada configuração, com seletor de modo. Dano/DPS, atributos do companheiro e sinergias entre equipamentos continuam pendentes.</p>
           </aside>
         </div>
       </>}
