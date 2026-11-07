@@ -4,6 +4,7 @@ import { LanguageProvider } from '@/context/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import MarketDemo from '@/components/MarketDemo';
+import VerifiedBuildLab from '@/components/VerifiedBuildLab';
 import ConsoleSolutions from '@/components/ConsoleSolutions';
 import CorePillars from '@/components/CorePillars';
 import Comparison from '@/components/Comparison';
@@ -20,6 +21,7 @@ export default function Home() {
         <main className="flex-1">
           <Hero />
           <MarketDemo />
+          <VerifiedBuildLab />
           <ConsoleSolutions />
           <CorePillars />
           <Comparison />
