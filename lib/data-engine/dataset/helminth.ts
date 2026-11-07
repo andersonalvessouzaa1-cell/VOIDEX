@@ -32,14 +32,14 @@ export const HELMINTH_DATASET: HelminthSubsumedAbility[] = [
     build_supported: true,
     effects: [
       {
-        type: 'buff',
-        base_value: 30,
-        duration_seconds: 30,
-        range_meters: 25,
+        mechanic_type: 'buff',
+        base_value: { value: 30, status: 'PARTIALLY_VERIFIED', confidence: 0, notes: 'Registro histórico sem auditoria atual' },
+        duration: { value: 30, status: 'PARTIALLY_VERIFIED', confidence: 0, notes: 'Registro histórico sem auditoria atual' },
+        range: { value: 25, status: 'PARTIALLY_VERIFIED', confidence: 0, notes: 'Registro histórico sem auditoria atual' },
         scalings: [
-          { attribute: 'strength', affects_parameter: 'damage_buff', scaling_factor: 1.0 },
-          { attribute: 'duration', affects_parameter: 'duration_seconds', scaling_factor: 1.0 },
-          { attribute: 'range', affects_parameter: 'range_meters', scaling_factor: 1.0 }
+          { affected_by: 'ability_strength', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0 }, coefficient: { value: 1.0, status: 'PARTIALLY_VERIFIED', confidence: 0 }, source_id: OFFICIAL_SRC.source_id },
+          { affected_by: 'ability_duration', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0 }, coefficient: { value: 1.0, status: 'PARTIALLY_VERIFIED', confidence: 0 }, source_id: OFFICIAL_SRC.source_id },
+          { affected_by: 'ability_range', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0 }, coefficient: { value: 1.0, status: 'PARTIALLY_VERIFIED', confidence: 0 }, source_id: OFFICIAL_SRC.source_id }
         ]
       }
     ],
@@ -59,12 +59,12 @@ export const HELMINTH_DATASET: HelminthSubsumedAbility[] = [
     build_supported: true,
     effects: [
       {
-        type: 'crowd_control',
-        base_value: 35,
-        radius_meters: 16,
+        mechanic_type: 'crowd_control',
+        base_value: { value: 35, status: 'PARTIALLY_VERIFIED', confidence: 0, notes: 'Registro histórico sem auditoria atual' },
+        radius: { value: 16, status: 'PARTIALLY_VERIFIED', confidence: 0, notes: 'Registro histórico sem auditoria atual' },
         scalings: [
-          { attribute: 'strength', affects_parameter: 'slow_percentage', scaling_factor: 1.0 },
-          { attribute: 'range', affects_parameter: 'radius_meters', scaling_factor: 1.0 }
+          { affected_by: 'ability_strength', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0 }, coefficient: { value: 1.0, status: 'PARTIALLY_VERIFIED', confidence: 0 }, source_id: OFFICIAL_SRC.source_id },
+          { affected_by: 'ability_range', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0 }, coefficient: { value: 1.0, status: 'PARTIALLY_VERIFIED', confidence: 0 }, source_id: OFFICIAL_SRC.source_id }
         ]
       }
     ],
@@ -84,13 +84,13 @@ export const HELMINTH_DATASET: HelminthSubsumedAbility[] = [
     build_supported: true,
     effects: [
       {
-        type: 'strip_armor',
-        base_value: 25,
-        radius_meters: 8,
-        duration_seconds: 2.5,
+        mechanic_type: 'strip_armor',
+        base_value: { value: 25, status: 'PARTIALLY_VERIFIED', confidence: 0, notes: 'Registro histórico sem auditoria atual' },
+        radius: { value: 8, status: 'PARTIALLY_VERIFIED', confidence: 0, notes: 'Registro histórico sem auditoria atual' },
+        duration: { value: 2.5, status: 'PARTIALLY_VERIFIED', confidence: 0, notes: 'Registro histórico sem auditoria atual' },
         scalings: [
-          { attribute: 'strength', affects_parameter: 'strip_percentage', scaling_factor: 1.0 },
-          { attribute: 'duration', affects_parameter: 'wave_expansion_duration', scaling_factor: 1.0 }
+          { affected_by: 'ability_strength', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0 }, coefficient: { value: 1.0, status: 'PARTIALLY_VERIFIED', confidence: 0 }, source_id: OFFICIAL_SRC.source_id },
+          { affected_by: 'ability_duration', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0 }, coefficient: { value: 1.0, status: 'PARTIALLY_VERIFIED', confidence: 0 }, source_id: OFFICIAL_SRC.source_id }
         ]
       }
     ],
@@ -110,13 +110,13 @@ export const HELMINTH_DATASET: HelminthSubsumedAbility[] = [
     build_supported: true,
     effects: [
       {
-        type: 'buff',
-        damage_type: 'viral',
-        base_value: 45,
-        duration_seconds: 25,
+        mechanic_type: 'buff',
+        damage_type: { value: 'viral', status: 'PARTIALLY_VERIFIED', confidence: 0 },
+        base_value: { value: 45, status: 'PARTIALLY_VERIFIED', confidence: 0, notes: 'Registro histórico sem auditoria atual' },
+        duration: { value: 25, status: 'PARTIALLY_VERIFIED', confidence: 0, notes: 'Registro histórico sem auditoria atual' },
         scalings: [
-          { attribute: 'strength', affects_parameter: 'viral_bonus', scaling_factor: 1.0 },
-          { attribute: 'duration', affects_parameter: 'duration_seconds', scaling_factor: 1.0 }
+          { affected_by: 'ability_strength', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0 }, coefficient: { value: 1.0, status: 'PARTIALLY_VERIFIED', confidence: 0 }, source_id: OFFICIAL_SRC.source_id },
+          { affected_by: 'ability_duration', operator: { value: 'UNKNOWN', status: 'MISSING', confidence: 0 }, coefficient: { value: 1.0, status: 'PARTIALLY_VERIFIED', confidence: 0 }, source_id: OFFICIAL_SRC.source_id }
         ]
       }
     ],

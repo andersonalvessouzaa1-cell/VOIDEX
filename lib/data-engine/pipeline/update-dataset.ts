@@ -59,6 +59,9 @@ export function runDiffAndPromote() {
     registry.push({
       dataset_version: 'v1.6.1',
       game_patch_version: '37.0.x',
+      game_patch_detected: 'UNKNOWN',
+      game_patch_confidence: 'UNKNOWN',
+      game_patch_source: 'Sem evidência de patch neste snapshot histórico',
       source_version: 'master-old',
       source_commit: 'unknown-old',
       retrieved_at: new Date(Date.now() - 86400000).toISOString(),
@@ -73,6 +76,9 @@ export function runDiffAndPromote() {
   const newVersion: DatasetVersion = {
     dataset_version: 'v1.6.2',
     game_patch_version: '37.0.x', // or newest available
+    game_patch_detected: 'UNKNOWN',
+    game_patch_confidence: 'UNKNOWN',
+    game_patch_source: 'Sem evidência de patch neste snapshot histórico',
     source_version: 'master-latest',
     source_commit: 'latest',
     retrieved_at: new Date().toISOString(),

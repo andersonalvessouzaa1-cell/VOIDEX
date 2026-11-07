@@ -33,7 +33,7 @@ export interface BuildModItem {
   capacity: number;
   polarity: 'madurai' | 'vazarin' | 'naramon' | 'zenurik' | 'umbra' | 'none';
   effect: string;
-  category: 'strength' | 'duration' | 'efficiency' | 'range' | 'survival' | 'utility' | 'augment';
+  category: 'strength' | 'duration' | 'efficiency' | 'range' | 'survival' | 'utility' | 'augment' | 'energy';
   statImpact: Partial<WarframeStatImpact>;
   alternatives: ModAlternative[];
 }

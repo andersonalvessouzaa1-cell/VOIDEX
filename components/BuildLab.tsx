@@ -430,7 +430,7 @@ export default function BuildLab() {
               <div className="mb-4">
                 <div className="text-xs font-bold text-slate-200 mb-2 flex items-center gap-1.5">
                   <Sliders className="w-3.5 h-3.5 text-orokin-gold" />
-                  <span>Alternativas Viáveis ("E Se...?")</span>
+                  <span>Alternativas Viáveis (&quot;E Se...?&quot;)</span>
                 </div>
 
                 {activeMod.alternatives && activeMod.alternatives.length > 0 ? (

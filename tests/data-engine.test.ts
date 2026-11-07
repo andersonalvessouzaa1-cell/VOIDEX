@@ -69,15 +69,18 @@ export function runDataEngineTests() {
   // TESTE 3: Cálculo de Dano e DPS de Arma (Torid Incarnon)
   // -------------------------------------------------------------
   const torid = WEAPONS_DATASET[0];
+  const attack = torid.attacks[0];
+  const damageProfile = Object.fromEntries(Object.entries(attack.damage_profile).map(([key, evidence]) => [key, evidence!.value]));
+  const totalBaseDamage = Object.values(damageProfile).reduce((sum, value) => sum + value, 0);
   const dpsOutput = CalculationEngine.calculateWeaponDPS(
-    torid.damage_profile,
-    torid.fire_rate,
-    torid.critical_chance,
-    torid.critical_multiplier,
-    torid.status_chance,
-    torid.multishot,
-    torid.magazine_size,
-    torid.reload_time_seconds,
+    { ...damageProfile, total_base_damage: totalBaseDamage } as import('../lib/data-engine/types').WeaponDamageProfile,
+    attack.fire_rate.value,
+    attack.critical_chance.value,
+    attack.critical_multiplier.value,
+    attack.status_chance.value,
+    attack.multishot.value,
+    attack.magazine_size!.value,
+    attack.reload_time_seconds!.value,
     [
       { attribute: 'damage_raw', operator: 'ADD_PERCENT', value: 165 },
       { attribute: 'damage_heat', operator: 'ADD_PERCENT', value: 90 },
@@ -85,7 +88,7 @@ export function runDataEngineTests() {
     ]
   );
 
-  assert(dpsOutput.moddedDamageTotal > torid.damage_profile.total_base_damage, 'Dano modificado total da arma deve ser superior à base');
+  assert(dpsOutput.moddedDamageTotal > totalBaseDamage, 'Dano modificado total da arma deve ser superior à base');
   assert(dpsOutput.burstDPS > 0 && dpsOutput.sustainedDPS > 0, 'Burst DPS e Sustained DPS devem ser calculados');
   assert(dpsOutput.effectiveMultishot === 2.2, 'Multishot com +120% deve ser exatamente 2.2');
 
@@ -245,7 +248,7 @@ export function runDataEngineTests() {
   // Simulando Mod sem evidência explícita do operador matemático
   const mockModEffect = {
     stat: 'Damage',
-    operator: 'UNKNOWN',
+    operator: 'UNKNOWN' as const,
     value: { value: 1.65, status: 'UNVERIFIED', confidence: 'LOW' }
   };
   
@@ -265,22 +268,21 @@ export function runDataEngineTests() {
   // -------------------------------------------------------------
   // TESTE 15: RESOLUÇÃO MECÂNICA E CÁLCULO (Etapa 1.7 - Fase 6)
   // -------------------------------------------------------------
-  const { CalculationEngine } = require('../lib/data-engine/calculation-engine');
   const calcEngine = new CalculationEngine();
   
-  const mockBaseAttack = {
+  const mockBaseAttack: Pick<import('../lib/data-engine/types').WeaponAttackInstance, 'damage_profile'> = {
     damage_profile: {
-      Slash: { value: 100, status: 'VERIFIED', confidence: 'HIGH' }
+      slash: { value: 100, status: 'VERIFIED' as const, confidence: 1 }
     }
   };
   
   const mockModUnknown = {
     stat: 'Damage',
-    operator: 'UNKNOWN',
-    value: { value: 165, status: 'PARTIALLY_VERIFIED', confidence: 'LOW' }
+    operator: 'UNKNOWN' as const,
+    value: { value: 165, status: 'PARTIALLY_VERIFIED' as const, confidence: 0 }
   };
   
-  const calcResult = calcEngine.calculateWeaponDamage(mockBaseAttack, [mockModUnknown]);
+  const calcResult = calcEngine.calculateWeaponDamage('fixture', mockBaseAttack as import('../lib/data-engine/types').WeaponAttackInstance, [mockModUnknown]);
   
   assert(calcResult.status === 'PARTIALLY_CALCULATED', 'CalculationEngine não pode mascarar falta de evidência como VERIFIED');
   assert(calcResult.limitations.length > 0, 'UI deve receber as limitações (Cálculo limitado pela evidência disponível)');
@@ -309,20 +311,20 @@ export function runDataEngineTests() {
   // -------------------------------------------------------------
   // TESTE 17: EVIDENCE-AWARE BUILD LAB & TRACEABILITY (Etapa 1.8 - Fase 4)
   // -------------------------------------------------------------
-  const mockBaseAttack2 = {
+  const mockBaseAttack2: Pick<import('../lib/data-engine/types').WeaponAttackInstance, 'damage_profile'> = {
     damage_profile: {
-      Slash: { value: 100, status: 'VERIFIED', confidence: 'HIGH' }
+      slash: { value: 100, status: 'VERIFIED' as const, confidence: 1 }
     }
   };
   
   const mockModUnknown2 = {
     modId: 'mod_serration_unknown',
     stat: 'Damage',
-    operator: 'UNKNOWN',
-    value: { value: 165, status: 'PARTIALLY_VERIFIED', confidence: 'LOW' }
+    operator: 'UNKNOWN' as const,
+    value: { value: 165, status: 'PARTIALLY_VERIFIED' as const, confidence: 0 }
   };
   
-  const calcResult2 = calcEngine.calculateWeaponDamage('wpn_braton', mockBaseAttack2, [mockModUnknown2]);
+  const calcResult2 = calcEngine.calculateWeaponDamage('wpn_braton', mockBaseAttack2 as import('../lib/data-engine/types').WeaponAttackInstance, [mockModUnknown2]);
   
   // 1. UNKNOWN nunca vira ADD_PERCENT/ADD_FLAT/MULTIPLY (resultado tem que ser o input = 100)
   assert(calcResult2.value === 100, 'UNKNOWN nunca vira ADD_PERCENT silenciosamente.');
@@ -332,9 +334,9 @@ export function runDataEngineTests() {
   
   // 8. CalculationTrace identifica entidade, parâmetro, fonte e motivo
   const blockedTrace = calcResult2.traces.find(t => t.operator === 'UNKNOWN');
-  assert(blockedTrace.entityId === 'mod_serration_unknown', 'Trace identifica a entidade.');
-  assert(blockedTrace.calculationStatus === 'LIMITED', 'O status da trace é LIMITED.');
-  assert(blockedTrace.blockedBy !== null, 'O motivo de bloqueio foi registrado no trace.');
+  assert(!!blockedTrace && blockedTrace.entityId === 'mod_serration_unknown', 'Trace identifica a entidade.');
+  assert(!!blockedTrace && blockedTrace.calculationStatus === 'LIMITED', 'O status da trace é LIMITED.');
+  assert(!!blockedTrace && blockedTrace.blockedBy !== null, 'O motivo de bloqueio foi registrado no trace.');
   
   // 15. O frontend nunca apresenta PARTIALLY_CALCULATED como resultado exato
   assert(calcResult2.status === 'PARTIALLY_CALCULATED', 'O frontend recebe PARTIALLY_CALCULATED corretamente e nunca VERIFIED.');
@@ -345,9 +347,9 @@ export function runDataEngineTests() {
   // Simular mock de frames
   const enriched = pipeline.enrichWarframes(WARFRAMES_DATASET);
   
-  const danteEnriched = enriched.find(w => w.id === 'dante')!;
+  const danteEnriched = enriched.find((w: import('../lib/data-engine/types').WarframeEntity) => w.id === 'dante')!;
   assert(danteEnriched.build_supported === true, 'Dante possui build_supported = true');
-  assert(danteEnriched.data_completeness > 0, 'Data Completeness é calculada corretamente');
+  assert((danteEnriched.data_completeness ?? 0) > 0, 'Data Completeness é calculada corretamente');
 
   console.log(`\n🏁 RESULTADO FINAL: ${passed} PASSARAM, ${failed} FALHARAM.`);
   return { passed, failed };
