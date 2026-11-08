@@ -1,3 +1,7 @@
+## B1 parcial — sentinelas, 08/11/2026
+Código d7d7279 enviado à branch GitHub. Comparação no preset: vida/escudos/armadura, usando somente catálogo sincronizado (não dataset legado manual). Diriga base700/150/80, mesmos valores com o preset atual de utilidade sem gatilhos. Suporte numérico para Enhanced Vitality, Calculated Redirection e Metal Fiber por rank; Linked mods sem Warframe deixam a linha sem cálculo; desconhecidos bloqueiam resultados. Pets/modulares ainda sem regras próprias, arma do companheiro continua separada. Não declarar B1 concluído nem arcanos por tipo já verificados.
+verify370 testes0falhas, tipos/lint/build aprovados; log /tmp/acervo-companion-verify.log. Publicação READY: dpl_7aUGx78vtdbPNEGJZEkJA6qyBWfj; endpoint público Dante200, valores Diriga700/150/80 antes/depois e coberturaPARCIAL conferidos. Próximo: expandir B1 para pets/modulares com fontes atuais e cobertura explícita, depois B2.
+
 # Acervo Void — retomada rápida
 Atualizado em 08/11/2026. Leia AGENTS.md, este resumo e somente a próxima seção necessária do PLANO_MESTRE.md. Respostas curtas, sem agentes extras por padrão, sem repetir verificações já aprovadas quando não há alteração relevante.
 
@@ -30,7 +34,7 @@ Atualizado em 08/11/2026. Leia AGENTS.md, este resumo e somente a próxima seç�
 - vercel.json outputDirectory .next-build; não trocar por .next. Domínio associado acompanha produção automaticamente.
 
 ## Próxima tarefa
-B1companheiros: comparação com base/resultado/unidade/fontes e regras próprias por tipo. Depois B2capacidade/polaridades, B3/B4cálculos, B5curadoria, M1–M3mercado real e limites compartilhados, acessibilidade/responsividade e validação final. Seguir critérios do PLANO_MESTRE.
+Concluir B1companheiros: pets/modulares e revisão de arcanos por tipo; sentinelas têm comparação parcial. Depois B2capacidade/polaridades, B3/B4cálculos, B5curadoria, M1–M3mercado real e limites compartilhados, acessibilidade/responsividade e validação final. Seguir critérios do PLANO_MESTRE.
 
 ## GitHub concluído
 Autorização oficial GitHub CLI concluída. Branch release/acervovoid-beta enviada e hash remoto9f4d35b conferido igual ao local antes desta atualização documental. origin/main atualizado por fetch para0b2ec02; sem commits de main ausentes na branch ativa. Main preservada. Credenciais privadas em work/github-auth; nunca imprimir hosts.yml/token. Usar GH_CONFIG_DIR específico e credential helper somente no comando, pois ~/.gitconfig é somente leitura. CLI oficial /tmp/acervo-github-cli/gh v2.103.3. Conferência de arquivos versionados sem credenciais reais; único marcador sb_secret é fixture fictícia no teste. Este resumo substitui estados antigos em documentos históricos.

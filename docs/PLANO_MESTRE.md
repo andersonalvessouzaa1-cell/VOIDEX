@@ -51,7 +51,7 @@ Executar uma tarefa por vez. Cada entrega registra arquivos, validação, commit
 |---|---|---|
 | P0 | Retomada e organização | Este plano e RESUMO_RETOMADA presentes; fila apontando para eles; arquivos necessários ao projeto identificados e versionados sem misturar alterações alheias. |
 | R1 | Análise das referências | Matriz com URL, data, função observada, dificuldade reproduzida, melhoria proposta, evidência e prioridade. Começar pelo percurso buscar item → avaliar custo → escolher build. |
-| B1 | Companheiros | Comparação própria com base, resultado, unidade, fonte e regras verificadas. Tratar sentinelas, pets e suas armas segundo suas diferenças; confirmar arcanos por tipo em fonte atual. |
+| B1 | Companheiros (parcial: sentinelas com comparação estática; pets/modulares e arcanos por tipo pendentes) | Comparação própria com base, resultado, unidade, fonte e regras verificadas. Tratar sentinelas, pets e suas armas segundo suas diferenças; confirmar arcanos por tipo em fonte atual. |
 | B2 | Regras dos editores | Slots, capacidade, polaridades, dreno, aura/exilus/stance, conflitos e requisitos. Forma e demais alterações devem ser explícitas, nunca implícitas. |
 | B3 | Warframes completos | Conferir atributos por nível, limites e interações; fragmentos normais/tauforjados, arcanos e Helminth com habilidade substituída. Condições ativas e desconhecidos visíveis. |
 | B4 | Armas completas | Implementar dano, elementos, multishot, recarga, críticos, status e demais métricas por modo, com hipóteses explícitas. DPS depende do cenário; não usar pontuação universal inventada. Tratar Incarnon, modulares e condições como subetapas. |
