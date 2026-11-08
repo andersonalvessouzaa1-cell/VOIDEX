@@ -4,5 +4,6 @@
   "buildCommand": "npm run build",
   "regions": [
     "gru1"
-  ]
+  ],
+  "outputDirectory": ".next-build"
 }
