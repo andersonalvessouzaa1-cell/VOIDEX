@@ -1,3 +1,4 @@
+import { getReviewedStances } from './stance-reader';
 import { readGenerated } from './generated-reader';
 import { reviewedWeaponModSlugs, type WeaponStatSource } from './weapon-stat-comparison';
 import { isModCompatible, isWeaponCategory, weaponModGroup, type LabMod, type LabWeapon, type WeaponCategory, type WeaponIndexItem } from './weapon-lab';
@@ -40,5 +41,5 @@ export function getWeaponDetails(category: WeaponCategory, slug: string) {
       && !!mod.stats.levelStats?.[mod.stats.fusionLimit] && typeof mod.stats.compatName === 'string'
       && isModCompatible(weapon, { compatName: mod.stats.compatName, baseDrain: mod.stats.baseDrain ?? NaN });
   }).map(mod => ({ slug: mod.slug, name: mod.name, imageName: mod.imageName, uniqueName: mod.uniqueName, compatName: mod.stats.compatName!, baseDrain: mod.stats.baseDrain!, polarity: mod.stats.polarity, rank: mod.stats.fusionLimit!, maxRank: mod.stats.fusionLimit!, levelStats: mod.stats.levelStats! })).sort((a, b) => a.name.localeCompare(b.name));
-  return { weapon, mods, fetchedAt: weapons(category).meta.fetchedAt };
+  return { weapon, mods, stances: getReviewedStances(weapon), fetchedAt: weapons(category).meta.fetchedAt };
 }
