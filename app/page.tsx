@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -18,7 +19,7 @@ export default function Home() {
       <div className="flex flex-col min-h-screen bg-void-950 text-slate-100">
         <Navbar />
         <main className="flex-1">
-          <div role="note" className="border-b border-void-border bg-void-900 px-4 py-3 text-center text-sm text-slate-300">Beta gratuita: builds e cálculos parciais. O mercado abaixo é demonstrativo; preços e vendedores são exemplos.</div>
+          <div role="note" className="border-b border-void-border bg-void-900 px-4 py-3 text-center text-sm text-slate-300">Beta gratuita: builds e cálculos parciais. O mercado abaixo é demonstrativo; preços e vendedores são exemplos. <Link href="/mercado" className="text-energy-cyan underline">Abrir mercado real</Link></div>
           <Hero />
           <MarketDemo />
           <VerifiedBuildLab />

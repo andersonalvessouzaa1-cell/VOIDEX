@@ -34,7 +34,7 @@ export default function Navbar() {
           {/* Desktop Nav Links */}
           <nav className="hidden lg:flex items-center gap-4 text-sm font-medium text-slate-300">
             <a href="#build-lab" className="hover:text-energy-cyan transition-colors">Build Lab</a>
-            <a href="#mercado-real" className="hover:text-energy-cyan transition-colors">
+            <a href="/mercado" className="hover:text-energy-cyan transition-colors">
               Mercado
             </a>
             <a href="#solucoes-crossplay" className="hover:text-orokin-gold flex items-center gap-1.5 transition-colors">
@@ -64,7 +64,7 @@ export default function Navbar() {
 
             <div className="hidden sm:flex items-center">
               <a
-                href="#mercado-real"
+                href="/mercado"
                 className="relative inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-void-950 bg-energy-cyan rounded-lg hover:opacity-95 hover:shadow-glow-cyan transition-all"
               >
                 {t('navActionStart', 'Buscar Agora')}
@@ -89,10 +89,10 @@ export default function Navbar() {
       {/* Mobile Dropdown */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-void-900/95 border-b border-void-border px-4 pt-3 pb-6 space-y-3 backdrop-blur-lg">
-          <a href="#mercado-real" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-void-800">Mercado</a>
+          <a href="/mercado" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-void-800">Mercado</a>
           <a href="#build-lab" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-void-800">Build Lab</a>
           <a
-            href="#mercado-real"
+            href="/mercado"
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-void-800"
           >
@@ -135,7 +135,7 @@ export default function Navbar() {
           </a>
           <div className="pt-2">
             <a
-              href="#mercado-real"
+              href="/mercado"
               onClick={() => setMobileMenuOpen(false)}
               className="block w-full text-center px-4 py-3 text-sm font-semibold text-void-950 bg-energy-cyan rounded-md shadow-glow-cyan"
             >

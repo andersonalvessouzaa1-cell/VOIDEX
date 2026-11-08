@@ -121,3 +121,6 @@ O produto estará completo para este escopo quando a cobertura prometida estiver
 - Cotas Workers: https://developers.cloudflare.com/workers/platform/limits/
 
 Conferência em 08/11/2026. Revalidar termos e cotas na fase de implantação.
+
+### Atualização M2 — 08/11/2026
+Mercado próprio implementado com autenticação Google/Supabase, anúncios reais opt-in, edição/exclusão pelo dono, filtros, catálogo negociável e contato manual copiável. Testes RLS reais com rollback aprovados. Ainda pendentes moderação/denúncias e demais critérios do plano; não declarar lançamento completo.
