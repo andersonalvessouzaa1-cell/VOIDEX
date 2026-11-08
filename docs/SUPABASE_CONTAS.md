@@ -40,3 +40,5 @@ Verificação final local com configuração pública: npm run verify, código 0
 Bloqueio atual: Google Cloud exige que o dono ative a verificação em duas etapas da conta Google. A aba está em https://console.cloud.google.com/enable-mfa . Não clicar em teste com créditos nem ativar faturamento. Depois disso ainda é necessário criar/configurar o cliente OAuth Google, inserir o segredo diretamente no Supabase e testar login real antes da nova publicação. Perguntar ao dono qual contato de suporte pode aparecer no consentimento, sem publicar automaticamente o e-mail pessoal.
 
 A integração de contas NÃO foi publicada nem validada com login real. A beta pública anterior permanece no ar. Não repetir criação do projeto ou migrations já aplicadas.
+
+Atualização: MFA do Google resolvida, projeto Acervo Void Login criado (elated-parser-514106-v1). Identificação e e-mail de suporte autorizado preparados. Assistente aguarda o dono marcar o aceite da política de dados, Continuar e Criar. Cliente OAuth ainda não criado. Bibliotecas fixadas em versões exatas (SSR 0.12.7; JS 2.119.0), com verify359 aprovado novamente.
