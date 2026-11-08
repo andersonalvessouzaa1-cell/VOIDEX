@@ -1,3 +1,7 @@
+## Login Google validado — 08/11/2026
+Login real em produção aprovado: Google retornou /conta com e-mail autenticado e formulário privado. Logout aprovado: voltou /entrar, e nova visita a /conta sem sessão retornou /entrar. Nenhum nickname fictício foi salvo no perfil do dono. Persistência do perfil pela interface ainda precisa teste com nickname/plataforma fornecidos pelo dono. Testes SQL de segurança já passaram antes.
+Google ainda em modo Testando. Dono autorizou adicionar sua conta testadora; clique Save realizado, mas lista final não conferida. Não afirmar audiência publicada. Branding tem links homepage/privacidade/termos vazios e Publicar app desabilitado. Próximo: páginas públicas coerentes com tratamento real de dados, completar branding e verificar audiência. Credencial já criada e provedor Google ENABLED; não repetir setup. Produção dpl_2hp8EUDqenUwiJtNQQAiPFLH5YVE. Abas IAB13 Google,14Supabase,16login.
+
 ## Contas Supabase — prioridade atual, 08/11/2026
 
 Dono definiu custo zero e Entrar com Google. Projeto Acervo Void pforidkmdcrgzzwtotkf criado por ele no Supabase Free, São Paulo; projeto antigo pausado preservado. Integração oficial Supabase conectada.

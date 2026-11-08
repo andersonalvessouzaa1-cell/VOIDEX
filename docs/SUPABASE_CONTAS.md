@@ -1,3 +1,6 @@
+## Atualização 08/11/2026 — produção
+Google OAuth criado e conectado ao Supabase, segredo enviado somente ao provedor com autorização do dono. Código publicado em https://acervovoid.vercel.app/entrar . Login real, página privada e logout verificados; proteção de /conta após logout confirmada. Perfil ainda sem nickname informado/salvo pelo dono. Audiência Google ainda Testando, pendente completar branding e páginas públicas antes da liberação geral. Plano gratuito mantido.
+
 # Contas reais — Supabase Free e Google
 
 Decisão do dono: custo zero; Entrar com Google. Vercel permanece Hobby. Não habilitar cobrança, SMS pago, domínio pago, Pro ou serviço de e-mails pago. O login Google evita depender de SMTP. Fontes oficiais: https://supabase.com/pricing ; https://supabase.com/docs/guides/auth/social-sign-in/auth-google ; https://supabase.com/docs/guides/auth/server-side/creating-a-client ; https://supabase.com/docs/guides/database/postgres/row-level-security . Consultadas em 08/11/2026.
