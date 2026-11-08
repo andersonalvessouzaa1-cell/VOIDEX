@@ -1,3 +1,6 @@
+## Novos pedidos — somente documentação, 08/11/2026
+Dono aprovou visual e pediu registrar próxima entrega: remover teto20anúncios (sem confundir com estoque por anúncio), peixes por tamanho com fonte/negociabilidade verificadas, pacotes com preço total/equivalente unitário, rótulo “Pré-builds” no lugar de “Presets” e área discreta de publicidade futura. Detalhes e exemplos corrigidos em PROXIMA_ETAPA_VENDEDORES.md; somar às pendências de presença/favoritos/vendas. NÃO implementados, limite20 ainda está ativo; site e anúncios reais não foram alterados nesta etapa.
+
 ## Q1 — navegação e celular, 08/11/2026
 Dono confirmou anúncios REAIS persistidos após sair/entrar: preservar todos; nunca concluir/excluir/publicar anúncios na conta real para testes.
 Correção: navegação compartilhada com botões contornados (Mercado/Conta/Meus anúncios), alvos44px e quebra de linha; título responsivo. Cabeçalho em320px tinha menu atéx349; idioma foi movido para menu no celular e navegação completa passa aXL. Fieldset/labels min-w-0 para evitar largura mínima nativa.

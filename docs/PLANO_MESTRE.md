@@ -127,3 +127,6 @@ Mercado próprio implementado com autenticação Google/Supabase, anúncios reai
 
 ### D1 parcial: checklist Build -> Mercado
 Mods/arcanos agrupados por item/nivel, marcacao manual local e links de ofertas negociaveis. Sem custo estimado, copias simultaneas ou inventario automatico. Demais requisitos D1 permanecem pendentes.
+
+### Pedidos adicionais registrados — 08/11/2026
+Próxima entrega: retirar teto arbitrário20anúncios (quantidade por anúncio é outra dimensão); ampliar catálogo para peixes/tamanhos com fontes verificadas; ofertas por pacote com total e equivalente unitário; trocar rótulos Presets→Pré-builds; planejar espaço discreto para publicidade futura. Detalhamento e critérios em PROXIMA_ETAPA_VENDEDORES.md. Apenas registrados, ainda não implementados.
