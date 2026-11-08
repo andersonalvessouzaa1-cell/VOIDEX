@@ -33,7 +33,7 @@ export default function EarlyAccessForm() {
         </div>
 
         <h2 className="text-3xl sm:text-5xl font-extrabold text-white">
-          Seja um dos Primeiros a Usar o <span className="text-gradient-cyan">VOIDEX</span>
+          Seja um dos Primeiros a Usar o <span className="text-gradient-cyan">Acervo Void</span>
         </h2>
         
         <p className="mt-4 text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
@@ -49,7 +49,7 @@ export default function EarlyAccessForm() {
               </div>
               <h3 className="text-2xl font-bold text-white">Acesso VIP Reservado!</h3>
               <p className="text-sm text-slate-300">
-                Obrigado, Tenno. Você foi adicionado à lista de pioneiros do <strong>VOIDEX: Market Intelligence</strong>. Fique atento às notificações!
+                Obrigado, Tenno. Você foi adicionado à lista de pioneiros do <strong>Acervo Void: Market Intelligence</strong>. Fique atento às notificações!
               </p>
               <div className="pt-4">
                 <button

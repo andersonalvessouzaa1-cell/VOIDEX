@@ -3,7 +3,6 @@
 import React from 'react';
 import { Zap, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-import { DONATION_CONFIG } from '@/lib/donation-config';
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -19,8 +18,8 @@ export default function Footer() {
                 <Zap className="w-4 h-4 text-energy-cyan" />
               </div>
               <div className="flex flex-col">
-                <span className="text-lg font-bold tracking-wider text-white font-mono">VOIDEX</span>
-                <span className="text-[9px] tracking-[0.2em] font-semibold text-orokin-gold uppercase">
+                <span className="font-display text-2xl font-extrabold tracking-wide text-white leading-none">Acervo Void</span>
+                <span className="text-xs text-slate-400">
                   Market Intelligence
                 </span>
               </div>
@@ -33,18 +32,18 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-2 text-xs text-emerald-400 font-medium">
               <ShieldCheck className="w-4 h-4" />
-              <span>{t('footerDeSafe', '100% em conformidade com as diretrizes da Digital Extremes (Anti-Ban Safe)')}</span>
+              <span>{t('footerDeSafe', 'Projeto independente, sem garantia contra penalidades no jogo')}</span>
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-3">
-            <h4 className="text-white text-xs font-bold uppercase tracking-wider font-mono">
+            <h4 className="text-white text-sm font-semibold">
               {t('footerNavTitle', 'Navegação Rápida')}
             </h4>
             <ul className="space-y-2">
               <li>
-                <a href="#demo" className="hover:text-energy-cyan transition-colors">
+                <a href="#mercado-real" className="hover:text-energy-cyan transition-colors">
                   {t('navDemo', 'Testar Cotação')}
                 </a>
               </li>
@@ -65,7 +64,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#sugestoes-ia" className="hover:text-energy-cyan transition-colors">
-                  {t('navAiFeedback', 'Sugestões & IA')}
+                  {t('navAiFeedback', 'Sugestões')}
                 </a>
               </li>
             </ul>
@@ -73,38 +72,18 @@ export default function Footer() {
 
           {/* Support & Community */}
           <div className="space-y-3">
-            <h4 className="text-white text-xs font-bold uppercase tracking-wider font-mono">
+            <h4 className="text-white text-sm font-semibold">
               {t('footerCommTitle', 'Comunidade & Apoio')}
             </h4>
             <ul className="space-y-2">
               <li>
                 <a href="#sugestoes-ia" className="hover:text-energy-cyan transition-colors">
-                  {t('footerSuggestHub', 'Central de Sugestões (IA)')}
+                  {t('footerSuggestHub', 'Central de sugestões')}
                 </a>
               </li>
               <li>
                 <a href="#apoio" className="hover:text-energy-cyan transition-colors">
                   {t('footerSupportPix', 'Chave Pix')}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={DONATION_CONFIG.apoiaSeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-rose-400 transition-colors"
-                >
-                  {t('apoiaTitle', 'Apoia.se')} (apoia.se/voidex)
-                </a>
-              </li>
-              <li>
-                <a
-                  href={DONATION_CONFIG.patreonUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-orokin-gold transition-colors"
-                >
-                  {t('footerSupportPatreon', 'Patreon Supporter')}
                 </a>
               </li>
             </ul>
@@ -113,21 +92,21 @@ export default function Footer() {
 
         {/* Legal Disclaimer */}
         <div className="pt-8 space-y-4">
-          <div className="p-4 rounded-xl bg-void-900/60 border border-void-border/60 text-[11px] leading-relaxed text-slate-500">
+          <div className="p-4 rounded-lg bg-void-900/60 border border-void-border/60 text-[11px] leading-relaxed text-slate-500">
             <strong className="text-slate-400 block mb-1">
               {t('disclaimerTitle', 'Aviso Legal e Isenção de Responsabilidade (Disclaimer):')}
             </strong>
             <span>
               {t(
                 'disclaimerBody',
-                'O VOIDEX: Market Intelligence é uma ferramenta comunitária e independente desenvolvida por e para jogadores de Warframe. O VOIDEX não é patrocinado, endossado ou afiliado à Digital Extremes Ltd. O título "Warframe", logotipos, imagens e todos os nomes e dados de itens associados são marcas registradas e propriedades intelectuais da Digital Extremes Ltd. Todo o comércio de itens no jogo é conduzido exclusivamente de forma manual entre os próprios jogadores dentro dos servidores oficiais do jogo.'
+                'O Acervo Void: Market Intelligence é uma ferramenta comunitária e independente desenvolvida por e para jogadores de Warframe. O Acervo Void não é patrocinado, endossado ou afiliado à Digital Extremes Ltd. O título "Warframe", logotipos, imagens e todos os nomes e dados de itens associados são marcas registradas e propriedades intelectuais da Digital Extremes Ltd. Todo o comércio de itens no jogo é conduzido exclusivamente de forma manual entre os próprios jogadores dentro dos servidores oficiais do jogo.'
               )}
             </span>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-between text-slate-500 text-[11px] gap-2">
             <span>
-              © 2026 VOIDEX: Market Intelligence. {t('rightsReserved', 'Todos os direitos reservados.')}
+              © 2026 Acervo Void: Market Intelligence. {t('rightsReserved', 'Todos os direitos reservados.')}
             </span>
             <span>{t('madeForTenno', 'Feito com ⚡ para a comunidade Tenno em todas as plataformas.')}</span>
           </div>

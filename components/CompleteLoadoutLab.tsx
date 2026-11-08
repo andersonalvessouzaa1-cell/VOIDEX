@@ -60,7 +60,7 @@ export default function CompleteLoadoutLab() {
         {entries.map(item => <button type="button" key={item.preset.id} aria-pressed={selected === item.preset.id} onClick={() => setSelected(item.preset.id)} className="border border-void-border px-4 py-3 text-left hover:border-energy-cyan aria-pressed:border-energy-cyan aria-pressed:text-energy-cyan">{item.preset.name}</button>)}
       </div>
       {preset && <>
-        <p className="mt-5 border-l-2 border-orokin-gold pl-3 text-sm text-amber-100">Composição baseada em fontes comunitárias. Este conjunto e os ajustes da VOIDEX não foram testados no jogo.</p>
+        <p className="mt-5 border-l-2 border-orokin-gold pl-3 text-sm text-amber-100">Composição baseada em fontes comunitárias. Este conjunto e os ajustes da Acervo Void não foram testados no jogo.</p>
         <details className="mt-4 border-b border-void-border pb-4"><summary className="cursor-pointer text-sm text-slate-300">Fontes, ajustes e limites desta composição</summary><ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-400">{preset.notes.map(note => <li key={note}>{note}</li>)}</ul></details>
         <div className="mt-6 flex flex-col gap-6 border-y border-void-border py-6 sm:flex-row sm:items-center">
           <ItemImage key={preset.equipment.warframe.slug} src={art(preset.equipment.warframe.imageName)} alt={preset.equipment.warframe.name} size={144} />
@@ -79,7 +79,7 @@ export default function CompleteLoadoutLab() {
                 {part.mods.map(mod => <li key={mod.slug} className="min-w-0 border border-void-border bg-void-900 p-3">
                   <div className="flex justify-center"><ItemImage src={art(mod.imageName)} alt="" size={112} /></div>
                   <p className="mt-3 break-words text-sm font-semibold text-white">{mod.name}</p><p className="mt-1 text-xs text-slate-400">{SLOT_LABELS[mod.slot] ?? 'Mod'} · nível {mod.rank}/{mod.maxRank}</p>
-                  <details className="mt-3 text-xs text-slate-400"><summary className="cursor-pointer py-2 text-energy-cyan">Ver efeitos</summary><p className="mt-2 whitespace-pre-line">{mod.effects.length ? mod.effects.join(' · ') : 'Efeito não descrito na base sincronizada; consulte a fonte.'}</p>{mod.publishedRank !== undefined && mod.publishedRank !== mod.rank && <p className="mt-2 text-amber-100">Ajuste VOIDEX: a fonte usa nível {mod.publishedRank}; aqui está no máximo.</p>}</details>
+                  <details className="mt-3 text-xs text-slate-400"><summary className="cursor-pointer py-2 text-energy-cyan">Ver efeitos</summary><p className="mt-2 whitespace-pre-line">{mod.effects.length ? mod.effects.join(' · ') : 'Efeito não descrito na base sincronizada; consulte a fonte.'}</p>{mod.publishedRank !== undefined && mod.publishedRank !== mod.rank && <p className="mt-2 text-amber-100">Ajuste Acervo Void: a fonte usa nível {mod.publishedRank}; aqui está no máximo.</p>}</details>
                 </li>)}
               </ul>
               <h4 className="mt-4 font-display text-xl text-white">Arcanos</h4>

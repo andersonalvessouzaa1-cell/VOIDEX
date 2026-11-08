@@ -96,7 +96,7 @@ export default function BuildLab() {
             </span>
           </h2>
           <p className="mt-4 text-sm sm:text-base text-slate-400">
-            O VOIDEX não decide tudo por você. Ele analisa seu objetivo, sugere 3 caminhos otimizados e explica o impacto real de cada mod para você manter o controle.
+            O Acervo Void não decide tudo por você. Ele analisa seu objetivo, sugere 3 caminhos otimizados e explica o impacto real de cada mod para você manter o controle.
           </p>
         </div>
 
@@ -469,7 +469,7 @@ export default function BuildLab() {
             <div className="pt-4 border-t border-void-border">
               <div className="text-xs font-bold text-slate-200 uppercase tracking-wider mb-2 flex items-center justify-between">
                 <span>🧬 Build DNA</span>
-                <span className="text-energy-cyan font-mono text-[10px]">Assinatura VOIDEX</span>
+                <span className="text-energy-cyan font-mono text-[10px]">Assinatura Acervo Void</span>
               </div>
               <div className="grid grid-cols-2 gap-2 text-xs font-mono">
                 <div className="flex justify-between items-center p-1.5 bg-void-950 rounded border border-void-border">

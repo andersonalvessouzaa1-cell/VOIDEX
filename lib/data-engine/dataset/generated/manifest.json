@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-11-07T21:07:50.094Z",
+  "source": {
+    "name": "WFCD/warframe-items",
+    "repo": "https://github.com/WFCD/warframe-items",
+    "version": "0.0.0-dev",
+    "baseUsed": "https://raw.githubusercontent.com/WFCD/warframe-items/master/data/json/",
+    "licenseNote": "Dados comunitários extraídos do jogo. Conferir a licença do repositório e os direitos da Digital Extremes antes de publicar."
+  },
+  "categories": {
+    "warframes": {
+      "file": "warframes.json",
+      "count": 123,
+      "withImage": 122
+    },
+    "primary": {
+      "file": "primary.json",
+      "count": 197,
+      "withImage": 197
+    },
+    "secondary": {
+      "file": "secondary.json",
+      "count": 149,
+      "withImage": 149
+    },
+    "melee": {
+      "file": "melee.json",
+      "count": 270,
+      "withImage": 270
+    },
+    "mods": {
+      "file": "mods.json",
+      "count": 1809,
+      "withImage": 1809
+    },
+    "arcanes": {
+      "file": "arcanes.json",
+      "count": 172,
+      "withImage": 172
+    },
+    "sentinels": {
+      "file": "sentinels.json",
+      "count": 17,
+      "withImage": 17
+    },
+    "pets": {
+      "file": "pets.json",
+      "count": 66,
+      "withImage": 66
+    },
+    "sentinel_weapons": {
+      "file": "sentinel_weapons.json",
+      "count": 24,
+      "withImage": 24
+    },
+    "archwing": {
+      "file": "archwing.json",
+      "count": 5,
+      "withImage": 5
+    },
+    "arch_gun": {
+      "file": "arch_gun.json",
+      "count": 20,
+      "withImage": 20
+    },
+    "arch_melee": {
+      "file": "arch_melee.json",
+      "count": 8,
+      "withImage": 8
+    },
+    "shards": {
+      "file": "shards.json",
+      "count": 15,
+      "withImage": 15
+    }
+  },
+  "failures": []
+}
