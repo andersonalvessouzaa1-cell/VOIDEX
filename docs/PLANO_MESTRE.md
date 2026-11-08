@@ -22,7 +22,7 @@ Todos os Warframes, armas e companheiros devem ser pesquisáveis. Presets comple
 
 Incremento visual de 08/11/2026: primeira comparação pública das referências e apresentação do Build Lab melhorada; consulte `REFERENCIAS_VISUAL_V1.md`. Não altera cobertura de presets/cálculos. Noxsframe é a referência visual preferida pelo dono. Preparação de clone limpo continua necessária antes da prévia pública gratuita.
 
-Beta Acervo Void publicada em https://acervovoid.vercel.app no Vercel Hobby em 08/11/2026. Cópia ativa e resultados no início de RESUMO_RETOMADA.md; 335 testes aprovados, build remoto e APIs públicas conferidos. H1 concluído; H2 apenas na condição de beta. Restante do escopo continua pendente; GitHub remoto ainda precisa receber a versão publicada.
+Beta Acervo Void publicada em https://acervovoid.vercel.app no Vercel Hobby em 08/11/2026. Cópia ativa e resultados no início de RESUMO_RETOMADA.md; 335 testes aprovados, build remoto e APIs públicas conferidos. H1 concluído; H2 apenas na condição de beta. Restante do escopo continua pendente; GitHub recebeu a versão publicada na branch release/acervovoid-beta; integração à main pendente.
 
 Nova decisão: contas reais via Supabase Free e Google, mantendo custo zero. Banco/privacidade já configurados; código preparado no commit 835f55c com 359 testes. Ativação do login depende da verificação em duas etapas do dono no Google Cloud e configuração OAuth. Consulte SUPABASE_CONTAS.md e o topo de RESUMO_RETOMADA.md. A beta pública ainda não contém essa integração.
 

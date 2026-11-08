@@ -5,7 +5,7 @@ Atualizado em 08/11/2026. Leia AGENTS.md, este resumo e somente a próxima seç�
 - Produção gratuita: https://acervovoid.vercel.app — Vercel Hobby, projeto alpha-7ce7/voidex. Sem domínio pago, cobrança ou doações.
 - Pasta ATIVA: /home/anderson/Documents/Codex/2026-11-07/home-anderson-documentos-github-github-plugin/work/acervovoid-release ; branch release/acervovoid-beta.
 - Original /home/anderson/Documentos/GitHub/VOIDEX tem alterações anteriores; preservar, não resetar/adicionar tudo.
-- GitHub privado andersonalvessouzaa1-cell/VOIDEX ainda desatualizado. origin/main local0b2ec02. Conector recusou lote de3.8MB por limite da revisão; CLI Git sem credenciais. Não repetir lote gigante.
+- GitHub privado andersonalvessouzaa1-cell/VOIDEX sincronizado na branch release/acervovoid-beta; main preservada em0b2ec02. Autorização CLI concluída. Não repetir envio por conector em lote gigante.
 - Último código publicado91f7aef, implantação dpl_Bk7s8aYxK58cdxtkSRPzp99jNcpt. Commits posteriores são documentação.
 - next-env.d.ts tem alteração gerada preexistente; não incluir sem necessidade.
 
@@ -30,8 +30,7 @@ Atualizado em 08/11/2026. Leia AGENTS.md, este resumo e somente a próxima seç�
 - vercel.json outputDirectory .next-build; não trocar por .next. Domínio associado acompanha produção automaticamente.
 
 ## Próxima tarefa
-Sincronizar código seguro no GitHub em branch separada, sem sobrescrever main nem alterações remotas. Programa oficial GitHub CLI sendo preparado em /tmp/acervo-github-cli/gh; falta login autorizado do dono. Depois seguir PLANO_MESTRE: B1companheiros, B2capacidade/polaridades, B3/B4cálculos, B5curadoria, M1–M3mercado real/limites compartilhados, acessibilidade/responsividade e validação final.
-Consultar SUPABASE_CONTAS.md e PUBLICACAO_BETA.md só se necessário. Esses documentos contêm histórico antigo; o estado atual deste resumo prevalece.
+B1companheiros: comparação com base/resultado/unidade/fontes e regras próprias por tipo. Depois B2capacidade/polaridades, B3/B4cálculos, B5curadoria, M1–M3mercado real e limites compartilhados, acessibilidade/responsividade e validação final. Seguir critérios do PLANO_MESTRE.
 
-## Sincronização GitHub em andamento
-CLI oficial v2.103.3 baixada da release oficial cli/cli para /tmp/acervo-github-cli/gh. Autorização de dispositivo preparada, usuário deve confirmar na aba IAB18 (Authorize GitHub CLI). Sessão CLI21931 aguarda; código temporário pode expirar, não persistir. Configuração GH_CONFIG_DIR=[chatroot]/work/github-auth; nunca imprimir token/hosts.yml. Após sucesso, obter origin/main atualizado e conferir antes de push para branch release/acervovoid-beta. Não usar force nem enviar .env/auth. Nada enviado ainda.
+## GitHub concluído
+Autorização oficial GitHub CLI concluída. Branch release/acervovoid-beta enviada e hash remoto9f4d35b conferido igual ao local antes desta atualização documental. origin/main atualizado por fetch para0b2ec02; sem commits de main ausentes na branch ativa. Main preservada. Credenciais privadas em work/github-auth; nunca imprimir hosts.yml/token. Usar GH_CONFIG_DIR específico e credential helper somente no comando, pois ~/.gitconfig é somente leitura. CLI oficial /tmp/acervo-github-cli/gh v2.103.3. Conferência de arquivos versionados sem credenciais reais; único marcador sb_secret é fixture fictícia no teste. Este resumo substitui estados antigos em documentos históricos.
