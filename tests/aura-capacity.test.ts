@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { getReviewedAuras } from '../lib/data-engine/warframe-aura-reader';
-import { auraCapacityBonus, summarizeWarframeCapacity } from '../lib/data-engine/aura-capacity';
+import { auraCapacityBonus, summarizeWarframeCapacity, slotCapacityBonus } from '../lib/data-engine/aura-capacity';
 export function runAuraCapacityTests() {
   let passed = 0;
   const eq = (a: unknown, b: unknown) => { assert.deepEqual(a, b); passed++; };
@@ -23,5 +23,13 @@ export function runAuraCapacityTests() {
   bad(() => auraCapacityBonus(growing, 1.5, 'neutral'));
   bad(() => auraCapacityBonus({ ...growing, baseDrain: 2 }, 0, 'neutral'));
   bad(() => auraCapacityBonus(growing, 5, 'unknown' as never));
+  eq(auraCapacityBonus(growing, 5, 'universal'), 14);
+  eq(auraCapacityBonus(steel, 5, 'universal'), 18);
+  eq(summarizeWarframeCapacity([], 60, {}, { mod: growing, rank: 5, slot: 'universal' }).capacity, 74);
+  // Oráculo numérico independente: Wolfram Language, Table[{n,2n,Floor[4n/5]}, {n,2,9}].
+  for (const [raw, doubled, mismatched] of [[2,4,1],[3,6,2],[4,8,3],[5,10,4],[6,12,4],[7,14,5],[8,16,6],[9,18,7]]) {
+    eq(slotCapacityBonus({ baseDrain: -raw, maxRank: 0 }, 0, 'universal'), doubled);
+    eq(slotCapacityBonus({ baseDrain: -raw, maxRank: 0 }, 0, 'different'), mismatched);
+  }
   return { passed, failed: 0 };
 }

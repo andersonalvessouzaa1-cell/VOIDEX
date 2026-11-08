@@ -25,5 +25,6 @@ export function runStanceCapacityTests() {
   }
   eq(getReviewedStances(getWeaponDetails('melee', 'wolf_sledge').weapon), []);
   eq(getReviewedStances(getWeaponDetails('melee', 'skana').weapon), []);
+  eq(summarizeWeaponStanceCapacity(glaive, [], 60, {}, { ...pick, slot: 'universal' }).capacity, 70);
   return { passed, failed: 0 };
 }
