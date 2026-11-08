@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { summarizeNormalModCapacity } from '@/lib/data-engine/normal-mod-capacity';
+import { summarizeWarframeCapacity, type AuraMod, type AuraSlot } from '@/lib/data-engine/aura-capacity';
 import ItemImage from './ItemImage';
 import { ABILITY_LABELS, abilityTotals, effectsAtRank, type AbilityKey, type LevelStat } from '@/lib/data-engine/mod-effects';
 
@@ -24,6 +24,10 @@ export default function WarframeModLab() {
   const [picks, setPicks] = useState<Record<string, number>>({});
   const [capacity, setCapacity] = useState(30);
   const [matchingSlots, setMatchingSlots] = useState<Record<string, boolean>>({});
+  const [auras, setAuras] = useState<AuraMod[]>([]);
+  const [auraSlug, setAuraSlug] = useState('');
+  const [auraRank, setAuraRank] = useState(0);
+  const [auraSlot, setAuraSlot] = useState<AuraSlot>('neutral');
 
   useEffect(() => {
     let alive = true;
@@ -31,7 +35,7 @@ export default function WarframeModLab() {
       .then(([w, m]) => {
         if (!alive) return;
         if (w.error || m.error) { setError(w.error ?? m.error); return; }
-        setFrames(w.items); setMods(m.items); setFetchedAt(w.fetchedAt);
+        setFrames(w.items); setMods(m.items); setAuras(m.auras ?? []); setFetchedAt(w.fetchedAt);
         if (!w.items.some((f: FrameRow) => f.slug === 'dante') && w.items[0]) setFrameSlug(w.items[0].slug);
       })
       .catch(() => alive && setError('Não foi possível carregar a base de dados local.'));
@@ -44,8 +48,9 @@ export default function WarframeModLab() {
   const modMatches = (modQuery.trim() ? mods.filter(m => m.name.toLowerCase().includes(modQuery.trim().toLowerCase())) : mods).slice(0, 10);
   const chosen = Object.entries(picks).map(([slug, rank]) => ({ mod: bySlug.get(slug), rank })).filter((c): c is { mod: ModRow; rank: number } => !!c.mod);
   const { totals } = abilityTotals(chosen.map(c => ({ levelStats: c.mod.levelStats, rank: c.rank })));
-  let budget: ReturnType<typeof summarizeNormalModCapacity> | null = null;
-  try { budget = summarizeNormalModCapacity(chosen.map(({ mod, rank }) => ({ slug: mod.slug, rank, baseDrain: mod.baseDrain ?? NaN, polarity: mod.polarity })), capacity, matchingSlots); }
+  const aura = auras.find(mod => mod.slug === auraSlug);
+  let budget: ReturnType<typeof summarizeWarframeCapacity> | null = null;
+  try { budget = summarizeWarframeCapacity(chosen.map(({ mod, rank }) => ({ slug: mod.slug, rank, baseDrain: mod.baseDrain ?? NaN, polarity: mod.polarity })), capacity, matchingSlots, aura ? { mod: aura, rank: auraRank, slot: auraSlot } : null); }
   catch { budget = null; }
 
   const toggle = (mod: ModRow) => setPicks(prev => { const next = { ...prev }; if (mod.slug in next) delete next[mod.slug]; else next[mod.slug] = mod.fusionLimit; return next; });
@@ -101,13 +106,17 @@ export default function WarframeModLab() {
                 </li>
               ))}
             </ul>
-            <button type="button" onClick={() => { setPicks({}); setMatchingSlots({}); }} className="mt-4 border border-void-border px-3 py-2 text-sm">Limpar mods do Warframe</button>
+            <button type="button" onClick={() => { setPicks({}); setMatchingSlots({}); setAuraSlug(''); setAuraRank(0); setAuraSlot('neutral'); }} className="mt-4 border border-void-border px-3 py-2 text-sm">Limpar mods do Warframe</button>
             <section aria-label="Consumo parcial do Warframe" className="mt-5 border border-void-border p-4">
+              <label htmlFor="warframe-aura" className="block text-sm">Aura revisada (somente capacidade)</label>
+              <select id="warframe-aura" value={auraSlug} onChange={event => { const next = auras.find(mod => mod.slug === event.target.value); setAuraSlug(next?.slug ?? ''); setAuraRank(next?.maxRank ?? 0); setAuraSlot('neutral'); }} className={field}><option value="">Sem aura</option>{auras.map(mod => <option key={mod.slug} value={mod.slug}>{mod.name}</option>)}</select>
+              {aura && <div className="my-4 space-y-3"><div className="flex items-center gap-3"><ItemImage src={art(aura.imageName)} alt="" size={64} /><p className="text-sm">{aura.name} · {aura.polarity}</p></div><label htmlFor="warframe-aura-rank" className="block text-sm">Nível da aura</label><select id="warframe-aura-rank" value={auraRank} onChange={event => setAuraRank(Number(event.target.value))} className={field}>{Array.from({ length: aura.maxRank + 1 }, (_, rank) => <option key={rank} value={rank}>{rank}</option>)}</select><label htmlFor="warframe-aura-slot" className="block text-sm">Polaridade simulada da vaga de aura</label><select id="warframe-aura-slot" value={auraSlot} onChange={event => setAuraSlot(event.target.value as AuraSlot)} className={field}><option value="neutral">Sem polaridade</option><option value="matching">Igual à aura</option><option value="different">Diferente da aura</option></select><p className="text-xs text-slate-400">Efeitos da aura sobre habilidades, dano, energia, inimigos ou aliados não são aplicados nesta tabela.</p></div>}
               <label htmlFor="warframe-capacity" className="block text-sm">Capacidade simulada do Warframe no nível 30</label>
               <select id="warframe-capacity" value={capacity} onChange={event => setCapacity(Number(event.target.value))} className={field}><option value={30}>30 — sem Reator Orokin</option><option value={60}>60 — com Reator Orokin</option></select>
-              {budget ? <p role="status" className={`mt-3 text-sm ${budget.remaining < 0 ? 'text-rose-300' : 'text-energy-cyan'}`}>Consumo parcial: {budget.used}/{budget.capacity} pontos. {budget.remaining < 0 ? `Excede em ${-budget.remaining}.` : `Restam ${budget.remaining}.`}</p> : <p role="status" className="mt-3 text-sm text-amber-100">Há custos ou slots sem regra confirmada nesta seleção; consumo indisponível.</p>}
-              <p className="mt-3 text-xs text-slate-400">Somente os mods selecionados, em vagas neutras ou simuladas iguais. Não calcula bônus de aura, polaridades diferentes, slots especiais ou Forma; não certifica vagas reais, famílias incompatíveis ou encaixe completo.</p>
+              {budget ? <p role="status" className={`mt-3 text-sm ${budget.remaining < 0 ? 'text-rose-300' : 'text-energy-cyan'}`}>Consumo parcial: {budget.used}/{budget.capacity} pontos. Aura: +{budget.auraBonus}. {budget.remaining < 0 ? `Excede em ${-budget.remaining}.` : `Restam ${budget.remaining}.`}</p> : <p role="status" className="mt-3 text-sm text-amber-100">Há custos ou slots sem regra confirmada nesta seleção; consumo indisponível.</p>}
+              <p className="mt-3 text-xs text-slate-400">Somente os mods selecionados, em vagas neutras ou simuladas iguais. A aura selecionada soma capacidade após o Reator. Não calcula polaridades diferentes dos mods comuns, slots especiais, Aura Forma ou Forma; não certifica vagas reais, famílias incompatíveis ou encaixe completo.</p>
               <a href="https://support.warframe.com/hc/en-us/articles/200500194-Mod-Guide-Use-Fusion-Transmutation-Sale" target="_blank" rel="noreferrer" className="mt-2 inline-block text-xs text-energy-cyan underline">Regra oficial de custo e polaridade</a>
+              <a href="https://www.warframe.com/en/news/przewodnik-po-modach" target="_blank" rel="noreferrer" className="mt-2 block text-xs text-energy-cyan underline">Regra oficial do bônus de aura</a>
             </section>
             <table className="w-full mt-5 text-sm tabular-nums">
               <caption className="sr-only">Atributos de habilidade antes e depois dos mods</caption>

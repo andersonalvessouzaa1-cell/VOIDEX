@@ -1,3 +1,4 @@
+import { getReviewedAuras } from '@/lib/data-engine/warframe-aura-reader';
 import { NextResponse } from 'next/server';
 import { readGenerated } from '@/lib/data-engine/generated-reader';
 import { hasAbilityEffect, type LevelStat } from '@/lib/data-engine/mod-effects';
@@ -14,7 +15,7 @@ export async function GET() {
       .filter(item => item.stats.compatName?.toUpperCase() === 'WARFRAME' && Number.isInteger(item.stats.fusionLimit) && hasAbilityEffect(item.stats.levelStats, item.stats.fusionLimit as number))
       .map(item => ({ slug: item.slug, name: item.name, imageName: item.imageName, rarity: item.stats.rarity, polarity: item.stats.polarity, baseDrain: item.stats.baseDrain, fusionLimit: item.stats.fusionLimit as number, levelStats: item.stats.levelStats as LevelStat[] }))
       .sort((a, b) => a.name.localeCompare(b.name));
-    return NextResponse.json({ fetchedAt: file.meta.fetchedAt, items });
+    return NextResponse.json({ fetchedAt: file.meta.fetchedAt, items, auras: getReviewedAuras() });
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : 'Base indisponível.' }, { status: 503 });
   }
