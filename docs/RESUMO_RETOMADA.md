@@ -1,3 +1,6 @@
+## Adendo de idioma — próxima entrega
+Mensagem copiada deve seguir idioma escolhido no site, com prévia/opção de idioma (inclusive inglês), preservando /w e nickname. Não confundir país e idioma, nem esconder anúncios por idioma. Localização oficial/fallback e compatibilidade de plataforma precisam ser preservados. Relato: português selecionado ainda gera inglês. Só documentado; não corrigido nesta etapa.
+
 ## Novos pedidos — somente documentação, 08/11/2026
 Dono aprovou visual e pediu registrar próxima entrega: remover teto20anúncios (sem confundir com estoque por anúncio), peixes por tamanho com fonte/negociabilidade verificadas, pacotes com preço total/equivalente unitário, rótulo “Pré-builds” no lugar de “Presets” e área discreta de publicidade futura. Detalhes e exemplos corrigidos em PROXIMA_ETAPA_VENDEDORES.md; somar às pendências de presença/favoritos/vendas. NÃO implementados, limite20 ainda está ativo; site e anúncios reais não foram alterados nesta etapa.
 
