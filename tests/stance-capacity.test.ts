@@ -19,5 +19,11 @@ export function runStanceCapacityTests() {
   eq(summarizeWeaponStanceCapacity(glaive, [], 60, {}, null).capacity, 60);
   bad(() => summarizeWeaponStanceCapacity(rifle, [], 60, {}, pick));
   bad(() => summarizeWeaponStanceCapacity(glaive, [], 60, {}, { ...pick, rank: 4 }));
+  for (const slug of ['cerata', 'coda_pathocyst', 'falcor', 'glaive', 'glaive_prime', 'halikar', 'halikar_wraith', 'kestrel', 'kestrel_prime', 'orvius', 'pathocyst', 'xoris']) {
+    const weapon = getWeaponDetails('melee', slug).weapon;
+    eq(getReviewedStances(weapon).length, 2);
+  }
+  eq(getReviewedStances(getWeaponDetails('melee', 'wolf_sledge').weapon), []);
+  eq(getReviewedStances(getWeaponDetails('melee', 'skana').weapon), []);
   return { passed, failed: 0 };
 }
