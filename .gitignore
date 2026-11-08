@@ -51,3 +51,7 @@ node.zip
 
 # build temporario dos testes
 .test-build/
+.env*
+
+# Exemplo público, sem credenciais
+!.env.example

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Heart, Gamepad2, Sparkles, Menu, X } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
 import { useLanguage } from '@/context/LanguageContext';
@@ -59,6 +60,7 @@ export default function Navbar() {
           {/* Right Controls: Language Selector & CTA */}
           <div className="flex items-center gap-3">
             <LanguageSelector />
+            <Link href="/conta" className="min-h-10 px-2 py-2 text-sm text-energy-cyan hover:underline">Conta</Link>
 
             <div className="hidden sm:flex items-center">
               <a
