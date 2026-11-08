@@ -12,7 +12,7 @@ export function buildShoppingList(preset: Pick<ResolvedLoadout, 'equipment'>, ca
    rows.set(id,{id,itemKey,name:item.name,kind,rank:item.rank,quantity:1,usedBy:[slot],marketUrl:source && item.rank<=source.maxRank?`/mercado?${new URLSearchParams({item_key:itemKey,side:'sell'})}`:null});
   }
  }
- return [...rows.values()].sort((a,b)=>a.name.localeCompare(b.name)||a.rank-b.rank);
+ return Array.from(rows.values()).sort((a,b)=>a.name.localeCompare(b.name)||a.rank-b.rank);
 }
 export function readOwnedCounts(raw: string | null, items: ShoppingItem[]): Record<string,number> {
  try {
