@@ -32,3 +32,6 @@ Atualizado em 08/11/2026. Leia AGENTS.md, este resumo e somente a próxima seç�
 ## Próxima tarefa
 Sincronizar código seguro no GitHub em branch separada, sem sobrescrever main nem alterações remotas. Programa oficial GitHub CLI sendo preparado em /tmp/acervo-github-cli/gh; falta login autorizado do dono. Depois seguir PLANO_MESTRE: B1companheiros, B2capacidade/polaridades, B3/B4cálculos, B5curadoria, M1–M3mercado real/limites compartilhados, acessibilidade/responsividade e validação final.
 Consultar SUPABASE_CONTAS.md e PUBLICACAO_BETA.md só se necessário. Esses documentos contêm histórico antigo; o estado atual deste resumo prevalece.
+
+## Sincronização GitHub em andamento
+CLI oficial v2.103.3 baixada da release oficial cli/cli para /tmp/acervo-github-cli/gh. Autorização de dispositivo preparada, usuário deve confirmar na aba IAB18 (Authorize GitHub CLI). Sessão CLI21931 aguarda; código temporário pode expirar, não persistir. Configuração GH_CONFIG_DIR=[chatroot]/work/github-auth; nunca imprimir token/hosts.yml. Após sucesso, obter origin/main atualizado e conferir antes de push para branch release/acervovoid-beta. Não usar force nem enviar .env/auth. Nada enviado ainda.
