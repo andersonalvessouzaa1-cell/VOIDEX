@@ -5,10 +5,11 @@ import WarframeModLab from './WarframeModLab';
 import BuildPresets from './BuildPresets';
 import CompleteLoadoutLab from './CompleteLoadoutLab';
 import WeaponFreeLab from './WeaponFreeLab';
+import CompanionFreeLab from './CompanionFreeLab';
 
 export default function VerifiedBuildLab() {
   const [mode, setMode] = useState('presets');
-  const modes = [{ id: 'presets', label: 'Presets completos' }, { id: 'warframes', label: 'Testar Warframe' }, { id: 'weapons', label: 'Testar armas' }, { id: 'references', label: 'Referências' }];
+  const modes = [{ id: 'presets', label: 'Presets completos' }, { id: 'warframes', label: 'Testar Warframe' }, { id: 'weapons', label: 'Testar armas' }, { id: 'companions', label: 'Testar companheiros' }, { id: 'references', label: 'Referências' }];
   return (
     <section id="build-lab" aria-labelledby="build-lab-title" className="scroll-mt-24 py-20 md:py-28 border-y border-void-border bg-void-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,6 +21,7 @@ export default function VerifiedBuildLab() {
         </nav>
         <div id="lab-panel-presets" hidden={mode !== 'presets'}><CompleteLoadoutLab /></div>
         <div id="lab-panel-weapons" hidden={mode !== 'weapons'}><WeaponFreeLab /></div>
+        <div id="lab-panel-companions" hidden={mode !== 'companions'}>{mode === 'companions' && <CompanionFreeLab />}</div>
         <div id="lab-panel-warframes" hidden={mode !== 'warframes'}><WarframeModLab /></div>
         <div id="lab-panel-references" hidden={mode !== 'references'} className="border-t border-void-border pt-6">
           <h3 className="font-display text-3xl text-white">Referências da comunidade</h3>
