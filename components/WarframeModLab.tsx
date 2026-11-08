@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import { summarizeNormalModCapacity } from '@/lib/data-engine/normal-mod-capacity';
 import ItemImage from './ItemImage';
 import { ABILITY_LABELS, abilityTotals, effectsAtRank, type AbilityKey, type LevelStat } from '@/lib/data-engine/mod-effects';
 
@@ -21,6 +22,8 @@ export default function WarframeModLab() {
   const [frameQuery, setFrameQuery] = useState('');
   const [modQuery, setModQuery] = useState('');
   const [picks, setPicks] = useState<Record<string, number>>({});
+  const [capacity, setCapacity] = useState(30);
+  const [matchingSlots, setMatchingSlots] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     let alive = true;
@@ -41,6 +44,10 @@ export default function WarframeModLab() {
   const modMatches = (modQuery.trim() ? mods.filter(m => m.name.toLowerCase().includes(modQuery.trim().toLowerCase())) : mods).slice(0, 10);
   const chosen = Object.entries(picks).map(([slug, rank]) => ({ mod: bySlug.get(slug), rank })).filter((c): c is { mod: ModRow; rank: number } => !!c.mod);
   const { totals } = abilityTotals(chosen.map(c => ({ levelStats: c.mod.levelStats, rank: c.rank })));
+  let budget: ReturnType<typeof summarizeNormalModCapacity> | null = null;
+  try { budget = summarizeNormalModCapacity(chosen.map(({ mod, rank }) => ({ slug: mod.slug, rank, baseDrain: mod.baseDrain ?? NaN, polarity: mod.polarity })), capacity, matchingSlots); }
+  catch { budget = null; }
+
   const toggle = (mod: ModRow) => setPicks(prev => { const next = { ...prev }; if (mod.slug in next) delete next[mod.slug]; else next[mod.slug] = mod.fusionLimit; return next; });
   const field = 'w-full px-3 py-2.5 bg-void-950 border border-void-border text-slate-100 placeholder:text-slate-500';
 
@@ -84,20 +91,30 @@ export default function WarframeModLab() {
             {chosen.length === 0 && <p className="mt-2 text-sm text-slate-400">Nenhum mod escolhido. Clique em um mod da lista.</p>}
             <ul className="mt-3 space-y-3">
               {chosen.map(({ mod, rank }) => (
-                <li key={mod.slug} className="flex items-center gap-3">
+                <li key={mod.slug} className="flex flex-wrap items-start gap-3">
                   <ItemImage src={art(mod.imageName)} alt="" size={36} />
                   <div className="min-w-0 flex-1"><p className="truncate">{mod.name}</p><p className="text-xs text-slate-400">{effectsAtRank(mod.levelStats, rank)?.parsed.map(p => p.raw).join(' · ')}</p></div>
-                  <label className="text-sm">Nível <select value={rank} onChange={e => setPicks(prev => ({ ...prev, [mod.slug]: Number(e.target.value) }))} className="bg-void-950 border border-void-border px-1 py-1">{Array.from({ length: mod.fusionLimit + 1 }, (_, i) => <option key={i} value={i}>{i}</option>)}</select></label>
+                  <label className="text-sm">Nível <select aria-label={`Nível de ${mod.name} no Warframe`} value={rank} onChange={e => setPicks(prev => ({ ...prev, [mod.slug]: Number(e.target.value) }))} className="bg-void-950 border border-void-border px-1 py-1">{Array.from({ length: mod.fusionLimit + 1 }, (_, i) => <option key={i} value={i}>{i}</option>)}</select></label>
                   <button type="button" onClick={() => toggle(mod)} aria-label={`Remover ${mod.name}`} className="px-2 py-1 border border-void-border hover:border-rose-400">×</button>
+                  {mod.polarity && <label className="flex basis-full items-center gap-2 text-xs"><input type="checkbox" checked={matchingSlots[mod.slug] === true} onChange={event => { const checked = event.target.checked; setMatchingSlots(current => ({ ...current, [mod.slug]: checked })); }} />Vaga simulada igual para {mod.name} ({mod.polarity})</label>}
+                  <p className="basis-full text-xs">Consumo: {budget?.rows.find(row => row.slug === mod.slug)?.cost ?? 'sem cálculo'} pontos</p>
                 </li>
               ))}
             </ul>
+            <button type="button" onClick={() => { setPicks({}); setMatchingSlots({}); }} className="mt-4 border border-void-border px-3 py-2 text-sm">Limpar mods do Warframe</button>
+            <section aria-label="Consumo parcial do Warframe" className="mt-5 border border-void-border p-4">
+              <label htmlFor="warframe-capacity" className="block text-sm">Capacidade simulada do Warframe no nível 30</label>
+              <select id="warframe-capacity" value={capacity} onChange={event => setCapacity(Number(event.target.value))} className={field}><option value={30}>30 — sem Reator Orokin</option><option value={60}>60 — com Reator Orokin</option></select>
+              {budget ? <p role="status" className={`mt-3 text-sm ${budget.remaining < 0 ? 'text-rose-300' : 'text-energy-cyan'}`}>Consumo parcial: {budget.used}/{budget.capacity} pontos. {budget.remaining < 0 ? `Excede em ${-budget.remaining}.` : `Restam ${budget.remaining}.`}</p> : <p role="status" className="mt-3 text-sm text-amber-100">Há custos ou slots sem regra confirmada nesta seleção; consumo indisponível.</p>}
+              <p className="mt-3 text-xs text-slate-400">Somente os mods selecionados, em vagas neutras ou simuladas iguais. Não calcula bônus de aura, polaridades diferentes, slots especiais ou Forma; não certifica vagas reais, famílias incompatíveis ou encaixe completo.</p>
+              <a href="https://support.warframe.com/hc/en-us/articles/200500194-Mod-Guide-Use-Fusion-Transmutation-Sale" target="_blank" rel="noreferrer" className="mt-2 inline-block text-xs text-energy-cyan underline">Regra oficial de custo e polaridade</a>
+            </section>
             <table className="w-full mt-5 text-sm tabular-nums">
               <caption className="sr-only">Atributos de habilidade antes e depois dos mods</caption>
               <thead><tr className="text-left text-slate-400"><th scope="col" className="py-2">Atributo</th><th scope="col">Antes</th><th scope="col">Depois</th><th scope="col">Variação</th></tr></thead>
               <tbody>{KEYS.map(k => { const diff = totals[k] - 100; return <tr key={k} className="border-t border-void-border"><th scope="row" className="py-2 text-left font-normal">{ABILITY_LABELS[k]}</th><td>100%</td><td className="font-bold">{fmt(totals[k])}%</td><td className={diff > 0 ? 'text-energy-cyan' : diff < 0 ? 'text-rose-300' : ''}>{diff > 0 ? '+' : ''}{fmt(diff)} pp</td></tr>; })}</tbody>
             </table>
-            <p className="mt-4 text-xs text-slate-400">Soma aditiva sobre a base de 100%. Ainda não aplicados: limites do jogo (por exemplo, da eficiência), capacidade e polaridades, arcanos e fragmentos. Não é simulador de combate.</p>
+            <p className="mt-4 text-xs text-slate-400">Soma aditiva sobre a base de 100%. Ainda não aplicados: limites do jogo (por exemplo, da eficiência), arcanos e fragmentos. O consumo parcial aparece separadamente e não comprova o encaixe da build. Não é simulador de combate.</p>
           </div>
         </div>
       </div>
