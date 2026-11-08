@@ -18,6 +18,8 @@ export function runSyncNormalizeTests() {
   const mod = n.normalizeMod({ name: 'Stretch', polarity: 'madurai', rarity: 'Common', baseDrain: 2, fusionLimit: 5, levelStats: [{ stats: ['+5% Ability Range'] }] });
   assert(mod.category === 'mods' && mod.stats.fusionLimit === 5 && mod.stats.levelStats.length === 1, 'Mod: guarda polaridade, dreno e efeitos por nível');
   assert(n.isArchonShard({ name: 'Crimson Archon Shard' }) && !n.isArchonShard({ name: 'Ayatan Star' }) && !n.isArchonShard(null), 'identifica fragmentos de Archon');
+  assert(n.normalizeMod({ name: 'Exilus fixture', isExilus: true }).stats.isExilus === true, 'preserva indicador Exilus atual');
+  assert(n.normalizeMod({ name: 'Utility fixture', isUtility: true }).stats.isExilus === undefined, 'não presume Exilus pelo indicador antigo');
   const dup = n.uniqueSlugs([n.normalizeMod({ name: 'Rage', uniqueName: '/Lotus/A/Rage' }), n.normalizeMod({ name: 'Rage', uniqueName: '/Lotus/B/RageB' })]);
   assert(dup[0].slug !== dup[1].slug, 'slug duplicado ganha sufixo');
   const st = n.categoryStats([dante, semDados]);

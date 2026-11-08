@@ -1,12 +1,13 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import { validateWarframeSlots } from '@/lib/data-engine/warframe-slots';
 import { summarizeWarframeCapacity, type AuraMod, type AuraSlot } from '@/lib/data-engine/aura-capacity';
 import ItemImage from './ItemImage';
 import { ABILITY_LABELS, abilityTotals, effectsAtRank, type AbilityKey, type LevelStat } from '@/lib/data-engine/mod-effects';
 
 interface FrameRow { slug: string; name: string; imageName: string | null; health?: number; shield?: number; armor?: number; power?: number }
-interface ModRow { slug: string; name: string; imageName: string | null; rarity?: string; polarity?: string; baseDrain?: number; fusionLimit: number; levelStats: LevelStat[] }
+interface ModRow { isExilus?: boolean; slug: string; name: string; imageName: string | null; rarity?: string; polarity?: string; baseDrain?: number; fusionLimit: number; levelStats: LevelStat[] }
 
 const art = (imageName: string | null) => (imageName ? `/api/cdn-image?name=${encodeURIComponent(imageName)}` : undefined);
 const KEYS: AbilityKey[] = ['forca', 'duracao', 'eficiencia', 'alcance'];
@@ -28,6 +29,8 @@ export default function WarframeModLab() {
   const [auraSlug, setAuraSlug] = useState('');
   const [auraRank, setAuraRank] = useState(0);
   const [auraSlot, setAuraSlot] = useState<AuraSlot>('neutral');
+  const [hasExilusAdapter, setHasExilusAdapter] = useState(false);
+  const [exilusChoices, setExilusChoices] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     let alive = true;
@@ -47,6 +50,7 @@ export default function WarframeModLab() {
   const frameMatches = frameQuery.trim() ? frames.filter(f => f.name.toLowerCase().includes(frameQuery.trim().toLowerCase())).slice(0, 8) : [];
   const modMatches = (modQuery.trim() ? mods.filter(m => m.name.toLowerCase().includes(modQuery.trim().toLowerCase())) : mods).slice(0, 10);
   const chosen = Object.entries(picks).map(([slug, rank]) => ({ mod: bySlug.get(slug), rank })).filter((c): c is { mod: ModRow; rank: number } => !!c.mod);
+  const slotLayout = validateWarframeSlots(chosen.map(({ mod }) => ({ slug: mod.slug, isExilus: mod.isExilus, slot: exilusChoices[mod.slug] === true ? 'exilus' : 'normal' })), hasExilusAdapter);
   const { totals } = abilityTotals(chosen.map(c => ({ levelStats: c.mod.levelStats, rank: c.rank })));
   const aura = auras.find(mod => mod.slug === auraSlug);
   let budget: ReturnType<typeof summarizeWarframeCapacity> | null = null;
@@ -91,8 +95,10 @@ export default function WarframeModLab() {
 
         <div className="chamfer self-start" style={{ '--chamfer': '20px' } as React.CSSProperties}>
           <div className="chamfer-in p-6 min-w-0" style={{ '--chamfer': '19px' } as React.CSSProperties}>
-            <h4 className="font-display font-bold text-2xl text-white">Mods escolhidos ({chosen.length}/8 vagas comuns)</h4>
-            {chosen.length > 8 && <p role="alert" className="mt-1 text-sm text-amber-200">O Warframe tem 8 vagas comuns de mod (fora aura e exilus). Conferir antes de usar esta combinação.</p>}
+            <h4 className="font-display font-bold text-2xl text-white">Mods escolhidos ({chosen.length})</h4>
+            <p className="mt-2 text-sm">Vagas comuns: {slotLayout.normalUsed}/8 · Exilus: {slotLayout.exilusUsed}/1</p>
+            <label className="mt-3 flex items-center gap-2 text-sm"><input type="checkbox" checked={hasExilusAdapter} onChange={event => setHasExilusAdapter(event.target.checked)} />Adaptador Exilus instalado (simulação)</label>
+            {slotLayout.errors.map((message, index) => <p key={`${index}-${message}`} role="alert" className="mt-2 text-sm text-amber-200">{message}</p>)}
             {chosen.length === 0 && <p className="mt-2 text-sm text-slate-400">Nenhum mod escolhido. Clique em um mod da lista.</p>}
             <ul className="mt-3 space-y-3">
               {chosen.map(({ mod, rank }) => (
@@ -102,11 +108,12 @@ export default function WarframeModLab() {
                   <label className="text-sm">Nível <select aria-label={`Nível de ${mod.name} no Warframe`} value={rank} onChange={e => setPicks(prev => ({ ...prev, [mod.slug]: Number(e.target.value) }))} className="bg-void-950 border border-void-border px-1 py-1">{Array.from({ length: mod.fusionLimit + 1 }, (_, i) => <option key={i} value={i}>{i}</option>)}</select></label>
                   <button type="button" onClick={() => toggle(mod)} aria-label={`Remover ${mod.name}`} className="px-2 py-1 border border-void-border hover:border-rose-400">×</button>
                   {mod.polarity && <label className="flex basis-full items-center gap-2 text-xs"><input type="checkbox" checked={matchingSlots[mod.slug] === true} onChange={event => { const checked = event.target.checked; setMatchingSlots(current => ({ ...current, [mod.slug]: checked })); }} />Vaga simulada igual para {mod.name} ({mod.polarity})</label>}
+                  {mod.isExilus === true && <label className="flex basis-full items-center gap-2 text-xs"><input type="checkbox" checked={exilusChoices[mod.slug] === true} onChange={event => { const checked = event.target.checked; setExilusChoices(current => ({ ...current, [mod.slug]: checked })); }} />Usar vaga Exilus para {mod.name}</label>}
                   <p className="basis-full text-xs">Consumo: {budget?.rows.find(row => row.slug === mod.slug)?.cost ?? 'sem cálculo'} pontos</p>
                 </li>
               ))}
             </ul>
-            <button type="button" onClick={() => { setPicks({}); setMatchingSlots({}); setAuraSlug(''); setAuraRank(0); setAuraSlot('neutral'); }} className="mt-4 border border-void-border px-3 py-2 text-sm">Limpar mods do Warframe</button>
+            <button type="button" onClick={() => { setPicks({}); setMatchingSlots({}); setExilusChoices({}); setAuraSlug(''); setAuraRank(0); setAuraSlot('neutral'); }} className="mt-4 border border-void-border px-3 py-2 text-sm">Limpar mods do Warframe</button>
             <section aria-label="Consumo parcial do Warframe" className="mt-5 border border-void-border p-4">
               <label htmlFor="warframe-aura" className="block text-sm">Aura revisada (somente capacidade)</label>
               <select id="warframe-aura" value={auraSlug} onChange={event => { const next = auras.find(mod => mod.slug === event.target.value); setAuraSlug(next?.slug ?? ''); setAuraRank(next?.maxRank ?? 0); setAuraSlot('neutral'); }} className={field}><option value="">Sem aura</option>{auras.map(mod => <option key={mod.slug} value={mod.slug}>{mod.name}</option>)}</select>
@@ -114,10 +121,12 @@ export default function WarframeModLab() {
               <label htmlFor="warframe-capacity" className="block text-sm">Capacidade simulada do Warframe no nível 30</label>
               <select id="warframe-capacity" value={capacity} onChange={event => setCapacity(Number(event.target.value))} className={field}><option value={30}>30 — sem Reator Orokin</option><option value={60}>60 — com Reator Orokin</option></select>
               {budget ? <p role="status" className={`mt-3 text-sm ${budget.remaining < 0 ? 'text-rose-300' : 'text-energy-cyan'}`}>Consumo parcial: {budget.used}/{budget.capacity} pontos. Aura: +{budget.auraBonus}. {budget.remaining < 0 ? `Excede em ${-budget.remaining}.` : `Restam ${budget.remaining}.`}</p> : <p role="status" className="mt-3 text-sm text-amber-100">Há custos ou slots sem regra confirmada nesta seleção; consumo indisponível.</p>}
-              <p className="mt-3 text-xs text-slate-400">Somente os mods selecionados, em vagas neutras ou simuladas iguais. A aura selecionada soma capacidade após o Reator. Universal simula Aura Forma, sem verificar seu uso no jogo. Não calcula polaridades diferentes dos mods comuns, slots especiais ou quantidade de Forma aplicada; não certifica vagas reais, famílias incompatíveis ou encaixe completo.</p>
+              <p className="mt-3 text-xs text-slate-400">Somente os mods selecionados, em vagas neutras ou simuladas iguais. A aura selecionada soma capacidade após o Reator. Universal simula Aura Forma, sem verificar seu uso no jogo. Não calcula polaridades diferentes dos mods comuns, outros slots especiais ou quantidade de Forma aplicada; não certifica vagas reais, famílias incompatíveis ou encaixe completo.</p>
               <a href="https://support.warframe.com/hc/en-us/articles/200500194-Mod-Guide-Use-Fusion-Transmutation-Sale" target="_blank" rel="noreferrer" className="mt-2 inline-block text-xs text-energy-cyan underline">Regra oficial de custo e polaridade</a>
               <a href="https://www.warframe.com/en/news/przewodnik-po-modach" target="_blank" rel="noreferrer" className="mt-2 block text-xs text-energy-cyan underline">Regra oficial do bônus de aura</a>
             </section>
+            <p className="mt-3 text-xs text-slate-400">Validação parcial das vagas: Exilus usa a mesma capacidade dos mods comuns; o adaptador não adiciona pontos. Somente mods identificados como Exilus na base sincronizada podem usar essa vaga. Famílias incompatíveis e vagas reais continuam sem certificação.</p>
+            <a href="https://github.com/WFCD/warframe-items" target="_blank" rel="noreferrer" className="mt-2 inline-block text-xs text-energy-cyan underline">Fonte da elegibilidade Exilus: WFCD</a>
             <table className="w-full mt-5 text-sm tabular-nums">
               <caption className="sr-only">Atributos de habilidade antes e depois dos mods</caption>
               <thead><tr className="text-left text-slate-400"><th scope="col" className="py-2">Atributo</th><th scope="col">Antes</th><th scope="col">Depois</th><th scope="col">Variação</th></tr></thead>

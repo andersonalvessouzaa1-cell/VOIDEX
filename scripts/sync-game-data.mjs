@@ -21,6 +21,7 @@ const CATEGORIES = [
   { key: 'secondary', file: 'Secondary.json', map: (i) => n.normalizeWeapon(i, 'secondary') },
   { key: 'melee', file: 'Melee.json', map: (i) => n.normalizeWeapon(i, 'melee') },
   { key: 'mods', file: 'Mods.json', map: n.normalizeMod },
+  { key: 'exilus', file: 'Mods.json', filter: (i) => i.isExilus === true, map: n.normalizeMod },
   { key: 'arcanes', file: 'Arcanes.json', map: n.normalizeArcane },
   { key: 'sentinels', file: 'Sentinels.json', map: (i) => n.normalizeCompanion(i, 'sentinels'), optional: true },
   { key: 'pets', file: 'Pets.json', map: (i) => n.normalizeCompanion(i, 'pets'), optional: true },

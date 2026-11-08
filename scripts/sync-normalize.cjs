@@ -7,7 +7,7 @@ const CDN = 'https://cdn.warframestat.us/img/';
 
 const WARFRAME_STATS = ['health', 'shield', 'armor', 'power', 'sprint', 'aura', 'polarities', 'passiveDescription', 'productCategory', 'releaseDate', 'vaulted', 'isPrime'];
 const WEAPON_STATS = ['fireRate', 'criticalChance', 'criticalMultiplier', 'procChance', 'totalDamage', 'damage', 'damagePerShot', 'magazineSize', 'ammo', 'reloadTime', 'multishot', 'accuracy', 'trigger', 'noise', 'range', 'attacks', 'polarities', 'disposition', 'omegaAttenuation', 'slot', 'productCategory', 'comboDuration', 'followThrough', 'blockingAngle', 'stancePolarity', 'vaulted', 'isPrime', 'releaseDate'];
-const MOD_STATS = ['polarity', 'rarity', 'baseDrain', 'fusionLimit', 'compatName', 'levelStats', 'isAugment', 'isUtility', 'modSet'];
+const MOD_STATS = ['polarity', 'rarity', 'baseDrain', 'fusionLimit', 'compatName', 'levelStats', 'isAugment', 'isUtility', 'isExilus', 'modSet'];
 const ARCANE_STATS = ['rarity', 'levelStats'];
 const COMPANION_STATS = ['health', 'shield', 'armor', 'power', 'stamina', 'polarities', 'productCategory'];
 const SHARD_STATS = ['rarity'];
