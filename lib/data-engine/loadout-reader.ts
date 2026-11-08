@@ -1,3 +1,4 @@
+import { compareCompanionStats, type CompanionComparison, type CompanionStatSource } from './companion-stat-comparison';
 import { compareWeaponStats, type WeaponComparison, type WeaponStatSource } from './weapon-stat-comparison';
 import { DANTE_BASE, DANTE_SOURCE } from '../build-simulator';
 import { abilityTotals, parseEffectLine, type LevelStat } from './mod-effects';
@@ -5,10 +6,10 @@ import { readGenerated } from './generated-reader';
 import { validateLoadout, type EquipmentSlot } from './loadout';
 import type { CuratedEquipment, CuratedLoadout } from './curated-loadouts';
 
-interface Row { slug: string; name: string; imageName: string | null; stats: WeaponStatSource & { fusionLimit?: number; levelStats?: LevelStat[] } }
+interface Row { slug: string; name: string; imageName: string | null; stats: WeaponStatSource & CompanionStatSource & { productCategory?: string; fusionLimit?: number; levelStats?: LevelStat[] } }
 export interface ResolvedMod { slug: string; name: string; imageName: string | null; rank: number; maxRank: number; slot: string; effects: string[]; levelStats: LevelStat[]; publishedRank?: number }
 export interface ResolvedArcane { slug: string; name: string; imageName: string | null; rank: number; maxRank: number; effects: string[] }
-export interface ResolvedEquipment extends Omit<CuratedEquipment, 'mods' | 'arcanes'> { weaponComparison?: WeaponComparison; name: string; imageName: string | null; mods: ResolvedMod[]; arcanes: ResolvedArcane[] }
+export interface ResolvedEquipment extends Omit<CuratedEquipment, 'mods' | 'arcanes'> { weaponComparison?: WeaponComparison; companionComparison?: CompanionComparison; name: string; imageName: string | null; mods: ResolvedMod[]; arcanes: ResolvedArcane[] }
 export interface ResolvedLoadout extends Omit<CuratedLoadout, 'equipment' | 'shards'> { equipment: Record<string, ResolvedEquipment>; shards: (CuratedLoadout['shards'][number] & { imageName: string | null })[] }
 const CATEGORIES: Record<EquipmentSlot, string[]> = { warframe: ['warframes'], primary: ['primary'], secondary: ['secondary'], melee: ['melee'], companion: ['sentinels', 'pets'], companion_weapon: ['sentinel_weapons'] };
 const clean = (text: string) => text.replace(/<[^>]+>/g, '').replace(/\\n/g, '\n');
@@ -37,6 +38,7 @@ export function resolveLoadout(preset: CuratedLoadout): ResolvedLoadout {
         return { ...selection, name: row.name, imageName: row.imageName, effects: row.stats.levelStats[selection.rank].stats.map(clean) };
       }),
     };
+    if (slot === 'companion') equipment[slot].companionComparison = compareCompanionStats(item.stats, equipment[slot].mods, item.stats.productCategory === 'Sentinels' ? 'sentinels' : 'pets');
     if (['primary', 'secondary', 'melee', 'companion_weapon'].includes(slot)) equipment[slot].weaponComparison = compareWeaponStats(item.stats, equipment[slot].mods, { melee: slot === 'melee' });
   }
   const shardItems = readGenerated<Row>('shards').items;
