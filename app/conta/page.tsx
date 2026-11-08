@@ -1,3 +1,4 @@
+import AccountNavigation from '@/components/AccountNavigation';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createServerAuthClient } from '@/lib/supabase/server';
@@ -12,7 +13,7 @@ export default async function AccountPage() {
   if (error || !user) redirect('/entrar');
   const { data: profile, error: profileError } = await supabase.from('profiles').select('nickname, platform').eq('id', user.id).maybeSingle();
   return <main className="mx-auto w-full max-w-xl px-5 py-16">
-    <Link href="/" className="text-sm text-energy-cyan underline">Voltar ao Acervo Void</Link>
+    <AccountNavigation items={[{href:"/",label:"Início"},{href:"/mercado",label:"Mercado"},{href:"/conta/anuncios",label:"Meus anúncios"}]} />
     <h1 className="mt-10 font-display text-5xl text-white">Minha conta</h1>
     <p className="mt-4 break-words text-sm text-slate-300">Conectado com Google: {user.email}</p>
     <p className="mt-3 text-sm leading-relaxed text-slate-400">Este perfil é privado. Sua conta no site não cria anúncios públicos automaticamente nem acessa o jogo. Os anúncios de demonstração continuam somente no navegador.</p>

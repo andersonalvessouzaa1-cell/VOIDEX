@@ -20,7 +20,7 @@ export default function Navbar() {
             <a href="#" className="flex items-center gap-2.5 group">
               <svg viewBox="0 0 120 120" className="w-10 h-10 shrink-0" aria-hidden="true" fill="none"><polygon points="36,4 84,4 116,36 116,84 84,116 36,116 4,84 4,36" fill="#000000" stroke="#00FF41" strokeWidth="3" strokeLinejoin="miter"/> <polygon points="44,22 76,22 98,44 98,76 76,98 44,98 22,76 22,44" stroke="#008F11" strokeWidth="2" strokeLinejoin="miter"/> <polygon points="52,40 68,40 80,52 80,68 68,80 52,80 40,68 40,52" stroke="#00FF41" strokeWidth="2" strokeLinejoin="miter"/> <rect x="56" y="56" width="8" height="8" fill="#00FF41"/> <path d="M70 50L98 22M80 22H98V40M50 70L22 98M40 98H22V80" stroke="#DFFBE3" strokeWidth="5" strokeLinecap="square" strokeLinejoin="miter"/></svg>
               <div className="flex flex-col">
-                <span className="font-display text-xl sm:text-2xl font-extrabold tracking-wide text-white flex items-center leading-none">
+                <span className="font-display text-lg sm:text-2xl font-extrabold tracking-wide text-white flex items-center leading-none">
                   Acervo Void
 
                 </span>
@@ -32,7 +32,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-4 text-sm font-medium text-slate-300">
+          <nav className="hidden xl:flex items-center gap-4 text-sm font-medium text-slate-300">
             <a href="#build-lab" className="hover:text-energy-cyan transition-colors">Build Lab</a>
             <a href="/mercado" className="hover:text-energy-cyan transition-colors">
               Mercado
@@ -58,8 +58,8 @@ export default function Navbar() {
           </nav>
 
           {/* Right Controls: Language Selector & CTA */}
-          <div className="flex items-center gap-3">
-            <LanguageSelector />
+          <div className="flex shrink-0 items-center gap-1 sm:gap-3">
+            <div className="hidden sm:block"><LanguageSelector /></div>
             <Link href="/conta" className="min-h-10 px-2 py-2 text-sm text-energy-cyan hover:underline">Conta</Link>
 
             <div className="hidden sm:flex items-center">
@@ -72,7 +72,7 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="flex lg:hidden">
+            <div className="flex xl:hidden">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2 rounded-md text-slate-400 hover:text-white hover:bg-void-850"
@@ -88,7 +88,8 @@ export default function Navbar() {
 
       {/* Mobile Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-void-900/95 border-b border-void-border px-4 pt-3 pb-6 space-y-3 backdrop-blur-lg">
+        <div className="xl:hidden bg-void-900/95 border-b border-void-border px-4 pt-3 pb-6 space-y-3 backdrop-blur-lg">
+          <div className="sm:hidden"><LanguageSelector /></div>
           <a href="/mercado" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-void-800">Mercado</a>
           <a href="#build-lab" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-void-800">Build Lab</a>
           <a

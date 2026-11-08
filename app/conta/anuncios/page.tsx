@@ -1,3 +1,4 @@
+import AccountNavigation from '@/components/AccountNavigation';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createServerAuthClient } from '@/lib/supabase/server';
@@ -16,8 +17,8 @@ export default async function MyListingsPage() {
   ]);
   const catalog = new Map(getTradeCatalog().map(item => [item.key, item]));
   return <main className="mx-auto w-full max-w-4xl px-5 py-12">
-    <nav className="flex flex-wrap gap-5 text-sm text-energy-cyan underline"><Link href="/mercado">Mercado</Link><Link href="/conta">Minha conta</Link><Link href="/">Início</Link></nav>
-    <h1 className="mt-8 font-display text-5xl">Meus anúncios</h1>
+    <AccountNavigation items={[{href:"/mercado",label:"Mercado"},{href:"/conta",label:"Minha conta"},{href:"/",label:"Início"}]} />
+    <h1 className="mt-8 break-words font-display text-4xl sm:text-5xl">Meus anúncios</h1>
     <p className="mt-4 text-sm leading-relaxed text-slate-400">Até 20 anúncios por conta. Anúncios ficam públicos por 30 dias; retire os antigos antes de publicar novamente. Aqui ficam seus anúncios reais, separados da demonstração local. Confirme sempre disponibilidade e compatibilidade de plataforma no jogo.</p>
     {profileError || error ? <p role="alert" className="mt-6 border border-orokin-gold p-4 text-amber-100">O mercado está indisponível neste momento. Nenhum dado de exemplo foi usado.</p> : <>
       {!profile ? <p className="mt-6 text-sm">Salve seu nickname e plataforma em <Link href="/conta" className="text-energy-cyan underline">Minha conta</Link> para publicar.</p> : (listings?.length ?? 0) < 20 ? <MarketListingForm nickname={profile.nickname} platform={profile.platform as TradePlatform} /> : <p className="mt-6 text-amber-100">Limite de 20 anúncios atingido. Edite ou retire um anúncio existente.</p>}

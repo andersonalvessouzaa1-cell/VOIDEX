@@ -14,8 +14,8 @@ export default function OwnedMarketListing({ listing, itemName }: { listing: Pub
     <h3 className="font-display text-2xl">{itemName}</h3><p className="mt-1 text-sm text-slate-400">{listing.side === 'sell' ? 'Venda' : 'Compra'} · nível {listing.item_rank} · {listing.public_nickname} · {listing.platform}</p>
     <form className="mt-3 grid gap-3 sm:grid-cols-2" onSubmit={event => { event.preventDefault(); void run(false, new FormData(event.currentTarget)); }}>
       <input type="hidden" name="id" value={listing.id} />
-      <label className="text-sm">Platina por unidade<input name="platinum" type="number" min={1} max={1000000} step={1} defaultValue={listing.platinum} required className="mt-2 w-full border border-void-border bg-void-950 p-2" /></label>
-      <label className="text-sm">Quantidade<input name="quantity" type="number" min={1} max={999} step={1} defaultValue={listing.quantity} required className="mt-2 w-full border border-void-border bg-void-950 p-2" /></label>
+      <label className="min-w-0 text-sm">Platina por unidade<input name="platinum" type="number" min={1} max={1000000} step={1} defaultValue={listing.platinum} required className="mt-2 w-full border border-void-border bg-void-950 p-2" /></label>
+      <label className="min-w-0 text-sm">Quantidade<input name="quantity" type="number" min={1} max={999} step={1} defaultValue={listing.quantity} required className="mt-2 w-full border border-void-border bg-void-950 p-2" /></label>
       <button type="submit" disabled={busy} className="border border-energy-cyan px-3 py-2 text-sm text-energy-cyan disabled:opacity-40">Salvar preço e quantidade</button>
       <button type="button" disabled={busy} className="border border-void-border px-3 py-2 text-sm text-rose-300 disabled:opacity-40" onClick={() => { if (window.confirm(`Retirar o anúncio de ${itemName}? Ele será excluído do mercado.`)) { const form = new FormData(); form.set('id', listing.id); void run(true, form); } }}>Retirar anúncio</button>
     </form>

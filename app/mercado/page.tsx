@@ -1,3 +1,4 @@
+import AccountNavigation from '@/components/AccountNavigation';
 import Link from 'next/link';
 import { getTradeCatalog } from '@/lib/trade-catalog';
 import { getPublicListings } from '@/lib/public-market-reader';
@@ -18,8 +19,8 @@ export default async function MarketPage({ searchParams }: { searchParams: Promi
   const data = invalidItem ? { rows: [], unavailable: false, hasMore: false } : await getPublicListings(key, platform, side, page);
   const pageUrl = (next: number) => `/mercado?${new URLSearchParams({ item_key: key, platform, side, page: String(next) })}`;
   return <main className="mx-auto w-full max-w-6xl px-5 py-12">
-    <nav className="flex flex-wrap gap-5 text-sm text-energy-cyan underline"><Link href="/">Início</Link><Link href="/#build-lab">Build Lab</Link><Link href="/conta/anuncios">Meus anúncios / publicar</Link></nav>
-    <h1 className="mt-8 font-display text-5xl">Mercado da comunidade</h1>
+    <AccountNavigation items={[{href:"/",label:"Início"},{href:"/#build-lab",label:"Build Lab"},{href:"/conta/anuncios",label:"Meus anúncios / publicar"}]} />
+    <h1 className="mt-8 break-words font-display text-4xl sm:text-5xl">Mercado da comunidade</h1>
     <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-300">Anúncios reais publicados pelos usuários do Acervo Void. Consulte mods e arcanos negociáveis, com preço em platina por unidade. Não há preços, vendedores ou reputação de exemplo nesta página.</p>
     <p className="mt-3 max-w-3xl border-l-2 border-orokin-gold pl-4 text-sm text-amber-100">O site não verifica a posse dos itens ou do nickname, não informa presença online e não realiza trocas. Confirme disponibilidade e compatibilidade da plataforma diretamente no jogo. Anúncio não significa venda concluída.</p>
     <MarketFilters item={catalog.get(key) ?? null} platform={platform} side={side} />
