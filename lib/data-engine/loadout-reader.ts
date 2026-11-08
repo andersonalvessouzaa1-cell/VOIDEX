@@ -1,3 +1,4 @@
+import { findWarframeModConflicts } from './warframe-mod-conflicts';
 import { compareCompanionStats, getCompanionCategory, type CompanionComparison, type CompanionStatSource } from './companion-stat-comparison';
 import { compareWeaponStats, type WeaponComparison, type WeaponStatSource } from './weapon-stat-comparison';
 import { DANTE_BASE, DANTE_SOURCE } from '../build-simulator';
@@ -38,6 +39,7 @@ export function resolveLoadout(preset: CuratedLoadout): ResolvedLoadout {
         return { ...selection, name: row.name, imageName: row.imageName, effects: row.stats.levelStats[selection.rank].stats.map(clean) };
       }),
     };
+    if (slot === 'warframe' && findWarframeModConflicts(equipment[slot].mods.map(mod => mod.slug)).length) throw new Error('Mods incompatíveis no preset de Warframe.');
     if (slot === 'companion') equipment[slot].companionComparison = compareCompanionStats(item.stats, equipment[slot].mods, getCompanionCategory(item.slug, item.stats.productCategory));
     if (['primary', 'secondary', 'melee', 'companion_weapon'].includes(slot)) equipment[slot].weaponComparison = compareWeaponStats(item.stats, equipment[slot].mods, { melee: slot === 'melee' });
   }

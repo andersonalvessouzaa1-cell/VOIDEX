@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { validateWarframeSlots } from '@/lib/data-engine/warframe-slots';
+import { findWarframeModConflicts, WARFRAME_CONFLICT_FAMILIES } from '@/lib/data-engine/warframe-mod-conflicts';
 import { summarizeWarframeCapacity, type AuraMod, type AuraSlot } from '@/lib/data-engine/aura-capacity';
 import ItemImage from './ItemImage';
 import { ABILITY_LABELS, abilityTotals, effectsAtRank, type AbilityKey, type LevelStat } from '@/lib/data-engine/mod-effects';
@@ -23,6 +24,7 @@ export default function WarframeModLab() {
   const [frameQuery, setFrameQuery] = useState('');
   const [modQuery, setModQuery] = useState('');
   const [picks, setPicks] = useState<Record<string, number>>({});
+  const [selectionError, setSelectionError] = useState('');
   const [capacity, setCapacity] = useState(30);
   const [matchingSlots, setMatchingSlots] = useState<Record<string, boolean>>({});
   const [auras, setAuras] = useState<AuraMod[]>([]);
@@ -57,7 +59,20 @@ export default function WarframeModLab() {
   try { budget = summarizeWarframeCapacity(chosen.map(({ mod, rank }) => ({ slug: mod.slug, rank, baseDrain: mod.baseDrain ?? NaN, polarity: mod.polarity })), capacity, matchingSlots, aura ? { mod: aura, rank: auraRank, slot: auraSlot } : null); }
   catch { budget = null; }
 
-  const toggle = (mod: ModRow) => setPicks(prev => { const next = { ...prev }; if (mod.slug in next) delete next[mod.slug]; else next[mod.slug] = mod.fusionLimit; return next; });
+  const toggle = (mod: ModRow) => {
+    const next = { ...picks };
+    if (mod.slug in next) delete next[mod.slug];
+    else {
+      next[mod.slug] = mod.fusionLimit;
+      const conflict = findWarframeModConflicts(Object.keys(next))[0];
+      if (conflict) {
+        const names = conflict.members.map(slug => bySlug.get(slug)?.name ?? slug).join(' e ');
+        setSelectionError(`Não adicionado: ${mod.name}. ${names} são variantes incompatíveis da família ${conflict.family}. Remova a variante atual antes de adicionar outra.`);
+        return;
+      }
+    }
+    setSelectionError(''); setPicks(next);
+  };
   const field = 'w-full px-3 py-2.5 bg-void-950 border border-void-border text-slate-100 placeholder:text-slate-500';
 
   if (error) return <div role="alert" className="mb-12 border border-rose-400 p-5 text-rose-300">{error} Rode <code>node scripts/sync-game-data.mjs</code> na pasta do projeto e recarregue.</div>;
@@ -99,6 +114,7 @@ export default function WarframeModLab() {
             <p className="mt-2 text-sm">Vagas comuns: {slotLayout.normalUsed}/8 · Exilus: {slotLayout.exilusUsed}/1</p>
             <label className="mt-3 flex items-center gap-2 text-sm"><input type="checkbox" checked={hasExilusAdapter} onChange={event => setHasExilusAdapter(event.target.checked)} />Adaptador Exilus instalado (simulação)</label>
             {slotLayout.errors.map((message, index) => <p key={`${index}-${message}`} role="alert" className="mt-2 text-sm text-amber-200">{message}</p>)}
+            {selectionError && <p role="alert" className="mt-3 text-sm text-amber-100">{selectionError}</p>}
             {chosen.length === 0 && <p className="mt-2 text-sm text-slate-400">Nenhum mod escolhido. Clique em um mod da lista.</p>}
             <ul className="mt-3 space-y-3">
               {chosen.map(({ mod, rank }) => (
@@ -113,7 +129,7 @@ export default function WarframeModLab() {
                 </li>
               ))}
             </ul>
-            <button type="button" onClick={() => { setPicks({}); setMatchingSlots({}); setExilusChoices({}); setAuraSlug(''); setAuraRank(0); setAuraSlot('neutral'); }} className="mt-4 border border-void-border px-3 py-2 text-sm">Limpar mods do Warframe</button>
+            <button type="button" onClick={() => { setPicks({}); setSelectionError(''); setMatchingSlots({}); setExilusChoices({}); setAuraSlug(''); setAuraRank(0); setAuraSlot('neutral'); }} className="mt-4 border border-void-border px-3 py-2 text-sm">Limpar mods do Warframe</button>
             <section aria-label="Consumo parcial do Warframe" className="mt-5 border border-void-border p-4">
               <label htmlFor="warframe-aura" className="block text-sm">Aura revisada (somente capacidade)</label>
               <select id="warframe-aura" value={auraSlug} onChange={event => { const next = auras.find(mod => mod.slug === event.target.value); setAuraSlug(next?.slug ?? ''); setAuraRank(next?.maxRank ?? 0); setAuraSlot('neutral'); }} className={field}><option value="">Sem aura</option>{auras.map(mod => <option key={mod.slug} value={mod.slug}>{mod.name}</option>)}</select>
@@ -121,12 +137,13 @@ export default function WarframeModLab() {
               <label htmlFor="warframe-capacity" className="block text-sm">Capacidade simulada do Warframe no nível 30</label>
               <select id="warframe-capacity" value={capacity} onChange={event => setCapacity(Number(event.target.value))} className={field}><option value={30}>30 — sem Reator Orokin</option><option value={60}>60 — com Reator Orokin</option></select>
               {budget ? <p role="status" className={`mt-3 text-sm ${budget.remaining < 0 ? 'text-rose-300' : 'text-energy-cyan'}`}>Consumo parcial: {budget.used}/{budget.capacity} pontos. Aura: +{budget.auraBonus}. {budget.remaining < 0 ? `Excede em ${-budget.remaining}.` : `Restam ${budget.remaining}.`}</p> : <p role="status" className="mt-3 text-sm text-amber-100">Há custos ou slots sem regra confirmada nesta seleção; consumo indisponível.</p>}
-              <p className="mt-3 text-xs text-slate-400">Somente os mods selecionados, em vagas neutras ou simuladas iguais. A aura selecionada soma capacidade após o Reator. Universal simula Aura Forma, sem verificar seu uso no jogo. Não calcula polaridades diferentes dos mods comuns, outros slots especiais ou quantidade de Forma aplicada; não certifica vagas reais, famílias incompatíveis ou encaixe completo.</p>
+              <p className="mt-3 text-xs text-slate-400">Somente os mods selecionados, em vagas neutras ou simuladas iguais. A aura selecionada soma capacidade após o Reator. Universal simula Aura Forma, sem verificar seu uso no jogo. Não calcula polaridades diferentes dos mods comuns, outros slots especiais ou quantidade de Forma aplicada; não certifica vagas reais, todas as famílias incompatíveis ou encaixe completo.</p>
               <a href="https://support.warframe.com/hc/en-us/articles/200500194-Mod-Guide-Use-Fusion-Transmutation-Sale" target="_blank" rel="noreferrer" className="mt-2 inline-block text-xs text-energy-cyan underline">Regra oficial de custo e polaridade</a>
               <a href="https://www.warframe.com/en/news/przewodnik-po-modach" target="_blank" rel="noreferrer" className="mt-2 block text-xs text-energy-cyan underline">Regra oficial do bônus de aura</a>
             </section>
-            <p className="mt-3 text-xs text-slate-400">Validação parcial das vagas: Exilus usa a mesma capacidade dos mods comuns; o adaptador não adiciona pontos. Somente mods identificados como Exilus na base sincronizada podem usar essa vaga. Famílias incompatíveis e vagas reais continuam sem certificação.</p>
+            <p className="mt-3 text-xs text-slate-400">Validação parcial das vagas: Exilus usa a mesma capacidade dos mods comuns; o adaptador não adiciona pontos. Somente mods identificados como Exilus na base sincronizada podem usar essa vaga. Outras famílias incompatíveis e vagas reais continuam sem certificação.</p>
             <a href="https://github.com/WFCD/warframe-items" target="_blank" rel="noreferrer" className="mt-2 inline-block text-xs text-energy-cyan underline">Fonte da elegibilidade Exilus: WFCD</a>
+            <details className="mt-3 text-xs text-slate-400"><summary className="cursor-pointer">Incompatibilidades revisadas e fontes</summary><p className="mt-2">Intensify, Continuity e Stretch: variantes da mesma família não podem ser combinadas. Outras famílias continuam em revisão. Fontes comunitárias consultadas em 08/11/2026.</p>{WARFRAME_CONFLICT_FAMILIES.map(family => <a key={family.name} href={family.source} target="_blank" rel="noreferrer" className="mt-2 block text-energy-cyan underline">Família {family.name}</a>)}</details>
             <table className="w-full mt-5 text-sm tabular-nums">
               <caption className="sr-only">Atributos de habilidade antes e depois dos mods</caption>
               <thead><tr className="text-left text-slate-400"><th scope="col" className="py-2">Atributo</th><th scope="col">Antes</th><th scope="col">Depois</th><th scope="col">Variação</th></tr></thead>
