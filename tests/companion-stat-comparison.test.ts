@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { compareCompanionStats } from '../lib/data-engine/companion-stat-comparison';
+import { compareCompanionStats, getCompanionCategory } from '../lib/data-engine/companion-stat-comparison';
 export function runCompanionStatComparisonTests() {
   let passed = 0;
   const eq = (a: unknown, b: unknown) => { assert.deepEqual(a, b); passed++; };
@@ -14,6 +14,15 @@ export function runCompanionStatComparisonTests() {
   eq(compareCompanionStats(base, [{ ...mod('enhanced_vitality', '+250% Health'), rank: 9 }], 'sentinels').rows.health.after, null);
   eq(compareCompanionStats({ health: NaN, shield: 0, armor: -1 }, [], 'sentinels').rows.health.after, null);
   eq(compareCompanionStats(base, [], 'pets').rows.health.after, null);
+  const kavat = compareCompanionStats({ health: 310, shield: 270, armor: 300 }, [mod('enhanced_vitality', '+250% Health')], 'beasts');
+  eq(kavat.rows.health.after, 1085); eq(kavat.rows.shields.after, 270); eq(kavat.rows.armor.after, 300);
   eq(compareCompanionStats(base, [mod('synth_fiber', 'Health Orbs increase Armor for Companions by 100% for 12s.')], 'sentinels').rows.armor.after, 80);
+  eq(getCompanionCategory('adarza_kavat', 'KubrowPets'), 'beasts');
+  eq(getCompanionCategory('helminth_charger', 'KubrowPets'), 'beasts');
+  eq(getCompanionCategory('panzer_vulpaphyla', 'KubrowPets'), 'unsupported');
+  eq(getCompanionCategory('venari', 'SpecialItems'), 'unsupported');
+  eq(getCompanionCategory('bhaira_hound', 'Pistols'), 'unsupported');
+  eq(getCompanionCategory('adra_mutagen', 'Pistols'), 'unsupported');
+  eq(getCompanionCategory('diriga', 'Sentinels'), 'sentinels');
   return { passed, failed: 0 };
 }

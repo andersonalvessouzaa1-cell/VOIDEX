@@ -18,13 +18,18 @@ const RULES: Record<string, { metric: CompanionMetric; label: string }> = {
 // Lista explícita: nomes desconhecidos bloqueiam o resultado, nunca viram bônus inventado.
 const OUTSIDE = new Set(['primed_regen', 'manifold_bond', 'duplex_bond', 'tenacious_bond', 'vacuum', 'arc_coil', 'primed_animal_instinct', 'momentous_bond', 'synth_deconstruct', 'guardian', 'synth_fiber']);
 const valid = (v: unknown): v is number => typeof v === 'number' && Number.isFinite(v) && v >= 0;
+export function getCompanionCategory(slug: string, productCategory?: string): 'sentinels' | 'beasts' | 'unsupported' {
+  if (productCategory === 'Sentinels') return 'sentinels';
+  if (productCategory === 'KubrowPets' && (/_(kavat|kubrow)$/.test(slug) || slug === 'helminth_charger')) return 'beasts';
+  return 'unsupported';
+}
 export function compareCompanionStats(source: CompanionStatSource, mods: Mod[], category: string): CompanionComparison {
   const base = { health: source.health, shields: source.shield, armor: source.armor };
   const bonus = { health: 0, shields: 0, armor: 0 };
   const blocked = new Set<CompanionMetric>();
   const excludedMods: string[] = [];
   const keys: CompanionMetric[] = ['health', 'shields', 'armor'];
-  if (category !== 'sentinels') keys.forEach(k => blocked.add(k));
+  if (category !== 'sentinels' && category !== 'beasts') keys.forEach(k => blocked.add(k));
   for (const mod of mods) {
     const rule = Object.prototype.hasOwnProperty.call(RULES, mod.slug) ? RULES[mod.slug] : undefined;
     if (!rule) {
@@ -50,7 +55,7 @@ export function compareCompanionStats(source: CompanionStatSource, mods: Mod[], 
     coverage: 'PARCIAL', rows, excludedMods,
     limitations: [
       'Base do catálogo sincronizado em 07/11/2026. Sem multiplicar por nível: a revisão de companheiros removeu os bônus de vida e escudos por rank.',
-      'Cobertura inicial somente para sentinelas: vida, escudos e armadura. Pets e companheiros modulares aguardam regras próprias.',
+      'Cobertura estática: sentinelas, Kavats, Kubrows e Helminth Charger. Venari, Vulpaphylas, Predasites e companheiros modulares aguardam regras próprias.',
       'Enhanced Vitality, Calculated Redirection e Metal Fiber usam o percentual do rank selecionado sobre a base. Linked mods dependem do Warframe e deixam o atributo sem cálculo.',
       'Gatilhos de preceitos e Bond, cura, regeneração, invulnerabilidade, arcanos e bônus de outros equipamentos não são simulados. Não representa sobrevivência em combate nem teste dentro do jogo.',
       'Sem cálculo indica dado ausente ou regra ainda não revisada. A arma do companheiro tem comparação separada.',

@@ -1,3 +1,7 @@
+## Economia e B1 — 08/11/2026
+Regra do dono registrada em AGENTS.md: saída mínima/diff, leitura pontual e somente suítes afetadas. Runner aceita npm test -- tests/arquivo.test.ts e rejeita caminhos inválidos.
+Motor ampliado para Kavats, Kubrows e Helminth Charger; classificação explícita bloqueia Venari, peças e companheiros modulares/variáveis. Validação específica:21 verificações de companheiros +42 de integração do preset aprovadas; typecheck aprovado. B1 continua parcial: faltam editor/presets de pets, variantes/modulares e arcanos por tipo. Código local/GitHub atualizado; não implantado nesta etapa (agrupar publicação com próxima entrega visível).
+
 ## Pasta única — 08/11/2026
 Pasta CANÔNICA e única de desenvolvimento/publicação: /home/anderson/Documentos/GitHub/VOIDEX . Recebeu a versão atualizada, histórico Git, dependências e configuração local/Vercel. O caminho anterior work/acervovoid-release é apenas um link para esta pasta, sem segunda cópia. Backup das alterações antigas antes da unificação: [chatroot]/work/backups/VOIDEX-antes-unificacao-20261108.tar.gz, sem node_modules/caches. Não desenvolver no backup.
 As instruções históricas para preservar a pasta original como cópia antiga estão superadas por esta unificação expressamente pedida pelo dono. Arquivos de autenticação CLI continuam privados em [chatroot]/work/github-auth e work/vercel-auth, fora do repositório.

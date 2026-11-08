@@ -25,7 +25,11 @@ for (const file of [...walk(path.join(root, 'lib')), ...walk(path.join(root, 'te
   fs.writeFileSync(target, ts.transpileModule(fs.readFileSync(file, 'utf8'), opts).outputText);
 }
 
-const suites = walk(path.join(root, 'tests')).filter(f => /\.test\.ts$/.test(f));
+const requested = process.argv.slice(2).map(file => path.resolve(root, file));
+if (requested.some(file => !file.startsWith(path.join(root, 'tests') + path.sep) || !/\.test\.ts$/.test(file) || !fs.existsSync(file))) {
+  console.error('Informe arquivos tests/*.test.ts existentes.'); process.exit(1);
+}
+const suites = requested.length ? [...new Set(requested)] : walk(path.join(root, 'tests')).filter(f => /\.test\.ts$/.test(f));
 if (!suites.length) { console.error('Nenhum arquivo tests/*.test.ts encontrado.'); process.exit(1); }
 
 (async () => {
