@@ -1,6 +1,6 @@
 # VOIDEX: instruções para agentes de IA
 
-Projeto: site de trocas de Warframe (Next.js 15, React 18, Tailwind). Pasta: `C:\Projetos\VOIDEX`. Idioma da interface e dos commits: PT-BR.
+Projeto: site de trocas de Warframe (Next.js 15, React 18, Tailwind). Pasta: `/home/anderson/Documentos/GitHub/VOIDEX`. Idioma da interface e dos commits: PT-BR.
 
 ## Regras que nunca mudam
 1. Não invente dados. Preços de exemplo são rotulados como exemplo. A consulta real (Warframe Market) nunca usa os dados da demonstração.
