@@ -55,26 +55,42 @@ export default function CompleteLoadoutLab() {
       </select>
       {error && <p role="alert" className="mt-4 text-rose-300">{error}</p>}
       {loading && <p role="status" className="mt-4 text-slate-400">Carregando presets…</p>}
-      {!loading && !error && entries.length === 0 && <p role="status" className="mt-4 text-slate-300">Ainda sem preset completo curado para este personagem. O modo livre abaixo continua disponível.</p>}
+      {!loading && !error && entries.length === 0 && <p role="status" className="mt-4 text-slate-300">Ainda sem preset completo curado para este personagem. Use “Testar Warframe” para explorar os atributos no modo livre.</p>}
       <div className="mt-4 flex flex-wrap gap-3" role="group" aria-label="Selecionar preset completo">
         {entries.map(item => <button type="button" key={item.preset.id} aria-pressed={selected === item.preset.id} onClick={() => setSelected(item.preset.id)} className="border border-void-border px-4 py-3 text-left hover:border-energy-cyan aria-pressed:border-energy-cyan aria-pressed:text-energy-cyan">{item.preset.name}</button>)}
       </div>
       {preset && <>
         <p className="mt-5 border-l-2 border-orokin-gold pl-3 text-sm text-amber-100">Composição baseada em fontes comunitárias. Este conjunto e os ajustes da VOIDEX não foram testados no jogo.</p>
         <details className="mt-4 border-b border-void-border pb-4"><summary className="cursor-pointer text-sm text-slate-300">Fontes, ajustes e limites desta composição</summary><ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-400">{preset.notes.map(note => <li key={note}>{note}</li>)}</ul></details>
+        <div className="mt-6 flex flex-col gap-6 border-y border-void-border py-6 sm:flex-row sm:items-center">
+          <ItemImage key={preset.equipment.warframe.slug} src={art(preset.equipment.warframe.imageName)} alt={preset.equipment.warframe.name} size={144} />
+          <div className="min-w-0 flex-1"><p className="text-sm text-slate-400">Warframe do conjunto</p><h4 className="font-display text-5xl text-white">{preset.equipment.warframe.name}</h4>
+            {comparison && <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4">{(['strength', 'duration', 'efficiency', 'range'] as const).map(stat => <div key={stat}><dt className="text-sm text-slate-400">{STAT_LABELS[stat]}</dt><dd className="font-display text-4xl text-energy-cyan tabular-nums">{fmt(comparison.stats[stat])}%</dd></div>)}</dl>}
+            <p className="mt-3 text-xs text-slate-400">Valores calculados desta composição. Comparação detalhada abaixo; efeitos condicionais inativos.</p>
+          </div>
+        </div>
         <div className="mt-6 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.75fr)]">
           <div className="min-w-0">
-            {Object.entries(preset.equipment).map(([slot, part]) => <details key={slot} open className="border-b border-void-border py-4">
+            {Object.entries(preset.equipment).map(([slot, part]) => <details key={`${preset.id}-${slot}`} open={slot === 'warframe'} className="border-b border-void-border py-4">
               <summary className="cursor-pointer font-display text-2xl text-white">{LABELS[slot] ?? slot}: {part.name}</summary>
-              <div className="mt-3 flex items-center gap-3"><ItemImage src={art(part.imageName)} alt="" size={56} /><div className="text-sm"><a href={part.source.url} target="_blank" rel="noreferrer" className="text-energy-cyan underline">Fonte: {part.source.author ?? part.source.name}</a><p className="text-slate-400">Consultada em {part.source.retrievedAt.split('-').reverse().join('/')}</p></div></div>
+              <div className="mt-3 flex items-center gap-3"><ItemImage src={art(part.imageName)} alt="" size={80} /><div className="text-sm"><a href={part.source.url} target="_blank" rel="noreferrer" className="text-energy-cyan underline">Fonte: {part.source.author ?? part.source.name}</a><p className="text-slate-400">Consultada em {part.source.retrievedAt.split('-').reverse().join('/')}</p></div></div>
               {part.weaponComparison && <WeaponStatComparison key={`${slot}-${part.slug}`} id={`weapon-mode-${slot}-${part.slug}`} name={part.name} comparison={part.weaponComparison} />}
-              <ul className="mt-4 divide-y divide-void-border">
-                {part.mods.map(mod => <li key={mod.slug} className="flex gap-3 py-3"><ItemImage src={art(mod.imageName)} alt="" size={40} /><div className="min-w-0"><p className="text-white">{mod.name} <span className="text-xs text-slate-400">{SLOT_LABELS[mod.slot] ?? 'Mod'} · nível {mod.rank}/{mod.maxRank}</span></p><p className="mt-1 whitespace-pre-line text-xs text-slate-400">{mod.effects.length ? mod.effects.join(' · ') : 'Efeito não descrito na base sincronizada; consulte a fonte.'}</p>{mod.publishedRank !== undefined && mod.publishedRank !== mod.rank && <p className="mt-1 text-xs text-amber-100">Ajuste VOIDEX: a fonte usa nível {mod.publishedRank}; aqui está no máximo.</p>}</div></li>)}
+              <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                {part.mods.map(mod => <li key={mod.slug} className="min-w-0 border border-void-border bg-void-900 p-3">
+                  <div className="flex justify-center"><ItemImage src={art(mod.imageName)} alt="" size={112} /></div>
+                  <p className="mt-3 break-words text-sm font-semibold text-white">{mod.name}</p><p className="mt-1 text-xs text-slate-400">{SLOT_LABELS[mod.slot] ?? 'Mod'} · nível {mod.rank}/{mod.maxRank}</p>
+                  <details className="mt-3 text-xs text-slate-400"><summary className="cursor-pointer py-2 text-energy-cyan">Ver efeitos</summary><p className="mt-2 whitespace-pre-line">{mod.effects.length ? mod.effects.join(' · ') : 'Efeito não descrito na base sincronizada; consulte a fonte.'}</p>{mod.publishedRank !== undefined && mod.publishedRank !== mod.rank && <p className="mt-2 text-amber-100">Ajuste VOIDEX: a fonte usa nível {mod.publishedRank}; aqui está no máximo.</p>}</details>
+                </li>)}
               </ul>
               <h4 className="mt-4 font-display text-xl text-white">Arcanos</h4>
-              {part.arcanes.length ? <ul className="mt-2 space-y-3">{part.arcanes.map(arcane => <li key={arcane.slug} className="text-sm"><p>{arcane.name} · nível {arcane.rank}/{arcane.maxRank}</p><p className="mt-1 whitespace-pre-line text-xs text-slate-400">{arcane.effects.join(' · ')}</p></li>)}</ul> : <p className="mt-1 text-sm text-slate-400">A configuração da fonte não equipa arcanos nesta parte.</p>}
+              {part.arcanes.length ? <ul className="mt-2 space-y-3">{part.arcanes.map(arcane => <li key={arcane.slug} className="flex items-start gap-3 text-sm"><ItemImage src={art(arcane.imageName)} alt="" size={72} /><div className="min-w-0"><p>{arcane.name} · nível {arcane.rank}/{arcane.maxRank}</p><p className="mt-1 whitespace-pre-line text-xs text-slate-400">{arcane.effects.join(' · ')}</p></div></li>)}</ul> : <p className="mt-1 text-sm text-slate-400">A configuração da fonte não equipa arcanos nesta parte.</p>}
             </details>)}
-            <section className="border-b border-void-border py-5" aria-label="Fragmentos do preset"><h4 className="font-display text-2xl text-white">Fragmentos de Archon</h4><ol className="mt-3 space-y-3">{preset.shards.map((shard, index) => <li key={index} className="text-sm"><p>Vaga {index + 1}: {SHARD_LABELS[shard.color] ?? shard.color} {shard.tauforged ? 'tauforjado' : 'normal'} — {EFFECT_LABELS[shard.effect] ?? shard.effect} +{fmt(shard.value)}{shard.unit}</p><a href={shard.source.url} target="_blank" rel="noreferrer" className="text-xs text-energy-cyan underline">Fonte do efeito</a></li>)}</ol></section>
+            <section className="border-b border-void-border py-5" aria-label="Fragmentos do preset">
+              <h4 className="font-display text-2xl text-white">Fragmentos de Archon</h4>
+              <ol className="mt-3 divide-y divide-void-border">{preset.shards.map((shard, index) => <li key={index} className="flex items-center gap-4 py-4">
+                <ItemImage src={art(shard.imageName)} alt="" size={72} /><div className="min-w-0 flex-1"><p className="text-sm text-white">{SHARD_LABELS[shard.color] ?? shard.color} {shard.tauforged ? 'tauforjado' : 'normal'} <span className="text-xs text-slate-400">· vaga {index + 1}</span></p><p className="mt-1 text-sm text-slate-300">{EFFECT_LABELS[shard.effect] ?? shard.effect}</p><p className="font-display text-3xl text-energy-cyan">+{fmt(shard.value)}{shard.unit}</p><a href={shard.source.url} target="_blank" rel="noreferrer" className="text-xs text-energy-cyan underline">Fonte do efeito</a></div>
+              </li>)}</ol>
+            </section>
             <section className="py-5" aria-label="Helminth do preset"><h4 className="font-display text-2xl text-white">Helminth</h4>{preset.helminth.kind === 'subsumed' ? <><p className="mt-2">{preset.helminth.ability} no lugar de {preset.helminth.replacedAbility}.</p><a href={preset.helminth.source.url} target="_blank" rel="noreferrer" className="text-sm text-energy-cyan underline">Fonte da troca</a></> : <p>{preset.helminth.note}</p>}</section>
           </div>
           <aside className="order-first min-w-0 border border-void-border bg-void-900 p-5 lg:order-last lg:sticky lg:top-24" aria-label="Resultado do preset">

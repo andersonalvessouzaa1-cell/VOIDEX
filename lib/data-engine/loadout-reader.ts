@@ -9,7 +9,7 @@ interface Row { slug: string; name: string; imageName: string | null; stats: Wea
 export interface ResolvedMod { slug: string; name: string; imageName: string | null; rank: number; maxRank: number; slot: string; effects: string[]; levelStats: LevelStat[]; publishedRank?: number }
 export interface ResolvedArcane { slug: string; name: string; imageName: string | null; rank: number; maxRank: number; effects: string[] }
 export interface ResolvedEquipment extends Omit<CuratedEquipment, 'mods' | 'arcanes'> { weaponComparison?: WeaponComparison; name: string; imageName: string | null; mods: ResolvedMod[]; arcanes: ResolvedArcane[] }
-export interface ResolvedLoadout extends Omit<CuratedLoadout, 'equipment'> { equipment: Record<string, ResolvedEquipment> }
+export interface ResolvedLoadout extends Omit<CuratedLoadout, 'equipment' | 'shards'> { equipment: Record<string, ResolvedEquipment>; shards: (CuratedLoadout['shards'][number] & { imageName: string | null })[] }
 const CATEGORIES: Record<EquipmentSlot, string[]> = { warframe: ['warframes'], primary: ['primary'], secondary: ['secondary'], melee: ['melee'], companion: ['sentinels', 'pets'], companion_weapon: ['sentinel_weapons'] };
 const clean = (text: string) => text.replace(/<[^>]+>/g, '').replace(/\\n/g, '\n');
 
@@ -39,7 +39,14 @@ export function resolveLoadout(preset: CuratedLoadout): ResolvedLoadout {
     };
     if (['primary', 'secondary', 'melee', 'companion_weapon'].includes(slot)) equipment[slot].weaponComparison = compareWeaponStats(item.stats, equipment[slot].mods, { melee: slot === 'melee' });
   }
-  return { ...structuredClone(preset), equipment };
+  const shardItems = readGenerated<Row>('shards').items;
+  const shardColors: Record<string, string> = { ambar: 'amber', carmesim: 'crimson', azul: 'azure', violeta: 'violet', topazio: 'topaz', esmeralda: 'emerald' };
+  const shards = preset.shards.map(shard => {
+    const color = Object.prototype.hasOwnProperty.call(shardColors, shard.color) ? shardColors[shard.color] : null;
+    const slug = color ? `${shard.tauforged ? 'tauforged_' : ''}${color}_archon_shard` : null;
+    return { ...structuredClone(shard), imageName: shardItems.find(item => item.slug === slug)?.imageName ?? null };
+  });
+  return { ...structuredClone(preset), equipment, shards };
 }
 
 /** Cobertura inicial conferida contra o preset 817819: sem gatilhos ativos e só um mod Umbral. */

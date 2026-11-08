@@ -3,6 +3,15 @@
 Atualizado em 08/11/2026. Projeto local: `/home/anderson/Documentos/GitHub/VOIDEX`.
 Documento vivo: atualizar ao concluir cada tarefa. Não é uma declaração de que o produto já está completo.
 
+## Decisões de nome, visual e orçamento — 08/11/2026
+
+- Dono confirmou manter tudo gratuito: não comprar nem renovar domínio pago, não contratar serviços e não habilitar cobrança.
+- VoidAcervo é somente candidato provisório. VOIDEX permanece no código até concluir a consulta de marcas e confirmar a mudança. VoidTroca foi alternativa considerada.
+- Consultas anteriores ao RDAP da Verisign não encontraram registro de voidacervo.com e voidtroca.com; não houve reserva ou compra. Isso não confirma marca disponível. A consulta ao INPI retornou erro e permanece pendente.
+- Publicação deve usar subdomínio gratuito da hospedagem. voidacervo.vercel.app é apenas exemplo: disponibilidade e elegibilidade da hospedagem ainda não confirmadas.
+- Revisão visual autorizada: preservar identidade Matrix Green, reduzir textos repetidos e apresentar detalhes progressivamente. Não remover limitações nem funcionalidades. Revisão responsiva completa continua pendente.
+- frontend-design instalada a pedido do dono. Não instalar outros pacotes para suposta economia de tokens. Não há garantia de economia percentual.
+
 ## 1. Objetivo e decisões
 
 Criar um site gratuito, útil em português e no celular, que conecte planejamento de equipamentos de Warframe a informações reais de mercado. Referência de mercado: Warframe.market. Referências de builds: Overframe, TheKengineer, Pandaahh, FrameLegend, Noxsframe e Voidforge. Comparar funções e problemas de uso; implementar soluções próprias, preservando o tema Matrix Green.
@@ -10,6 +19,8 @@ Criar um site gratuito, útil em português e no celular, que conecte planejamen
 Orçamento inicial: zero para hospedagem, domínio e serviços de IA adicionais. Não contratar serviços ou habilitar cobrança automática. Não exigir API paga para o funcionamento do site. Não acessar conta do jogo, executar trocas ou movimentar platina. O site ajuda a planejar e contatar jogadores; a troca acontece no jogo.
 
 Todos os Warframes, armas e companheiros devem ser pesquisáveis. Presets completos devem cobrir todos os Warframes do catálogo suportado; papéis variam conforme suas especialidades, sem impor três builds artificiais por personagem. Para armas e companheiros, manter catálogo, editor e presets próprios com relatório de cobertura. Não declarar cobertura completa enquanto existirem itens pendentes. Exceções justificadas precisam aparecer no relatório e ser aprovadas pelo dono.
+
+Incremento visual de 08/11/2026: primeira comparação pública das referências e apresentação do Build Lab melhorada; consulte `REFERENCIAS_VISUAL_V1.md`. Não altera cobertura de presets/cálculos. Noxsframe é a referência visual preferida pelo dono. Preparação de clone limpo continua necessária antes da prévia pública gratuita.
 
 ## 2. Estado real conhecido
 

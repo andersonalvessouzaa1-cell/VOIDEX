@@ -13,6 +13,13 @@ export function runCuratedLoadoutTests() {
   check(preset.status, 'NAO_TESTADO');
   const resolved = resolveLoadout(preset);
   check(Object.keys(resolved.equipment).length, 6);
+  check(resolved.shards.find(shard => shard.color === 'ambar' && shard.tauforged)?.imageName, 'ArchonShardNiraMythicGlow.png');
+  check(resolved.shards.find(shard => shard.color === 'carmesim' && shard.tauforged)?.imageName, 'ArchonShardAmarMythicGlow.png');
+  const normalShards = structuredClone(preset);
+  normalShards.shards = normalShards.shards.map(shard => ({ ...shard, tauforged: false, value: shard.color === 'ambar' ? 25 : 10 }));
+  const normalResolved = resolveLoadout(normalShards);
+  check(normalResolved.shards[0].imageName, 'ArchonShardNira.png');
+  check(normalResolved.shards.find(shard => shard.color === 'carmesim')?.imageName, 'ArchonShardAmar.png');
   for (const slot of ['primary', 'secondary', 'melee', 'companion_weapon']) check((resolved.equipment[slot].weaponComparison?.attacks.length ?? 0) > 0, true);
   check(resolved.equipment.warframe.weaponComparison, undefined);
   check(resolved.equipment.companion.weaponComparison, undefined);
