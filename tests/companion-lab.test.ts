@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { getCompanionLab } from '../lib/data-engine/companion-lab-reader';
-import { resolveCompanionDraft } from '../lib/data-engine/companion-lab';
+import { resolveCompanionDraft, summarizeCompanionCapacity } from '../lib/data-engine/companion-lab';
 export function runCompanionLabTests() {
   let passed = 0;
   const eq = (a: unknown, b: unknown) => { assert.deepEqual(a, b); passed++; };
@@ -21,5 +21,14 @@ export function runCompanionLabTests() {
   bad(() => resolveCompanionDraft(cat, data.mods, [{ slug: 'unknown', rank: 0 }]));
   bad(() => resolveCompanionDraft(cat, data.mods, [{ slug: mod.slug, rank: 0 }, { slug: mod.slug, rank: 0 }]));
   bad(() => resolveCompanionDraft(cat, data.mods, null));
+  const picks = data.mods.map(mod => ({ slug: mod.slug, rank: mod.maxRank }));
+  eq(summarizeCompanionCapacity(cat, data.mods, picks, 30, {})?.used, 40);
+  eq(summarizeCompanionCapacity(cat, data.mods, picks, 30, {})?.remaining, -10);
+  eq(summarizeCompanionCapacity(cat, data.mods, picks, 60, {})?.remaining, 20);
+  eq(summarizeCompanionCapacity(cat, data.mods, picks, 30, Object.fromEntries(picks.map(p => [p.slug, true])))?.used, 20);
+  eq(summarizeCompanionCapacity(cat, data.mods, [{ slug: mod.slug, rank: 1 }], 30, { [mod.slug]: true })?.used, 2);
+  eq(summarizeCompanionCapacity(moa, data.mods, [], 30, {}), null);
+  bad(() => summarizeCompanionCapacity(cat, data.mods, picks, 31, {}));
+  bad(() => summarizeCompanionCapacity(cat, data.mods.map(m => ({ ...m, baseDrain: -1 })), picks, 30, {}));
   return { passed, failed: 0 };
 }

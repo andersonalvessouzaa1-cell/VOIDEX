@@ -3,7 +3,7 @@ import { getCompanionCategory, type CompanionStatSource } from './companion-stat
 import type { CompanionLabData, CompanionLabMod } from './companion-lab';
 import type { LevelStat } from './mod-effects';
 interface Row { slug: string; name: string; imageName: string | null; stats: CompanionStatSource & { productCategory?: string } }
-interface ModRow extends Omit<CompanionLabMod, 'maxRank' | 'levelStats'> { stats: { compatName?: string; fusionLimit?: number; levelStats?: LevelStat[] } }
+interface ModRow extends Omit<CompanionLabMod, 'maxRank' | 'levelStats' | 'baseDrain' | 'polarity'> { stats: { baseDrain?: number; polarity?: string; compatName?: string; fusionLimit?: number; levelStats?: LevelStat[] } }
 export function getCompanionLab(): CompanionLabData {
   const items = ['sentinels', 'pets'].flatMap(category => readGenerated<Row>(category).items)
     .filter(item => ['Sentinels', 'KubrowPets', 'SpecialItems'].includes(item.stats.productCategory ?? '') || /_(hound|moa)$/.test(item.slug))
@@ -13,8 +13,9 @@ export function getCompanionLab(): CompanionLabData {
   const mods = readGenerated<ModRow>('mods').items.filter(mod => allowed.has(mod.slug) && mod.stats.compatName === 'COMPANION').map(mod => {
     const maxRank = mod.stats.fusionLimit;
     const levelStats = mod.stats.levelStats;
+    if (!Number.isInteger(mod.stats.baseDrain) || mod.stats.baseDrain! < 0 || !mod.stats.polarity) throw new Error('Custo ou polaridade de mod indisponível.');
     if (!Number.isInteger(maxRank) || !levelStats || !levelStats[maxRank!]) throw new Error('Mod de companheiro sem níveis completos.');
-    return { slug: mod.slug, name: mod.name, imageName: mod.imageName, maxRank: maxRank!, levelStats };
+    return { slug: mod.slug, name: mod.name, imageName: mod.imageName, maxRank: maxRank!, levelStats, baseDrain: mod.stats.baseDrain!, polarity: mod.stats.polarity };
   });
   if (mods.length !== 3) throw new Error('Catálogo de mods revisados incompleto.');
   return { items, mods };
