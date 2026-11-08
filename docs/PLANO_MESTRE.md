@@ -22,6 +22,8 @@ Todos os Warframes, armas e companheiros devem ser pesquisáveis. Presets comple
 
 Incremento visual de 08/11/2026: primeira comparação pública das referências e apresentação do Build Lab melhorada; consulte `REFERENCIAS_VISUAL_V1.md`. Não altera cobertura de presets/cálculos. Noxsframe é a referência visual preferida pelo dono. Preparação de clone limpo continua necessária antes da prévia pública gratuita.
 
+Beta Acervo Void publicada em https://acervovoid.vercel.app no Vercel Hobby em 08/11/2026. Cópia ativa e resultados no início de RESUMO_RETOMADA.md; 335 testes aprovados, build remoto e APIs públicas conferidos. H1 concluído; H2 apenas na condição de beta. Restante do escopo continua pendente; GitHub remoto ainda precisa receber a versão publicada.
+
 ## 2. Estado real conhecido
 
 | Área | Situação e evidência |
@@ -33,8 +35,8 @@ Incremento visual de 08/11/2026: primeira comparação pública das referências
 | Presets completos | Somente primeiro conjunto experimental do Dante/Roar, commit `5d6368c`. Estado NAO_TESTADO: não testado por nós dentro do jogo. |
 | Armas | Comparações parciais por modo de ataque, commit `b11b3e9`. Crítico, multiplicador crítico, status e cadência apenas onde a regra foi implementada. |
 | Editor de armas | Commit `bb84374`: escolha de armas, até oito mods comuns revisados, níveis individuais, remoção e conflitos conhecidos. Catálogo com 595 entradas nesta base. Power Throw corrigido para versão normal. |
-| Qualidade | Última execução registrada: `npm run verify`, 325 testes aprovados, tipos, lint e build; navegador e respostas da API conferidos. Isso não substitui nova verificação após alterações. |
-| Publicação | Nenhuma URL pública ou domínio registrado foi confirmado nesta tarefa. |
+| Qualidade | Última execução registrada: `npm run verify`, 335 testes aprovados, tipos, lint e build; navegador e respostas da API conferidos. Isso não substitui nova verificação após alterações. |
+| Publicação | Beta pública em https://acervovoid.vercel.app, Hobby gratuito, conferida em 08/11/2026; não significa escopo completo. |
 | Reprodutibilidade | Existem muitos arquivos locais modificados/não versionados. A aprovação local não prova que um clone limpo compila. Resolver antes de publicar. Não adicionar tudo ao Git sem revisar. |
 
 Detalhes históricos: `RECUPERACAO_MOTOR_2026-11-07.md`, `PRESET_DANTE_COMPLETO_V1.md`, `COMPARACAO_ARMAS_V1.md`, `EDITOR_ARMAS_V1.md`. Especificação do Build Lab: `BUILD_LAB_COMPLETO.md`. Documentos antigos continuam como histórico; estados antigos não devem substituir esta tabela e evidências recentes.
