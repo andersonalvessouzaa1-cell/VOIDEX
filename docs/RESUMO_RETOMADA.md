@@ -1,3 +1,15 @@
+## Contas Supabase — prioridade atual, 08/11/2026
+
+Dono definiu custo zero e Entrar com Google. Projeto Acervo Void pforidkmdcrgzzwtotkf criado por ele no Supabase Free, São Paulo; projeto antigo pausado preservado. Integração oficial Supabase conectada.
+
+Código na pasta ativa indicada abaixo, commit 835f55c: /entrar, /conta, callback PKCE, sessão validada no servidor, perfil privado e logout. Não mexer no AuthModal local da demonstração como se fosse conta real. 359 testes/tipos/lint/build passaram com a configuração pública; revisão de código sem P0/P1/P2.
+
+Banco pronto: migrations private_account_profiles e restrict_automatic_rls_event_trigger aplicadas via integração oficial. Testes SQL de RLS e privilégios aprovados, rollback conferido (0 perfis/usuários fictícios restantes), REST anônimo401 e segurança sem avisos. Site URL https://acervovoid.vercel.app e retorno exato https://acervovoid.vercel.app/auth/callback salvos. Variáveis públicas Supabase configuradas localmente e na produção Vercel; não imprimir .env nem usar chave administrativa.
+
+Bloqueio externo: Google Cloud pede que o dono ative verificação em duas etapas em https://console.cloud.google.com/enable-mfa . Ação solicitada a ele e ainda sem confirmação. Não contornar MFA, não ativar teste com créditos/faturamento. Após liberação: configurar cliente OAuth Web no projeto Google do dono, com redirect https://pforidkmdcrgzzwtotkf.supabase.co/auth/v1/callback; inserir segredo diretamente no provedor Google do Supabase; testar conta real. Não publicar automaticamente o e-mail pessoal como suporte: confirmar contato do consentimento com o dono.
+
+Login Google AINDA NÃO ativo/publicado: falta cliente/provedor/teste real. Não repetir criação do banco ou migrations. Depois de configurar Google, implantar a nova versão via Vercel CLI e conferir login, perfil, logout e acesso privado. A beta pública atual permanece na versão anterior; GitHub remoto ainda não sincronizado. Detalhes em docs/SUPABASE_CONTAS.md.
+
 ## Acervo Void publicado — 08/11/2026
 
 URL pública: https://acervovoid.vercel.app . Plano Vercel Hobby confirmado, custo zero, sem domínio pago/trial ou cobrança habilitada. Endereço adicionado ao projeto para acompanhar produção, não apenas alias temporário. Acesso público sem login confirmado.
