@@ -12,6 +12,17 @@ const LABELS: Record<WeaponMetric, string> = { criticalChance: 'Critical Chance'
 // Operador relativo conferido para estes mods; os números vêm do rank da fonte.
 // Uma frase percentual em um mod não listado NÃO autoriza inferir esse operador.
 const RULES: Record<string, WeaponMetric[]> = {
+  point_strike_weaponcritchancemod: ['criticalChance'], vital_sense_weaponcritdamagemod: ['criticalMultiplier'],
+  speed_trigger_weaponfireratemod: ['attackRate'], rifle_aptitude_weaponstunchancemod: ['statusChance'],
+  hammer_shot: ['criticalMultiplier', 'statusChance'], pistol_gambit_weaponcritchancemod: ['criticalChance'],
+  target_cracker_weaponcritdamagemod: ['criticalMultiplier'], gunslinger_weaponfireratemod: ['attackRate'],
+  sure_shot_weaponstunchancemod: ['statusChance'], true_steel_weaponcritchancemod: ['criticalChance'],
+  organ_shatter_weaponcritdamagemod: ['criticalMultiplier'], melee_prowess_weaponstunchancemod: ['statusChance'],
+  fury_weaponfireratemod: ['attackRate'], primed_fury: ['attackRate'],
+  blunderbuss_weaponcritchancemod: ['criticalChance'], ravage_weaponcritdamagemod: ['criticalMultiplier'],
+  shotgun_barrage_weaponfireratemod: ['attackRate'], primed_ravage: ['criticalMultiplier'],
+  critical_deceleration: ['criticalChance', 'attackRate'], critical_delay: ['criticalChance', 'attackRate'],
+
   primed_target_cracker: ['criticalMultiplier'], primed_pistol_gambit: ['criticalChance'],
   lethal_torrent: ['attackRate'], pistol_pestilence: ['statusChance'], frostbite: ['statusChance'],
   galvanized_shot: ['statusChance'], galvanized_savvy: ['statusChance'],
@@ -25,16 +36,16 @@ const RULES: Record<string, WeaponMetric[]> = {
 const OUTSIDE_SCOPE = new Set([
   'shotgun_elementalist', 'primed_charged_shell', 'primed_cleanse_orokin', 'galvanized_hell',
   'galvanized_acceleration', 'primed_expel_orokin', 'galvanized_diffusion', 'primed_pistol_ammo_mutation',
-  'melee_elementalist', 'primed_smite_grineer', 'volatile_quick_return', 'power_throw',
+  'melee_elementalist', 'primed_smite_grineer', 'volatile_quick_return', 'power_throw_weaponglaivepowerthrowmod',
   'galvanized_reflex', 'primed_pressure_point', 'astral_twilight', 'dispatch_overdrive',
-  'augur_pact', 'augur_seeker',
+  'augur_pact', 'augur_seeker', 'serration_weapondamageamountmod', 'split_chamber_weaponfireiterationsmod',
 ]);
 const KEYS: WeaponMetric[] = ['criticalChance', 'criticalMultiplier', 'statusChance', 'attackRate'];
 const number = (value: unknown): number | null => typeof value === 'number' && Number.isFinite(value) && value >= 0 ? value : null;
 const percent = (value: unknown): number | null => { const n = number(value); return n === null ? null : n * 100; };
 const tidy = (value: number) => Math.round(value * 1e8) / 1e8;
 
-export function compareWeaponStats(source: WeaponStatSource, mods: WeaponStatMod[], context: { melee?: boolean } = {}): WeaponComparison {
+export function compareWeaponStats(source: WeaponStatSource, mods: WeaponStatMod[], context: { melee?: boolean; bow?: boolean } = {}): WeaponComparison {
   const bonuses: Record<WeaponMetric, number> = { criticalChance: 0, criticalMultiplier: 0, statusChance: 0, attackRate: 0 };
   const blocked = new Map<WeaponMetric, string>();
   const excludedMods: string[] = [];
@@ -44,7 +55,7 @@ export function compareWeaponStats(source: WeaponStatSource, mods: WeaponStatMod
     if (!Number.isInteger(mod.rank) || !Number.isInteger(mod.maxRank) || mod.rank < 0 || mod.rank > mod.maxRank) throw new Error(`Mod com nível inválido: ${mod.slug}.`);
     if (seen.has(mod.slug)) throw new Error(`Mod repetido: ${mod.slug}.`);
     seen.add(mod.slug);
-    const targets = RULES[mod.slug];
+    const targets = Object.prototype.hasOwnProperty.call(RULES, mod.slug) ? RULES[mod.slug] : undefined;
     if (!targets) {
       excludedMods.push(mod.name ?? mod.slug);
       if (!OUTSIDE_SCOPE.has(mod.slug)) unreviewed = true;
@@ -54,7 +65,7 @@ export function compareWeaponStats(source: WeaponStatSource, mods: WeaponStatMod
     const conditionIndex = lines.findIndex(line => /^\s*(?:On\b|While\b|After\b|When\b)/i.test(line));
     const staticLines = conditionIndex < 0 ? lines : lines.slice(0, conditionIndex);
     for (const key of targets) {
-      const expression = new RegExp(`^\\s*([+-]\\d+(?:\\.\\d+)?)% ${LABELS[key]}${mod.slug === 'sacrificial_steel' ? '(?: \\(x2 for Heavy Attacks\\))?' : ''}\\s*$`);
+      const expression = new RegExp(`^\\s*([+-]\\d+(?:\\.\\d+)?)% ${key === 'attackRate' && ['fury_weaponfireratemod', 'primed_fury'].includes(mod.slug) ? 'Attack Speed' : LABELS[key]}${['sacrificial_steel', 'true_steel_weaponcritchancemod'].includes(mod.slug) ? '(?: \\(x2 for Heavy Attacks\\))?' : ['speed_trigger_weaponfireratemod', 'critical_delay'].includes(mod.slug) && key === 'attackRate' ? '(?: \\(x2 for Bows\\))?' : ''}\\s*$`);
       const line = staticLines.find(text => expression.test(text));
       const match = line?.match(expression);
       if (!match || !Number.isFinite(Number(match[1]))) blocked.set(key, `Efeito de ${mod.name ?? mod.slug} sem número estático conferido.`);
@@ -72,8 +83,8 @@ export function compareWeaponStats(source: WeaponStatSource, mods: WeaponStatMod
       const rows = {} as Record<WeaponMetric, WeaponStatRow>;
       for (const key of KEYS) {
         let reason = blocked.get(key);
-        if (key === 'criticalChance' && context.melee && name !== 'Normal Attack' && mods.some(mod => mod.slug === 'sacrificial_steel')) reason = 'Bônus crítico de Sacrificial Steel ainda não conferido para este modo.';
-        if (key === 'attackRate' && ((hasModes && !['Normal Attack', 'Beam'].includes(name)) || attack.charge_time !== undefined || (context.melee ? name !== 'Normal Attack' : !['Auto', 'Held'].includes(source.trigger ?? '')))) reason = 'Cadência efetiva de rajada, carga ou ataque especial ainda não conferida.';
+        if (key === 'criticalChance' && context.melee && name !== 'Normal Attack' && mods.some(mod => ['sacrificial_steel', 'true_steel_weaponcritchancemod'].includes(mod.slug))) reason = 'Bônus crítico do mod ainda não conferido para este modo.';
+        if (key === 'attackRate' && (context.bow || (hasModes && !['Normal Attack', 'Beam'].includes(name)) || attack.charge_time !== undefined || (context.melee ? name !== 'Normal Attack' : !['Auto', 'Held'].includes(source.trigger ?? '')))) reason = 'Cadência efetiva de rajada, carga ou ataque especial ainda não conferida.';
         const before = base[key];
         const candidate = before === null ? null : before * (1 + bonuses[key] / 100);
         if (before === null) reason = 'Atributo base ausente ou inválido na fonte.';
@@ -94,3 +105,5 @@ export function compareWeaponStats(source: WeaponStatSource, mods: WeaponStatMod
     ],
   };
 }
+
+export function reviewedWeaponModSlugs(): string[] { return Object.keys(RULES).concat(Array.from(OUTSIDE_SCOPE)); }

@@ -277,9 +277,9 @@ export const CURATED_LOADOUTS: CuratedLoadout[] = [{
           "slot": "normal-3"
         },
         {
-          "slug": "power_throw",
-          "rank": 3,
-          "maxRank": 3,
+          "slug": "power_throw_weaponglaivepowerthrowmod",
+          "rank": 5,
+          "maxRank": 5,
           "slot": "normal-4"
         },
         {

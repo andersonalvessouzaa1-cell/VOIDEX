@@ -31,6 +31,7 @@ export function runCuratedLoadoutTests() {
   check(result?.withoutShards.duration, 151.5);
   check(resolved.equipment.secondary.mods.filter(mod => mod.publishedRank === 0).length, 2);
   check(resolved.equipment.companion.arcanes.length, 0);
+  check(resolved.equipment.melee.mods.find(mod => mod.slug === 'power_throw_weaponglaivepowerthrowmod')?.rank, 5);
   const bad = structuredClone(preset); bad.equipment.primary.mods[0].slug = 'mod_inexistente';
   assert.throws(() => resolveLoadout(bad), /Mod/); passed++;
   const badRank = structuredClone(preset); badRank.equipment.primary.mods[0].rank = 999;

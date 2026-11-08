@@ -1,6 +1,7 @@
 import WarframeModLab from './WarframeModLab';
 import BuildPresets from './BuildPresets';
 import CompleteLoadoutLab from './CompleteLoadoutLab';
+import WeaponFreeLab from './WeaponFreeLab';
 
 export default function VerifiedBuildLab() {
   return (
@@ -10,6 +11,7 @@ export default function VerifiedBuildLab() {
         <p className="mt-4 max-w-3xl text-lg text-slate-300">Explore os efeitos dos mods antes de investir recursos. Compare a base com sua seleção personalizada.</p>
         <p role="note" className="my-6 pl-4 py-1 border-l-2 border-orokin-gold text-sm text-amber-100">Comparações parciais: o preset calcula atributos estáticos do Dante, os fragmentos selecionados e o bônus do Roar; o modo livre calcula atributos de habilidade. Dano das armas, sinergias do companheiro e efeitos condicionais de arcanos ainda ficam fora da conta. Os resumos antigos de fontes continuam separados. Nenhuma combinação foi testada por nós no jogo.</p>
         <CompleteLoadoutLab />
+        <WeaponFreeLab />
         <WarframeModLab />
         <div className="border-t border-void-border pt-6">
           <h3 className="font-display text-3xl text-white">Referências da comunidade</h3>
