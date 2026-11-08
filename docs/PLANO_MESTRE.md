@@ -124,3 +124,6 @@ Conferência em 08/11/2026. Revalidar termos e cotas na fase de implantação.
 
 ### Atualização M2 — 08/11/2026
 Mercado próprio implementado com autenticação Google/Supabase, anúncios reais opt-in, edição/exclusão pelo dono, filtros, catálogo negociável e contato manual copiável. Testes RLS reais com rollback aprovados. Ainda pendentes moderação/denúncias e demais critérios do plano; não declarar lançamento completo.
+
+### D1 parcial: checklist Build -> Mercado
+Mods/arcanos agrupados por item/nivel, marcacao manual local e links de ofertas negociaveis. Sem custo estimado, copias simultaneas ou inventario automatico. Demais requisitos D1 permanecem pendentes.

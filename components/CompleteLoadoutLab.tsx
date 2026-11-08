@@ -1,13 +1,15 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import BuildShoppingList from './BuildShoppingList';
+import type { ShoppingItem } from '@/lib/build-shopping-list';
 import ItemImage from './ItemImage';
 import WeaponStatComparison from './WeaponStatComparison';
 import CompanionStatComparison from './CompanionStatComparison';
 import type { ResolvedLoadout, compareCuratedWarframe } from '@/lib/data-engine/loadout-reader';
 
 type Comparison = ReturnType<typeof compareCuratedWarframe>;
-interface Entry { preset: ResolvedLoadout; comparison: Comparison }
+interface Entry { preset: ResolvedLoadout; comparison: Comparison; shoppingList: ShoppingItem[] }
 const LABELS: Record<string, string> = { warframe: 'Warframe', primary: 'Arma primária', secondary: 'Arma secundária', melee: 'Corpo a corpo', companion: 'Companheiro', companion_weapon: 'Arma do companheiro' };
 const SLOT_LABELS: Record<string, string> = { aura: 'Aura', exilus: 'Exilus', stance: 'Postura' };
 const SHARD_LABELS: Record<string, string> = { ambar: 'Âmbar', carmesim: 'Carmesim' };
@@ -70,6 +72,7 @@ export default function CompleteLoadoutLab() {
             <p className="mt-3 text-xs text-slate-400">Valores calculados desta composição. Comparação detalhada abaixo; efeitos condicionais inativos.</p>
           </div>
         </div>
+        <BuildShoppingList key={preset.id} presetId={preset.id} items={entry.shoppingList ?? []} />
         <div className="mt-6 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.75fr)]">
           <div className="min-w-0">
             {Object.entries(preset.equipment).map(([slot, part]) => <details key={`${preset.id}-${slot}`} open={slot === 'warframe'} className="border-b border-void-border py-4">
