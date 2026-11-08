@@ -5,7 +5,7 @@ export type WeaponCategory = typeof WEAPON_CATEGORIES[number];
 export type WeaponModGroup = 'Rifle' | 'Shotgun' | 'Pistol' | 'Melee';
 export interface WeaponIndexItem { slug: string; name: string; imageName: string | null; type: string | null; category: WeaponCategory }
 export interface LabWeapon extends WeaponIndexItem { stats: WeaponStatSource; modGroup: WeaponModGroup | null }
-export interface LabMod extends WeaponStatMod { name: string; imageName: string | null; uniqueName: string | null; compatName: string; baseDrain: number }
+export interface LabMod extends WeaponStatMod { name: string; imageName: string | null; uniqueName: string | null; compatName: string; baseDrain: number; polarity?: string }
 export interface WeaponModPick { slug: string; rank: number }
 export const isWeaponCategory = (value: unknown): value is WeaponCategory => typeof value === 'string' && (WEAPON_CATEGORIES as readonly string[]).includes(value);
 

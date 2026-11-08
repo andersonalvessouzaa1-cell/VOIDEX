@@ -4,7 +4,7 @@ import { isModCompatible, isWeaponCategory, weaponModGroup, type LabMod, type La
 import type { LevelStat } from './mod-effects';
 
 interface WeaponRow { slug: string; name: string; imageName: string | null; type: string | null; stats: WeaponStatSource }
-interface ModRow { slug: string; name: string; imageName: string | null; uniqueName: string | null; stats: { compatName?: string; baseDrain?: number; fusionLimit?: number; levelStats?: LevelStat[] } }
+interface ModRow { slug: string; name: string; imageName: string | null; uniqueName: string | null; stats: { compatName?: string; polarity?: string; baseDrain?: number; fusionLimit?: number; levelStats?: LevelStat[] } }
 // Identidades completas dos novos mods normais: não confundir com entradas Beginner/Expert de mesmo nome.
 const NORMAL_PATHS: Record<string, string> = {
   power_throw_weaponglaivepowerthrowmod: 'Melee/WeaponGlaivePowerthrowMod',
@@ -39,6 +39,6 @@ export function getWeaponDetails(category: WeaponCategory, slug: string) {
       && typeof mod.stats.fusionLimit === 'number' && Number.isInteger(mod.stats.fusionLimit) && mod.stats.fusionLimit >= 0
       && !!mod.stats.levelStats?.[mod.stats.fusionLimit] && typeof mod.stats.compatName === 'string'
       && isModCompatible(weapon, { compatName: mod.stats.compatName, baseDrain: mod.stats.baseDrain ?? NaN });
-  }).map(mod => ({ slug: mod.slug, name: mod.name, imageName: mod.imageName, uniqueName: mod.uniqueName, compatName: mod.stats.compatName!, baseDrain: mod.stats.baseDrain!, rank: mod.stats.fusionLimit!, maxRank: mod.stats.fusionLimit!, levelStats: mod.stats.levelStats! })).sort((a, b) => a.name.localeCompare(b.name));
+  }).map(mod => ({ slug: mod.slug, name: mod.name, imageName: mod.imageName, uniqueName: mod.uniqueName, compatName: mod.stats.compatName!, baseDrain: mod.stats.baseDrain!, polarity: mod.stats.polarity, rank: mod.stats.fusionLimit!, maxRank: mod.stats.fusionLimit!, levelStats: mod.stats.levelStats! })).sort((a, b) => a.name.localeCompare(b.name));
   return { weapon, mods, fetchedAt: weapons(category).meta.fetchedAt };
 }
