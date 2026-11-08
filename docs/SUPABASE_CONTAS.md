@@ -1,3 +1,6 @@
+## Login público liberado — 08/11/2026
+Dono autorizou expressamente produção pública. Confirmar executado no Google; status observado Em produção, usuário Externo e botão Voltar para o teste. Cadastro não está mais restrito a testadores. Escopos permanecem email/profile; sem faturamento ativado. Login/logout da conta do dono já testados; segunda conta independente e salvamento de nickname/plataforma pela interface ainda não testados. Páginas de privacidade/termos e integração publicadas na implantação dpl_Bk7s8aYxK58cdxtkSRPzp99jNcpt. Não recriar credenciais nem repetir deploy por esta alteração de audiência. Próximos: validar perfil com dados reais fornecidos pelo dono, seguir plano mestre (GitHub/companheiros/etc.).
+
 ## Atualização 08/11/2026 — produção
 Google OAuth criado e conectado ao Supabase, segredo enviado somente ao provedor com autorização do dono. Código publicado em https://acervovoid.vercel.app/entrar . Login real, página privada e logout verificados; proteção de /conta após logout confirmada. Perfil ainda sem nickname informado/salvo pelo dono. Audiência Google ainda Testando, pendente completar branding e páginas públicas antes da liberação geral. Plano gratuito mantido.
 
