@@ -1,0 +1,2104 @@
+{
+  "meta": {
+    "category": "exilus",
+    "sourceFile": "Mods.json",
+    "sourceRepo": "https://github.com/WFCD/warframe-items",
+    "fetchedAt": "2026-11-08T17:06:53.253Z",
+    "sourceSha256": "d68c24172e7ff6a8e18d62225ce82790028437346fcbed669f5e394ca9d6944d",
+    "count": 37
+  },
+  "items": [
+    {
+      "slug": "agility_drift",
+      "uniqueName": "/Lotus/Upgrades/Mods/OrokinChallenge/OrokinChallengeModAgility",
+      "name": "Agility Drift",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "OrokinChallengeModAgility.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/OrokinChallengeModAgility.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "vazarin",
+        "rarity": "Rare",
+        "baseDrain": 4,
+        "fusionLimit": 5,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "Reduced damage by 2% while airborne",
+              "<LOWER_IS_BETTER>-1% Enemy Accuracy when targeting Warframe"
+            ]
+          },
+          {
+            "stats": [
+              "Reduced damage by 4% while airborne",
+              "<LOWER_IS_BETTER>-2% Enemy Accuracy when targeting Warframe"
+            ]
+          },
+          {
+            "stats": [
+              "Reduced damage by 6% while airborne",
+              "<LOWER_IS_BETTER>-3% Enemy Accuracy when targeting Warframe"
+            ]
+          },
+          {
+            "stats": [
+              "Reduced damage by 8% while airborne",
+              "<LOWER_IS_BETTER>-4% Enemy Accuracy when targeting Warframe"
+            ]
+          },
+          {
+            "stats": [
+              "Reduced damage by 10% while airborne",
+              "<LOWER_IS_BETTER>-5% Enemy Accuracy when targeting Warframe"
+            ]
+          },
+          {
+            "stats": [
+              "Reduced damage by 12% while airborne",
+              "<LOWER_IS_BETTER>-6% Enemy Accuracy when targeting Warframe"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "armored_recovery",
+      "uniqueName": "/Lotus/Upgrades/Mods/PvPMods/Warframe/RagdollImmunityMod",
+      "name": "Armored Recovery",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "RagdollImmunityMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/RagdollImmunityMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "vazarin",
+        "rarity": "Uncommon",
+        "baseDrain": 6,
+        "fusionLimit": 3,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+12.5% Damage Resistance when knocked down",
+              "-5% Slide"
+            ]
+          },
+          {
+            "stats": [
+              "+25% Damage Resistance when knocked down",
+              "-10% Slide"
+            ]
+          },
+          {
+            "stats": [
+              "+37.5% Damage Resistance when knocked down",
+              "-15% Slide"
+            ]
+          },
+          {
+            "stats": [
+              "+50% Damage Resistance when knocked down",
+              "-20% Slide"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "aviator",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/AvatarDamageReductionInAir",
+      "name": "Aviator",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "AvatarDamageReductionInAir.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/AvatarDamageReductionInAir.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "vazarin",
+        "rarity": "Common",
+        "baseDrain": 4,
+        "fusionLimit": 3,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "Reduced damage by 10% while airborne"
+            ]
+          },
+          {
+            "stats": [
+              "Reduced damage by 20% while airborne"
+            ]
+          },
+          {
+            "stats": [
+              "Reduced damage by 30% while airborne"
+            ]
+          },
+          {
+            "stats": [
+              "Reduced damage by 40% while airborne"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "battering_maneuver",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/ImpactParkourTwoMod",
+      "name": "Battering Maneuver",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "ImpactParkourTwoMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/ImpactParkourTwoMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "vazarin",
+        "rarity": "Uncommon",
+        "baseDrain": 4,
+        "fusionLimit": 5,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+3% to Parkour Velocity",
+              "+3% Aim Glide/Wall Latch Duration",
+              "+10% <DT_IMPACT_COLOR>Impact on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+6% to Parkour Velocity",
+              "+6% Aim Glide/Wall Latch Duration",
+              "+20% <DT_IMPACT_COLOR>Impact on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+9% to Parkour Velocity",
+              "+9% Aim Glide/Wall Latch Duration",
+              "+30% <DT_IMPACT_COLOR>Impact on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+12% to Parkour Velocity",
+              "+12% Aim Glide/Wall Latch Duration",
+              "+40% <DT_IMPACT_COLOR>Impact on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+15% to Parkour Velocity",
+              "+15% Aim Glide/Wall Latch Duration",
+              "+50% <DT_IMPACT_COLOR>Impact on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+18% to Parkour Velocity",
+              "+18% Aim Glide/Wall Latch Duration",
+              "+60% <DT_IMPACT_COLOR>Impact on Bullet Jump"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "coaction_drift",
+      "uniqueName": "/Lotus/Upgrades/Mods/OrokinChallenge/OrokinChallengeModCollaboration",
+      "name": "Coaction Drift",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "OrokinChallengeModCollaboration.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/OrokinChallengeModCollaboration.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "naramon",
+        "rarity": "Rare",
+        "baseDrain": 4,
+        "fusionLimit": 5,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "Squad benefits +2.5% more from Auras",
+              "You benefit an additional +2.5% from Auras"
+            ]
+          },
+          {
+            "stats": [
+              "Squad benefits +5% more from Auras",
+              "You benefit an additional +5% from Auras"
+            ]
+          },
+          {
+            "stats": [
+              "Squad benefits +7.5% more from Auras",
+              "You benefit an additional +7.5% from Auras"
+            ]
+          },
+          {
+            "stats": [
+              "Squad benefits +10% more from Auras",
+              "You benefit an additional +10% from Auras"
+            ]
+          },
+          {
+            "stats": [
+              "Squad benefits +12.5% more from Auras",
+              "You benefit an additional +12.5% from Auras"
+            ]
+          },
+          {
+            "stats": [
+              "Squad benefits +15% more from Auras",
+              "You benefit an additional +15% from Auras"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "conductor",
+      "uniqueName": "/Lotus/Powersuits/Bard/BardCharmAugmentCard",
+      "name": "Conductor",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "OctaviaResonatorAugment.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/OctaviaResonatorAugment.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "zenurik",
+        "rarity": "Rare",
+        "baseDrain": 6,
+        "fusionLimit": 3,
+        "compatName": "Octavia",
+        "levelStats": [
+          {
+            "stats": [
+              "Resonator Augment: Reactivate the ability to command Resonator to move to your aim point at 100% Speed."
+            ]
+          },
+          {
+            "stats": [
+              "Resonator Augment: Reactivate the ability to command Resonator to move to your aim point at 115% Speed."
+            ]
+          },
+          {
+            "stats": [
+              "Resonator Augment: Reactivate the ability to command Resonator to move to your aim point at 135% Speed."
+            ]
+          },
+          {
+            "stats": [
+              "Resonator Augment: Reactivate the ability to command Resonator to move to your aim point at 150% Speed."
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "cunning_drift",
+      "uniqueName": "/Lotus/Upgrades/Mods/OrokinChallenge/OrokinChallengeModCunning",
+      "name": "Cunning Drift",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "OrokinChallengeModCunning.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/OrokinChallengeModCunning.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "madurai",
+        "rarity": "Rare",
+        "baseDrain": 4,
+        "fusionLimit": 5,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+2% Slide",
+              "-5% Friction",
+              "+2.5% Ability Range"
+            ]
+          },
+          {
+            "stats": [
+              "+4% Slide",
+              "-10% Friction",
+              "+5% Ability Range"
+            ]
+          },
+          {
+            "stats": [
+              "+6% Slide",
+              "-15% Friction",
+              "+7.5% Ability Range"
+            ]
+          },
+          {
+            "stats": [
+              "+8% Slide",
+              "-20% Friction",
+              "+10% Ability Range"
+            ]
+          },
+          {
+            "stats": [
+              "+10% Slide",
+              "-25% Friction",
+              "+12.5% Ability Range"
+            ]
+          },
+          {
+            "stats": [
+              "+12% Slide",
+              "-30% Friction",
+              "+15% Ability Range"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "endurance_drift",
+      "uniqueName": "/Lotus/Upgrades/Mods/OrokinChallenge/OrokinChallengeModEndurance",
+      "name": "Endurance Drift",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "OrokinChallengeModEndurance.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/OrokinChallengeModEndurance.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "zenurik",
+        "rarity": "Rare",
+        "baseDrain": 4,
+        "fusionLimit": 5,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+1.7% Energy Max",
+              "+2% Parkour Velocity"
+            ]
+          },
+          {
+            "stats": [
+              "+3.3% Energy Max",
+              "+4% Parkour Velocity"
+            ]
+          },
+          {
+            "stats": [
+              "+5% Energy Max",
+              "+6% Parkour Velocity"
+            ]
+          },
+          {
+            "stats": [
+              "+6.7% Energy Max",
+              "+8% Parkour Velocity"
+            ]
+          },
+          {
+            "stats": [
+              "+8.3% Energy Max",
+              "+10% Parkour Velocity"
+            ]
+          },
+          {
+            "stats": [
+              "+10% Energy Max",
+              "+12% Parkour Velocity"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "enemy_sense",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/AvatarEnemyRadarMod",
+      "name": "Enemy Sense",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "EnemyRadarMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/EnemyRadarMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "naramon",
+        "rarity": "Rare",
+        "baseDrain": 2,
+        "fusionLimit": 5,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+5m Enemy Radar"
+            ]
+          },
+          {
+            "stats": [
+              "+10m Enemy Radar"
+            ]
+          },
+          {
+            "stats": [
+              "+15m Enemy Radar"
+            ]
+          },
+          {
+            "stats": [
+              "+20m Enemy Radar"
+            ]
+          },
+          {
+            "stats": [
+              "+25m Enemy Radar"
+            ]
+          },
+          {
+            "stats": [
+              "+30m Enemy Radar"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "escape_velocity",
+      "uniqueName": "/Lotus/Powersuits/AntiMatter/WormHoleAugmentCard",
+      "name": "Escape Velocity",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "NovaWormholeAugments.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/NovaWormholeAugments.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "zenurik",
+        "rarity": "Rare",
+        "baseDrain": 6,
+        "fusionLimit": 3,
+        "compatName": "Nova",
+        "levelStats": [
+          {
+            "stats": [
+              "Worm Hole Augment: Allies that travel through wormhole gain a 30% Speed bonus for 4s."
+            ]
+          },
+          {
+            "stats": [
+              "Worm Hole Augment: Allies that travel through wormhole gain a 35% Speed bonus for 5s."
+            ]
+          },
+          {
+            "stats": [
+              "Worm Hole Augment: Allies that travel through wormhole gain a 40% Speed bonus for 6s."
+            ]
+          },
+          {
+            "stats": [
+              "Worm Hole Augment: Allies that travel through wormhole gain a 50% Speed bonus for 7s."
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "firewalker",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/FireParkourTwoMod",
+      "name": "Firewalker",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "FireParkourTwoMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/FireParkourTwoMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "madurai",
+        "rarity": "Rare",
+        "baseDrain": 2,
+        "fusionLimit": 10,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+2.2% to Parkour Velocity",
+              "+2.2% Aim Glide/Wall Latch Duration",
+              "+25% <DT_FIRE_COLOR>Heat on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+4.4% to Parkour Velocity",
+              "+4.4% Aim Glide/Wall Latch Duration",
+              "+50% <DT_FIRE_COLOR>Heat on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+6.6% to Parkour Velocity",
+              "+6.6% Aim Glide/Wall Latch Duration",
+              "+75% <DT_FIRE_COLOR>Heat on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+8.8% to Parkour Velocity",
+              "+8.8% Aim Glide/Wall Latch Duration",
+              "+100% <DT_FIRE_COLOR>Heat on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+11% to Parkour Velocity",
+              "+11% Aim Glide/Wall Latch Duration",
+              "+125% <DT_FIRE_COLOR>Heat on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+13.2% to Parkour Velocity",
+              "+13.2% Aim Glide/Wall Latch Duration",
+              "+150% <DT_FIRE_COLOR>Heat on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+15.4% to Parkour Velocity",
+              "+15.4% Aim Glide/Wall Latch Duration",
+              "+175% <DT_FIRE_COLOR>Heat on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+17.6% to Parkour Velocity",
+              "+17.6% Aim Glide/Wall Latch Duration",
+              "+200% <DT_FIRE_COLOR>Heat on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+19.8% to Parkour Velocity",
+              "+19.8% Aim Glide/Wall Latch Duration",
+              "+225% <DT_FIRE_COLOR>Heat on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+22% to Parkour Velocity",
+              "+22% Aim Glide/Wall Latch Duration",
+              "+250% <DT_FIRE_COLOR>Heat on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+24.2% to Parkour Velocity",
+              "+24.2% Aim Glide/Wall Latch Duration",
+              "+275% <DT_FIRE_COLOR>Heat on Bullet Jump"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "handspring",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/AvatarKnockdownRecoveryMod",
+      "name": "Handspring",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "NinjaRecoveryMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/NinjaRecoveryMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "naramon",
+        "rarity": "Rare",
+        "baseDrain": 6,
+        "fusionLimit": 3,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+40% Faster Knockdown Recovery"
+            ]
+          },
+          {
+            "stats": [
+              "+80% Faster Knockdown Recovery"
+            ]
+          },
+          {
+            "stats": [
+              "+120% Faster Knockdown Recovery"
+            ]
+          },
+          {
+            "stats": [
+              "+160% Faster Knockdown Recovery"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "heavy_impact",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/AvatarFallingImpactMod",
+      "name": "Heavy Impact",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "AvatarHeavyImpactMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/AvatarHeavyImpactMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "naramon",
+        "rarity": "Uncommon",
+        "baseDrain": 4,
+        "fusionLimit": 5,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "Create 1m seismic shockwaves from heavy landings, dealing 50 Damage and knocking foes off their feet."
+            ]
+          },
+          {
+            "stats": [
+              "Create 2m seismic shockwaves from heavy landings, dealing 100 Damage and knocking foes off their feet."
+            ]
+          },
+          {
+            "stats": [
+              "Create 3m seismic shockwaves from heavy landings, dealing 150 Damage and knocking foes off their feet."
+            ]
+          },
+          {
+            "stats": [
+              "Create 4m seismic shockwaves from heavy landings, dealing 200 Damage and knocking foes off their feet."
+            ]
+          },
+          {
+            "stats": [
+              "Create 5m seismic shockwaves from heavy landings, dealing 250 Damage and knocking foes off their feet."
+            ]
+          },
+          {
+            "stats": [
+              "Create 6m seismic shockwaves from heavy landings, dealing 300 Damage and knocking foes off their feet."
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "hysterical_assault",
+      "uniqueName": "/Lotus/Powersuits/Berserker/LastStandAugmentCard",
+      "name": "Hysterical Assault",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "ValkyrHysteriaAugment.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/ValkyrHysteriaAugment.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "zenurik",
+        "rarity": "Rare",
+        "baseDrain": 6,
+        "fusionLimit": 3,
+        "compatName": "Valkyr",
+        "levelStats": [
+          {
+            "stats": [
+              "Hysteria Augment: Attack with Valkyr's Talons to leap onto targeted enemies up to 50m away. Gain +20% Parkour Velocity and +20% Sprint Speed for 5s."
+            ]
+          },
+          {
+            "stats": [
+              "Hysteria Augment: Attack with Valkyr's Talons to leap onto targeted enemies up to 50m away. Gain +30% Parkour Velocity and +30% Sprint Speed for 5s."
+            ]
+          },
+          {
+            "stats": [
+              "Hysteria Augment: Attack with Valkyr's Talons to leap onto targeted enemies up to 50m away. Gain +40% Parkour Velocity and +40% Sprint Speed for 5s."
+            ]
+          },
+          {
+            "stats": [
+              "Hysteria Augment: Attack with Valkyr's Talons to leap onto targeted enemies up to 50m away. Gain +50% Parkour Velocity and +50% Sprint Speed for 5s."
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "ice_spring",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/IceParkourTwoMod",
+      "name": "Ice Spring",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "IceParkourTwoMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/IceParkourTwoMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "vazarin",
+        "rarity": "Rare",
+        "baseDrain": 2,
+        "fusionLimit": 10,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+2.2% to Parkour Velocity",
+              "+2.2% Aim Glide/Wall Latch Duration",
+              "+25% <DT_FREEZE_COLOR>Cold on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+4.4% to Parkour Velocity",
+              "+4.4% Aim Glide/Wall Latch Duration",
+              "+50% <DT_FREEZE_COLOR>Cold on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+6.6% to Parkour Velocity",
+              "+6.6% Aim Glide/Wall Latch Duration",
+              "+75% <DT_FREEZE_COLOR>Cold on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+8.8% to Parkour Velocity",
+              "+8.8% Aim Glide/Wall Latch Duration",
+              "+100% <DT_FREEZE_COLOR>Cold on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+11% to Parkour Velocity",
+              "+11% Aim Glide/Wall Latch Duration",
+              "+125% <DT_FREEZE_COLOR>Cold on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+13.2% to Parkour Velocity",
+              "+13.2% Aim Glide/Wall Latch Duration",
+              "+150% <DT_FREEZE_COLOR>Cold on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+15.4% to Parkour Velocity",
+              "+15.4% Aim Glide/Wall Latch Duration",
+              "+175% <DT_FREEZE_COLOR>Cold on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+17.6% to Parkour Velocity",
+              "+17.6% Aim Glide/Wall Latch Duration",
+              "+200% <DT_FREEZE_COLOR>Cold on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+19.8% to Parkour Velocity",
+              "+19.8% Aim Glide/Wall Latch Duration",
+              "+225% <DT_FREEZE_COLOR>Cold on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+22% to Parkour Velocity",
+              "+22% Aim Glide/Wall Latch Duration",
+              "+250% <DT_FREEZE_COLOR>Cold on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+24.2% to Parkour Velocity",
+              "+24.2% Aim Glide/Wall Latch Duration",
+              "+275% <DT_FREEZE_COLOR>Cold on Bullet Jump"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "intruder",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/AvatarTimeLimitIncreaseMod",
+      "name": "Intruder",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "DataSpikeIntruderMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/DataSpikeIntruderMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "universal",
+        "rarity": "Common",
+        "baseDrain": 0,
+        "fusionLimit": 0,
+        "compatName": "Parazon",
+        "levelStats": [
+          {
+            "stats": [
+              "+8s to Hacking"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "lightning_dash",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/ElectricalParkourTwoMod",
+      "name": "Lightning Dash",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "ElectricityParkourTwoMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/ElectricityParkourTwoMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "madurai",
+        "rarity": "Rare",
+        "baseDrain": 2,
+        "fusionLimit": 10,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+2.2% to Parkour Velocity",
+              "+2.2% Aim Glide/Wall Latch Duration",
+              "+25% <DT_ELECTRICITY_COLOR>Electricity on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+4.4% to Parkour Velocity",
+              "+4.4% Aim Glide/Wall Latch Duration",
+              "+50% <DT_ELECTRICITY_COLOR>Electricity on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+6.6% to Parkour Velocity",
+              "+6.6% Aim Glide/Wall Latch Duration",
+              "+75% <DT_ELECTRICITY_COLOR>Electricity on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+8.8% to Parkour Velocity",
+              "+8.8% Aim Glide/Wall Latch Duration",
+              "+100% <DT_ELECTRICITY_COLOR>Electricity on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+11% to Parkour Velocity",
+              "+11% Aim Glide/Wall Latch Duration",
+              "+125% <DT_ELECTRICITY_COLOR>Electricity on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+13.2% to Parkour Velocity",
+              "+13.2% Aim Glide/Wall Latch Duration",
+              "+150% <DT_ELECTRICITY_COLOR>Electricity on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+15.4% to Parkour Velocity",
+              "+15.4% Aim Glide/Wall Latch Duration",
+              "+175% <DT_ELECTRICITY_COLOR>Electricity on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+17.6% to Parkour Velocity",
+              "+17.6% Aim Glide/Wall Latch Duration",
+              "+200% <DT_ELECTRICITY_COLOR>Electricity on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+19.8% to Parkour Velocity",
+              "+19.8% Aim Glide/Wall Latch Duration",
+              "+225% <DT_ELECTRICITY_COLOR>Electricity on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+22% to Parkour Velocity",
+              "+22% Aim Glide/Wall Latch Duration",
+              "+250% <DT_ELECTRICITY_COLOR>Electricity on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+24.2% to Parkour Velocity",
+              "+24.2% Aim Glide/Wall Latch Duration",
+              "+275% <DT_ELECTRICITY_COLOR>Electricity on Bullet Jump"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "master_thief",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/AvatarChanceToLoot",
+      "name": "Master Thief",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "AvatarChanceToLootMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/AvatarChanceToLootMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "naramon",
+        "rarity": "Rare",
+        "baseDrain": 10,
+        "fusionLimit": 3,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+10% chance to unlock locked lockers."
+            ]
+          },
+          {
+            "stats": [
+              "+20% chance to unlock locked lockers."
+            ]
+          },
+          {
+            "stats": [
+              "+30% chance to unlock locked lockers."
+            ]
+          },
+          {
+            "stats": [
+              "+40% chance to unlock locked lockers."
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "mesa_s_waltz",
+      "uniqueName": "/Lotus/Powersuits/Cowgirl/GunFuPvPAugmentCard",
+      "name": "Mesa's Waltz",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "MesaPeacemakerAugment.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/MesaPeacemakerAugment.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "zenurik",
+        "rarity": "Rare",
+        "baseDrain": 6,
+        "fusionLimit": 3,
+        "compatName": "Mesa",
+        "levelStats": [
+          {
+            "stats": [
+              "Peacemaker Augment: Mesa can move at 35% Speed while using Peacemaker."
+            ]
+          },
+          {
+            "stats": [
+              "Peacemaker Augment: Mesa can move at 40% Speed while using Peacemaker."
+            ]
+          },
+          {
+            "stats": [
+              "Peacemaker Augment: Mesa can move at 45% Speed while using Peacemaker."
+            ]
+          },
+          {
+            "stats": [
+              "Peacemaker Augment: Mesa can move at 50% Speed while using Peacemaker."
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "mobilize",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/ParkourTwoMod",
+      "name": "Mobilize",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "StaggerParkourTwoMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/StaggerParkourTwoMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "naramon",
+        "rarity": "Uncommon",
+        "baseDrain": 2,
+        "fusionLimit": 3,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+5% to Parkour Velocity",
+              "+5% Aim Glide/Wall Latch Duration"
+            ]
+          },
+          {
+            "stats": [
+              "+10% to Parkour Velocity",
+              "+10% Aim Glide/Wall Latch Duration"
+            ]
+          },
+          {
+            "stats": [
+              "+15% to Parkour Velocity",
+              "+15% Aim Glide/Wall Latch Duration"
+            ]
+          },
+          {
+            "stats": [
+              "+20% to Parkour Velocity",
+              "+20% Aim Glide/Wall Latch Duration"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "pain_threshold",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/Events/AvatarStaggerRecoveryMod",
+      "name": "Pain Threshold",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "AvatarStaggerRecoveryMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/AvatarStaggerRecoveryMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "naramon",
+        "rarity": "Rare",
+        "baseDrain": 6,
+        "fusionLimit": 3,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+40% Faster Stagger Recovery"
+            ]
+          },
+          {
+            "stats": [
+              "+80% Faster Stagger Recovery"
+            ]
+          },
+          {
+            "stats": [
+              "+120% Faster Stagger Recovery"
+            ]
+          },
+          {
+            "stats": [
+              "+160% Faster Stagger Recovery"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "patagium",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/SuperGlideParkourTwoMod",
+      "name": "Patagium",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "SuperGlideParkourTwoMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/SuperGlideParkourTwoMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "naramon",
+        "rarity": "Uncommon",
+        "baseDrain": 2,
+        "fusionLimit": 5,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+15% Aim Glide/Wall Latch Duration"
+            ]
+          },
+          {
+            "stats": [
+              "+30% Aim Glide/Wall Latch Duration"
+            ]
+          },
+          {
+            "stats": [
+              "+45% Aim Glide/Wall Latch Duration"
+            ]
+          },
+          {
+            "stats": [
+              "+60% Aim Glide/Wall Latch Duration"
+            ]
+          },
+          {
+            "stats": [
+              "+75% Aim Glide/Wall Latch Duration"
+            ]
+          },
+          {
+            "stats": [
+              "+90% Aim Glide/Wall Latch Duration"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "piercing_step",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/PunctureParkourTwoMod",
+      "name": "Piercing Step",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "PunctureParkourTwoMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/PunctureParkourTwoMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "naramon",
+        "rarity": "Uncommon",
+        "baseDrain": 4,
+        "fusionLimit": 5,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+3% to Parkour Velocity",
+              "+3% Aim Glide/Wall Latch Duration",
+              "+10% <DT_PUNCTURE_COLOR>Puncture on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+6% to Parkour Velocity",
+              "+6% Aim Glide/Wall Latch Duration",
+              "+20% <DT_PUNCTURE_COLOR>Puncture on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+9% to Parkour Velocity",
+              "+9% Aim Glide/Wall Latch Duration",
+              "+30% <DT_PUNCTURE_COLOR>Puncture on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+12% to Parkour Velocity",
+              "+12% Aim Glide/Wall Latch Duration",
+              "+40% <DT_PUNCTURE_COLOR>Puncture on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+15% to Parkour Velocity",
+              "+15% Aim Glide/Wall Latch Duration",
+              "+50% <DT_PUNCTURE_COLOR>Puncture on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+18% to Parkour Velocity",
+              "+18% Aim Glide/Wall Latch Duration",
+              "+60% <DT_PUNCTURE_COLOR>Puncture on Bullet Jump"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "power_drift",
+      "uniqueName": "/Lotus/Upgrades/Mods/OrokinChallenge/OrokinChallengeModPower",
+      "name": "Power Drift",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "OrokinChallengeModPower.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/OrokinChallengeModPower.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "zenurik",
+        "rarity": "Rare",
+        "baseDrain": 4,
+        "fusionLimit": 5,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+2.5% Ability Strength",
+              "+5% Chance to Resist Knockdown"
+            ]
+          },
+          {
+            "stats": [
+              "+5% Ability Strength",
+              "+10% Chance to Resist Knockdown"
+            ]
+          },
+          {
+            "stats": [
+              "+7.5% Ability Strength",
+              "+15% Chance to Resist Knockdown"
+            ]
+          },
+          {
+            "stats": [
+              "+10% Ability Strength",
+              "+20% Chance to Resist Knockdown"
+            ]
+          },
+          {
+            "stats": [
+              "+12.5% Ability Strength",
+              "+25% Chance to Resist Knockdown"
+            ]
+          },
+          {
+            "stats": [
+              "+15% Ability Strength",
+              "+30% Chance to Resist Knockdown"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "primed_sure_footed",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/Expert/AvatarKnockdownResistanceModExpert",
+      "name": "Primed Sure Footed",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "AvatarSureFootedMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/AvatarSureFootedMod.jpg",
+      "tradable": false,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "vazarin",
+        "rarity": "Legendary",
+        "baseDrain": 6,
+        "fusionLimit": 10,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+9% Chance to Resist Knockdown"
+            ]
+          },
+          {
+            "stats": [
+              "+18% Chance to Resist Knockdown"
+            ]
+          },
+          {
+            "stats": [
+              "+27% Chance to Resist Knockdown"
+            ]
+          },
+          {
+            "stats": [
+              "+36% Chance to Resist Knockdown"
+            ]
+          },
+          {
+            "stats": [
+              "+45% Chance to Resist Knockdown"
+            ]
+          },
+          {
+            "stats": [
+              "+55% Chance to Resist Knockdown"
+            ]
+          },
+          {
+            "stats": [
+              "+64% Chance to Resist Knockdown"
+            ]
+          },
+          {
+            "stats": [
+              "+73% Chance to Resist Knockdown"
+            ]
+          },
+          {
+            "stats": [
+              "+82% Chance to Resist Knockdown"
+            ]
+          },
+          {
+            "stats": [
+              "+91% Chance to Resist Knockdown"
+            ]
+          },
+          {
+            "stats": [
+              "+100% Chance to Resist Knockdown"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "rending_turn",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/SlashParkourTwoMod",
+      "name": "Rending Turn",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "SlashParkourTwoMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/SlashParkourTwoMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "madurai",
+        "rarity": "Uncommon",
+        "baseDrain": 4,
+        "fusionLimit": 5,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+3% to Parkour Velocity",
+              "+3% Aim Glide/Wall Latch Duration",
+              "+10% <DT_SLASH_COLOR>Slash on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+6% to Parkour Velocity",
+              "+6% Aim Glide/Wall Latch Duration",
+              "+20% <DT_SLASH_COLOR>Slash on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+9% to Parkour Velocity",
+              "+9% Aim Glide/Wall Latch Duration",
+              "+30% <DT_SLASH_COLOR>Slash on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+12% to Parkour Velocity",
+              "+12% Aim Glide/Wall Latch Duration",
+              "+40% <DT_SLASH_COLOR>Slash on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+15% to Parkour Velocity",
+              "+15% Aim Glide/Wall Latch Duration",
+              "+50% <DT_SLASH_COLOR>Slash on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+18% to Parkour Velocity",
+              "+18% Aim Glide/Wall Latch Duration",
+              "+60% <DT_SLASH_COLOR>Slash on Bullet Jump"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "retribution",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/AvatarRevengeDamageMelee",
+      "name": "Retribution",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "ShockingBarrierMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/ShockingBarrierMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "vazarin",
+        "rarity": "Rare",
+        "baseDrain": 6,
+        "fusionLimit": 3,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+15% Chance to deal Electrical Damage when shield struck by melee enemies.",
+              "+20 <DT_ELECTRICITY_COLOR>Electricity"
+            ]
+          },
+          {
+            "stats": [
+              "+30% Chance to deal Electrical Damage when shield struck by melee enemies.",
+              "+40 <DT_ELECTRICITY_COLOR>Electricity"
+            ]
+          },
+          {
+            "stats": [
+              "+45% Chance to deal Electrical Damage when shield struck by melee enemies.",
+              "+60 <DT_ELECTRICITY_COLOR>Electricity"
+            ]
+          },
+          {
+            "stats": [
+              "+60% Chance to deal Electrical Damage when shield struck by melee enemies.",
+              "+80 <DT_ELECTRICITY_COLOR>Electricity"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "rime_vault",
+      "uniqueName": "/Lotus/Upgrades/Mods/PvPMods/Warframe/FreezeParkourPvPMod",
+      "name": "Rime Vault",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "FreezeParkour.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/FreezeParkour.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": "Ice FX on Bullet Jump",
+      "stats": {
+        "polarity": "madurai",
+        "rarity": "Rare",
+        "baseDrain": 0,
+        "fusionLimit": 0,
+        "compatName": "WARFRAME",
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "rush",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/AvatarSprintSpeedMod",
+      "name": "Rush",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "SprintSpeedMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/SprintSpeedMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "naramon",
+        "rarity": "Uncommon",
+        "baseDrain": 6,
+        "fusionLimit": 5,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+5% Sprint Speed"
+            ]
+          },
+          {
+            "stats": [
+              "+10% Sprint Speed"
+            ]
+          },
+          {
+            "stats": [
+              "+15% Sprint Speed"
+            ]
+          },
+          {
+            "stats": [
+              "+20% Sprint Speed"
+            ]
+          },
+          {
+            "stats": [
+              "+25% Sprint Speed"
+            ]
+          },
+          {
+            "stats": [
+              "+30% Sprint Speed"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "shock_absorbers",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/AvatarDamageResistanceKnockdown",
+      "name": "Shock Absorbers",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "ShockAbsorbersMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/ShockAbsorbersMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "vazarin",
+        "rarity": "Rare",
+        "baseDrain": 4,
+        "fusionLimit": 3,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+5% Physical Damage Resistance"
+            ]
+          },
+          {
+            "stats": [
+              "+10% Physical Damage Resistance"
+            ]
+          },
+          {
+            "stats": [
+              "+15% Physical Damage Resistance"
+            ]
+          },
+          {
+            "stats": [
+              "+20% Physical Damage Resistance"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "speed_drift",
+      "uniqueName": "/Lotus/Upgrades/Mods/OrokinChallenge/OrokinChallengeModSpeed",
+      "name": "Speed Drift",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "OrokinChallengeModSpeed.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/OrokinChallengeModSpeed.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "madurai",
+        "rarity": "Rare",
+        "baseDrain": 4,
+        "fusionLimit": 5,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+2% Sprint Speed",
+              "+2.5% Casting Speed"
+            ]
+          },
+          {
+            "stats": [
+              "+4% Sprint Speed",
+              "+5% Casting Speed"
+            ]
+          },
+          {
+            "stats": [
+              "+6% Sprint Speed",
+              "+7.5% Casting Speed"
+            ]
+          },
+          {
+            "stats": [
+              "+8% Sprint Speed",
+              "+10% Casting Speed"
+            ]
+          },
+          {
+            "stats": [
+              "+10% Sprint Speed",
+              "+12.5% Casting Speed"
+            ]
+          },
+          {
+            "stats": [
+              "+12% Sprint Speed",
+              "+15% Casting Speed"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "stealth_drift",
+      "uniqueName": "/Lotus/Upgrades/Mods/OrokinChallenge/OrokinChallengeModStealth",
+      "name": "Stealth Drift",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "OrokinChallengeModStealth.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/OrokinChallengeModStealth.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "naramon",
+        "rarity": "Rare",
+        "baseDrain": 4,
+        "fusionLimit": 5,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+3m Enemy Radar",
+              "+2% Aim Glide/Wall Latch Duration"
+            ]
+          },
+          {
+            "stats": [
+              "+6m Enemy Radar",
+              "+4% Aim Glide/Wall Latch Duration"
+            ]
+          },
+          {
+            "stats": [
+              "+9m Enemy Radar",
+              "+6% Aim Glide/Wall Latch Duration"
+            ]
+          },
+          {
+            "stats": [
+              "+12m Enemy Radar",
+              "+8% Aim Glide/Wall Latch Duration"
+            ]
+          },
+          {
+            "stats": [
+              "+15m Enemy Radar",
+              "+10% Aim Glide/Wall Latch Duration"
+            ]
+          },
+          {
+            "stats": [
+              "+18m Enemy Radar",
+              "+12% Aim Glide/Wall Latch Duration"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "streamlined_form",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/DualStat/HolsterSpeedSlideBoostMod",
+      "name": "Streamlined Form",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "HolsterSpeedSlideBoostMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/HolsterSpeedSlideBoostMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "naramon",
+        "rarity": "Rare",
+        "baseDrain": 2,
+        "fusionLimit": 5,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+5% Slide",
+              "-5% Friction"
+            ]
+          },
+          {
+            "stats": [
+              "+10% Slide",
+              "-10% Friction"
+            ]
+          },
+          {
+            "stats": [
+              "+15% Slide",
+              "-15% Friction"
+            ]
+          },
+          {
+            "stats": [
+              "+20% Slide",
+              "-20% Friction"
+            ]
+          },
+          {
+            "stats": [
+              "+25% Slide",
+              "-25% Friction"
+            ]
+          },
+          {
+            "stats": [
+              "+30% Slide",
+              "-30% Friction"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "thief_s_wit",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/AvatarLootRadarMod",
+      "name": "Thief's Wit",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "LootRadarMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/LootRadarMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": "Minimap shows loot crates.",
+      "stats": {
+        "polarity": "naramon",
+        "rarity": "Common",
+        "baseDrain": 2,
+        "fusionLimit": 5,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+7m Loot Radar"
+            ]
+          },
+          {
+            "stats": [
+              "+14m Loot Radar"
+            ]
+          },
+          {
+            "stats": [
+              "+21m Loot Radar"
+            ]
+          },
+          {
+            "stats": [
+              "+28m Loot Radar"
+            ]
+          },
+          {
+            "stats": [
+              "+35m Loot Radar"
+            ]
+          },
+          {
+            "stats": [
+              "+42m Loot Radar"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "toxic_flight",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/ToxinParkourTwoMod",
+      "name": "Toxic Flight",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "ToxicParkourTwoMod.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/ToxicParkourTwoMod.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "naramon",
+        "rarity": "Rare",
+        "baseDrain": 2,
+        "fusionLimit": 10,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+2.2% to Parkour Velocity",
+              "+2.2% Aim Glide/Wall Latch Duration",
+              "+25% <DT_POISON_COLOR>Toxin on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+4.4% to Parkour Velocity",
+              "+4.4% Aim Glide/Wall Latch Duration",
+              "+50% <DT_POISON_COLOR>Toxin on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+6.6% to Parkour Velocity",
+              "+6.6% Aim Glide/Wall Latch Duration",
+              "+75% <DT_POISON_COLOR>Toxin on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+8.8% to Parkour Velocity",
+              "+8.8% Aim Glide/Wall Latch Duration",
+              "+100% <DT_POISON_COLOR>Toxin on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+11% to Parkour Velocity",
+              "+11% Aim Glide/Wall Latch Duration",
+              "+125% <DT_POISON_COLOR>Toxin on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+13.2% to Parkour Velocity",
+              "+13.2% Aim Glide/Wall Latch Duration",
+              "+150% <DT_POISON_COLOR>Toxin on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+15.4% to Parkour Velocity",
+              "+15.4% Aim Glide/Wall Latch Duration",
+              "+175% <DT_POISON_COLOR>Toxin on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+17.6% to Parkour Velocity",
+              "+17.6% Aim Glide/Wall Latch Duration",
+              "+200% <DT_POISON_COLOR>Toxin on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+19.8% to Parkour Velocity",
+              "+19.8% Aim Glide/Wall Latch Duration",
+              "+225% <DT_POISON_COLOR>Toxin on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+22% to Parkour Velocity",
+              "+22% Aim Glide/Wall Latch Duration",
+              "+250% <DT_POISON_COLOR>Toxin on Bullet Jump"
+            ]
+          },
+          {
+            "stats": [
+              "+24.2% to Parkour Velocity",
+              "+24.2% Aim Glide/Wall Latch Duration",
+              "+275% <DT_POISON_COLOR>Toxin on Bullet Jump"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "voltaic_lance",
+      "uniqueName": "/Lotus/Upgrades/Mods/PvPMods/Warframe/ElectricityParkourPvPMod",
+      "name": "Voltaic Lance",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "ElectricityParkour.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/ElectricityParkour.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": "Electrical FX on Bullet Jump",
+      "stats": {
+        "polarity": "madurai",
+        "rarity": "Rare",
+        "baseDrain": 0,
+        "fusionLimit": 0,
+        "compatName": "WARFRAME",
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    },
+    {
+      "slug": "warm_coat",
+      "uniqueName": "/Lotus/Upgrades/Mods/Warframe/AvatarMissionSpecificResistanceIce",
+      "name": "Warm Coat",
+      "category": "mods",
+      "type": "Warframe Mod",
+      "imageName": "AvatarMissionSpecificResistanceIce.jpg",
+      "imageUrl": "https://cdn.warframestat.us/img/AvatarMissionSpecificResistanceIce.jpg",
+      "tradable": true,
+      "masteryReq": null,
+      "description": null,
+      "stats": {
+        "polarity": "vazarin",
+        "rarity": "Common",
+        "baseDrain": 6,
+        "fusionLimit": 3,
+        "compatName": "WARFRAME",
+        "levelStats": [
+          {
+            "stats": [
+              "+3% Shield Resistance to Environmental Ice Hazards"
+            ]
+          },
+          {
+            "stats": [
+              "+6% Shield Resistance to Environmental Ice Hazards"
+            ]
+          },
+          {
+            "stats": [
+              "+9% Shield Resistance to Environmental Ice Hazards"
+            ]
+          },
+          {
+            "stats": [
+              "+12% Shield Resistance to Environmental Ice Hazards"
+            ]
+          }
+        ],
+        "isAugment": true,
+        "isUtility": true,
+        "isExilus": true
+      }
+    }
+  ]
+}

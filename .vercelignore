@@ -1,0 +1,11 @@
+work/
+docs/
+tests/
+.git/
+node_modules/
+.next/
+.next-build/
+.test-build/
+.env*
+*.log
+*.zip

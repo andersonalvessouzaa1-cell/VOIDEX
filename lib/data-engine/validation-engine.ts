@@ -168,7 +168,7 @@ export class ValidationEngine {
     };
   }
 
-  private static auditCategoryCoverage<T extends { id: string; name: string; market_supported: boolean; build_supported: boolean; provenance: { verification_status: EntityVerificationStatus } }>(
+  private static auditCategoryCoverage<T extends { id: string; name: string; market_supported: boolean; build_supported: boolean; provenance?: { verification_status: EntityVerificationStatus }; verification_status?: EntityVerificationStatus }>(
     categoryName: string,
     items: T[],
     unverifiedRegistry: SystemDataCoverageMatrix['unverified_or_missing_registry'],
@@ -180,7 +180,7 @@ export class ValidationEngine {
     let missing = 0;
 
     for (const item of items) {
-      const status = item.provenance.verification_status;
+      const status = item.provenance?.verification_status ?? item.verification_status ?? 'MISSING';
       if (status === 'VERIFIED') {
         verified++;
       } else if (status === 'PARTIALLY_VERIFIED') {

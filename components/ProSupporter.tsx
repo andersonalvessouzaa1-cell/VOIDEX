@@ -18,7 +18,7 @@ export default function ProSupporter() {
             <span>Modelo Sustentável & 100% Legal</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white">
-            VOIDEX Pro & <span className="text-gradient-gold">Apoio da Comunidade</span>
+            Acervo Void Pro & <span className="text-gradient-gold">Apoio da Comunidade</span>
           </h2>
           <p className="mt-4 text-slate-300 text-base sm:text-lg">
             Sem taxas arbitrárias sobre seus trades no jogo. Mantemos você <strong className="text-white">100% seguro contra banimentos</strong> através de um modelo de apoio voluntário e recursos de inteligência avançada.
@@ -36,7 +36,7 @@ export default function ProSupporter() {
                 <span className="px-2.5 py-0.5 rounded bg-void-800 text-slate-300 text-xs font-mono">R$ 0</span>
               </div>
               
-              <h3 className="text-2xl font-bold text-white mb-2">VOIDEX Free</h3>
+              <h3 className="text-2xl font-bold text-white mb-2">Acervo Void Free</h3>
               <p className="text-slate-300 text-sm mb-6">
                 Todas as ferramentas fundamentais para nunca mais perder tempo negociando.
               </p>
@@ -87,7 +87,7 @@ export default function ProSupporter() {
                 </span>
               </div>
               
-              <h3 className="text-2xl font-bold text-white mb-2">VOIDEX Pro / Supporter</h3>
+              <h3 className="text-2xl font-bold text-white mb-2">Acervo Void Pro / Supporter</h3>
               <p className="text-slate-300 text-sm mb-6">
                 Para Tenno que negociam pesado e querem inteligência preditiva em primeira mão.
               </p>

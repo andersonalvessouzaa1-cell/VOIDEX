@@ -1,3 +1,5 @@
+import { WEAPONS_DATASET } from './dataset/weapons';
+import { MODS_DATASET } from './dataset/mods';
 /**
  * VOIDEX DATA ENGINE — BUILD ENGINE ADAPTER
  * Provedor Unificado que alimenta o Build Lab diretamente a partir do Data Engine
@@ -77,8 +79,8 @@ export class BuildEngineAdapter {
     // Aggregates mod effects to pass to calculation engine
     const activeEffects: (ModEffect & { modId: string })[] = [];
     for (const mod of equippedMods) {
-      for (const eff of mod.effects) {
-        activeEffects.push({ ...eff, modId: mod.id });
+      for (const eff of mod.ranks.find(rank => rank.rank === mod.max_rank)?.effects ?? []) {
+        activeEffects.push({ stat: eff.attribute, operator: 'UNKNOWN', value: { value: eff.value, status: 'PARTIALLY_VERIFIED', confidence: 0, source_id: mod.provenance.source_id }, modId: mod.id });
       }
     }
     // O CalculationEngine processa a matemática e expele a CalculationTrace,
@@ -87,71 +89,10 @@ export class BuildEngineAdapter {
   }
 
   public static getTestWeapon(): WeaponEntity {
-    return {
-      id: 'wpn_braton',
-      slug: 'braton',
-      uniqueName: '/Lotus/Weapons/Tenno/Rifles/Braton/Braton',
-      name: 'Braton',
-      category: 'PRIMARY',
-      mastery_rank: 0,
-      max_rank: 30,
-      tradable: false,
-      market_supported: false,
-      build_supported: true,
-      verification_status: 'PARTIALLY_VERIFIED',
-      provenance_source_id: 'src_wfcd_tier2',
-      attacks: [{
-        attack_id: 'braton_primary',
-        name: 'Primary',
-        damage_profile: {
-          Slash: { value: 100, status: 'VERIFIED', confidence: 'HIGH' }
-        }
-      }]
-    };
+    return WEAPONS_DATASET[0];
   }
 
   public static getTestMod(): ModEntity {
-    return {
-      id: 'mod_serration',
-      slug: 'serration',
-      name: 'Serration',
-      category: 'PRIMARY',
-      type: 'regular',
-      rarity: 'uncommon',
-      polarity: 'MADURAI',
-      base_drain: 4,
-      max_rank: 10,
-      tradeable: true,
-      market_supported: true,
-      build_supported: true,
-      compatibilities: {
-        warframe: false,
-        primary: true,
-        secondary: false,
-        melee: false,
-        shotgun: false,
-        archwing: false,
-        archgun: false,
-        archmelee: false,
-        companion: false,
-        kdrive: false,
-        necramech: false,
-        railjack: false,
-        parazon: false,
-        hound: false,
-        moa: false
-      },
-      verification_status: 'PARTIALLY_VERIFIED',
-      provenance_source_id: 'src_wfcd_tier2',
-      effects: [{
-        stat: 'Damage',
-        operator: 'UNKNOWN',
-        value: { value: 165, status: 'PARTIALLY_VERIFIED', confidence: 'LOW' }
-      }]
-    };
+    return MODS_DATASET[0];
   }
 }
-
-
-
-

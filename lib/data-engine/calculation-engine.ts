@@ -1,3 +1,4 @@
+import { LegacyStatCalculator } from './legacy-stat-calculator';
 import { EvidenceValue, MathOperator, ModEffect, WeaponAttackInstance, CalculationTrace } from './types';
 
 export interface CalculatedResult<T> {
@@ -9,14 +10,14 @@ export interface CalculatedResult<T> {
   traces: CalculationTrace[];
 }
 
-export class CalculationEngine {
+export class CalculationEngine extends LegacyStatCalculator {
   /**
    * Calcula o dano de um ataque de arma modificado por efeitos de mods.
    * Se algum Mod possuir operador UNKNOWN, o cálculo é degradado com segurança.
    */
   public calculateWeaponDamage(
     weaponId: string,
-    baseAttack: WeaponAttackInstance,
+    baseAttack: Pick<WeaponAttackInstance, 'damage_profile'>,
     mods: (ModEffect & { modId?: string })[]
   ): CalculatedResult<number> {
     const limitations: string[] = [];
@@ -29,7 +30,7 @@ export class CalculationEngine {
     for (const [dmgType, ev] of Object.entries(baseAttack.damage_profile)) {
       if (!ev) continue;
       
-      const isLow = ev.status === 'UNVERIFIED' || ev.confidence === 'LOW';
+      const isLow = ev.status !== 'VERIFIED' || ev.confidence < 1;
       if (isLow) {
         limitations.push(`Base damage type ${dmgType} has incomplete evidence.`);
         hasUnknownDependencies = true;
@@ -56,8 +57,8 @@ export class CalculationEngine {
     for (const mod of mods) {
       const eId = mod.modId || 'unknown_mod';
 
-      if (mod.operator === 'UNKNOWN') {
-        limitations.push(`Cálculo limitado pela evidência disponível no Mod: Operador desconhecido para ${mod.stat}.`);
+      if (mod.operator === 'UNKNOWN' || mod.condition || mod.stat !== 'damage_raw') {
+        limitations.push(`Cálculo limitado pela evidência disponível no Mod: Operador, condição ou atributo não suportado: ${mod.stat}.`);
         hasUnknownDependencies = true;
         
         traces.push({
@@ -68,7 +69,7 @@ export class CalculationEngine {
           inputValue: totalBaseDamage,
           operator: 'UNKNOWN',
           outputValue: null,
-          blockedBy: 'Operador matemático não comprovado (UNKNOWN).',
+          blockedBy: 'Operador, condição ou atributo sem aplicação comprovada neste cálculo.',
           calculationStatus: 'LIMITED'
         });
         continue;

@@ -368,7 +368,7 @@ export interface WeaponAttackInstance {
   attack_id: string;
   name: string;
   attack_type: 'PRIMARY' | 'SECONDARY' | 'HEAVY' | 'CHARGED' | 'INCARNON' | 'OTHER';
-  damage_profile: Record<DamageType, EvidenceValue<number>>;
+  damage_profile: Partial<Record<DamageType, EvidenceValue<number>>>;
   critical_chance: EvidenceValue<number>;
   critical_multiplier: EvidenceValue<number>;
   status_chance: EvidenceValue<number>;
@@ -377,6 +377,9 @@ export interface WeaponAttackInstance {
   magazine_size?: EvidenceValue<number>;
   ammo_max?: EvidenceValue<number>;
   reload_time_seconds?: EvidenceValue<number>;
+  attack_speed?: number;
+  accuracy?: number;
+  projectile_type?: 'hitscan' | 'projectile' | 'beam' | 'thrown' | 'area_radial';
   range_limit?: EvidenceValue<number>;
   falloff_start?: EvidenceValue<number>;
   falloff_end?: EvidenceValue<number>;
@@ -386,19 +389,26 @@ export interface WeaponAttackInstance {
 export interface WeaponEntity {
   id: string;
   slug: string;
-  uniqueName: string;
+  uniqueName?: string;
   name: string;
   category: WeaponCategory;
   variant_relation?: VariantRelation;
   parent_weapon_id?: string;
   mastery_rank: number;
-  max_rank: number;
+  max_rank?: number;
   disposition?: number;
-  tradable: boolean;
+  tradable?: boolean;
   attacks: WeaponAttackInstance[];
   market_supported: boolean;
   build_supported: boolean;
-  verification_status: EntityVerificationStatus;
+  verification_status?: EntityVerificationStatus;
+  provenance?: DataProvenance;
+  riven_disposition?: number;
+  base_polarities?: Polarity[];
+  stance_or_exilus_polarity?: Polarity;
+  has_incarnon_form?: boolean;
+  incarnon_evolutions?: { tier_number: number; perks: { id: string; name: string; description: string; stat_modifiers: StructuredStatEffect[] }[] }[];
+  acquisition_method?: string;
 }
 
 export type MathOperator = 'ADD_FLAT' | 'ADD_PERCENT' | 'MULTIPLY' | 'SET_FIXED' | 'SUBTRACT_FLAT' | 'SUBTRACT_PERCENT' | 'OVERRIDE' | 'SET' | 'UNKNOWN';
@@ -597,3 +607,64 @@ export interface ArchonShardEffect {
   provenance_source_id: string;
 }
 
+
+
+// Contratos históricos preservados para migração das builds salvas.
+export interface ChangeLogEntry {
+  id: string;
+  entity_type: 'warframe' | 'weapon' | 'mod' | 'arcane' | 'shard' | 'helminth';
+  entity_id: string;
+  entity_name: string;
+  attribute_changed: string;
+  old_value: number | string;
+  new_value: number | string;
+  patch: string;
+  timestamp: string;
+  impact_summary: string;
+}
+
+export interface SavedBuildModSlot {
+  slot_index: number;
+  mod_id: string;
+  equipped_rank: number;
+  applied_polarity?: Polarity;
+}
+
+export interface SavedBuildEntity {
+  id: string;
+  author_id: string;
+  title: string;
+  warframe_id: string;
+  warframe_data_version: string;
+  aura_slot?: { mod_id: string; equipped_rank: number };
+  exilus_slot?: { mod_id: string; equipped_rank: number };
+  mod_slots: SavedBuildModSlot[];
+  arcanes: [{ arcane_id: string; rank: number }?, { arcane_id: string; rank: number }?];
+  archon_shards: {
+    shard_type: ShardType;
+    option_id: string;
+    is_tauforged: boolean;
+  }[];
+  helminth_override?: {
+    replaced_slot: 1 | 2 | 3 | 4;
+    subsumed_ability_id: string;
+  };
+  primary_weapon_id?: string;
+  secondary_weapon_id?: string;
+  melee_weapon_id?: string;
+  companion_id?: string;
+  orokin_reactor_installed: boolean;
+  forma_count: number;
+  calculated_stats: WarframeBaseStats;
+  build_dna: {
+    damage: number;
+    survival: number;
+    control: number;
+    energy: number;
+    mobility: number;
+    scalability: number;
+  };
+  created_at: string;
+  updated_at: string;
+  version: number;
+}

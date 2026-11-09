@@ -140,13 +140,13 @@ export class WarframeIngestionPipeline {
       aura_polarity: 'none',
       exilus_polarity: 'none',
       abilities: [
-        { slot_number: 1, id: '1', slug: '1', name: 'Unknown', description: 'Unknown', energy_cost: 25, effects: [], subsumable_via_helminth: false, provenance },
-        { slot_number: 2, id: '2', slug: '2', name: 'Unknown', description: 'Unknown', energy_cost: 50, effects: [], subsumable_via_helminth: false, provenance },
-        { slot_number: 3, id: '3', slug: '3', name: 'Unknown', description: 'Unknown', energy_cost: 75, effects: [], subsumable_via_helminth: false, provenance },
-        { slot_number: 4, id: '4', slug: '4', name: 'Unknown', description: 'Unknown', energy_cost: 100, effects: [], subsumable_via_helminth: false, provenance }
+        { slot_number: 1, id: '1', slug: '1', name: 'Unknown', description: 'Unknown', energy_cost: 25, mechanics: [], subsumable_via_helminth: false, provenance },
+        { slot_number: 2, id: '2', slug: '2', name: 'Unknown', description: 'Unknown', energy_cost: 50, mechanics: [], subsumable_via_helminth: false, provenance },
+        { slot_number: 3, id: '3', slug: '3', name: 'Unknown', description: 'Unknown', energy_cost: 75, mechanics: [], subsumable_via_helminth: false, provenance },
+        { slot_number: 4, id: '4', slug: '4', name: 'Unknown', description: 'Unknown', energy_cost: 100, mechanics: [], subsumable_via_helminth: false, provenance }
       ],
       passive: {
-        slot_number: 'passive', id: 'p', slug: 'p', name: 'Passive', description: raw.passiveDescription || 'Unknown', energy_cost: 0, effects: [], subsumable_via_helminth: false, provenance
+        slot_number: 'passive', id: 'p', slug: 'p', name: 'Passive', description: raw.passiveDescription || 'Unknown', energy_cost: 0, mechanics: [], subsumable_via_helminth: false, provenance
       },
       acquisition_method: 'Unknown',
       description: raw.description || 'No description',

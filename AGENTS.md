@@ -1,13 +1,13 @@
 # VOIDEX: instruções para agentes de IA
 
-Projeto: site de trocas de Warframe (Next.js 15, React 18, Tailwind). Pasta: `C:\Projetos\VOIDEX`. Idioma da interface e dos commits: PT-BR.
+Projeto: site de trocas de Warframe (Next.js 15, React 18, Tailwind). Pasta: `/home/anderson/Documentos/GitHub/VOIDEX`. Idioma da interface e dos commits: PT-BR.
 
 ## Regras que nunca mudam
 1. Não invente dados. Preços de exemplo são rotulados como exemplo. A consulta real (Warframe Market) nunca usa os dados da demonstração.
 2. O VOIDEX não acessa conta do jogo, não executa trocas e não faz "análise por IA". Não escreva texto que sugira isso.
 3. Não altere o sentido dos textos de limitação. Pode reorganizar, não pode suavizar nem remover.
 4. Edite o mínimo. Não reescreva arquivo inteiro, não renomeie, não apague. Preserve as quebras de linha (CRLF) dos arquivos.
-5. Uma tarefa por vez. Depois de cada uma: `npm run verify`, depois um commit pequeno. Se `verify` falhar 2 vezes na mesma causa, pare e relate o erro. Não "conserte" apagando teste.
+5. Uma tarefa por vez. Por regra expressa do dono: executar apenas as suítes específicas afetadas (`npm test -- tests/arquivo.test.ts`), sem bateria completa por padrão; verificações de tipos/build somente quando necessárias. Depois, commit pequeno. Se uma verificação falhar 2 vezes na mesma causa, pare e relate o erro. Não "conserte" apagando teste.
 6. Leia só os arquivos que a tarefa exige. Não varra o repositório inteiro.
 7. Nunca declare "pronto" sem a saída do comando que prova.
 
@@ -36,3 +36,6 @@ Projeto: site de trocas de Warframe (Next.js 15, React 18, Tailwind). Pasta: `C:
 
 ## Formato da resposta de cada tarefa
 Máximo 10 linhas: arquivos alterados, comando executado, resultado real, próximo passo. Sem repetir o código.
+
+## Economia extrema (instrução do dono)
+Buscas cirúrgicas com rg; ler assinaturas/tipos e somente os trechos necessários para editar. Respostas em diff mínimo, sem explicações conceituais. Não imprimir arquivos completos.
